@@ -1,0 +1,29 @@
+@charset "ISO-8859-1";
+
+body {
+	background-image: url("hintergrund.jpg");
+	 background-repeat: no-repeat;
+	 background-position: 50% 0%;
+
+}
+div {
+	font-family: 'Charmonman', cursive;
+	text-align:center;
+	font-size:15px;
+	line-height:5px;
+	top:5%;
+	left:44.5%;
+	position:absolute;
+}
+
+a{font-family: 'Charmonman', cursive;
+font-size:15px;
+left:37%;
+bottom: 5%;
+position:absolute;
+background-color:black;
+color: white;
+border: 6px solid black;
+border-radius:20%;
+text-decoration: none;
+}
