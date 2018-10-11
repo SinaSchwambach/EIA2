@@ -1,6 +1,7 @@
 function main() {
     var name = prompt("Bitte gib deinen Namen ein");
     var node = document.getElementById("content");
+    var innerHTML;
     node.innerHTML += "Hallo ";
     node.innerHTML += name;
     node.innerHTML += " es freut mich dich auf meiner Seite begrue�en zu duerfen!";
