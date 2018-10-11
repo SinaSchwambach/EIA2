@@ -1,7 +1,7 @@
 
     function main() {
         var name: string= prompt("Bitte gib deinen Namen ein");
-        var node :any = document.getElementById("content");
+        var node :HTMLElement  = document.getElementById("content");
         var innerHTML :string;
         
         node.innerHTML += "Hallo ";
