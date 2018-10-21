@@ -1,3 +1,5 @@
+namespace UNO{
+
 interface Deck {
     color: string;
     value: string;
@@ -97,6 +99,7 @@ function placeDiv(x: number = 50, y: number = 0, color: Deck[], value: Deck[], _
             });
         }
 
+,
 
 
 
@@ -105,5 +108,4 @@ function placeDiv(x: number = 50, y: number = 0, color: Deck[], value: Deck[], _
 
 
 
-
-})};
+}}
