@@ -48,7 +48,7 @@ function placeDiv(x: number = 50, y: number = 0, color: Deck[], value: Deck[], _
         s.width = _width + "px";
         s.height = _height + "px";
         s.left = x + "px";
-        s.top = y + "px";
+        s.top = y + "px";)
 
         let n: number = 0;
         while (n < 5) {
@@ -100,4 +100,4 @@ function placeDiv(x: number = 50, y: number = 0, color: Deck[], value: Deck[], _
         }
 
 
-}}
+}},
