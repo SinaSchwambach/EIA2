@@ -10,3 +10,6 @@
         console.log("Hallo "+ name + " es freut mich dich auf meiner Seite begrueﬂen zu duerfen!" );
     }
     document.addEventListener('DOMContentLoaded', main);
+
+
+
