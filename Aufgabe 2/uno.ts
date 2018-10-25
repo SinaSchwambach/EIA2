@@ -14,90 +14,35 @@ namespace UNO {
         { color: "#ffff00", value: "0" }, { color: "#ffff00", value: "1" }, { color: "#ffff00", value: "1" }, { color: "#ffff00", value: "2" }, { color: "#ffff00", value: "2" }, { color: "#ffff00", value: "3" }, { color: "#ffff00", value: "3" }, { color: "#ffff00", value: "4" }, { color: "#ffff00", value: "4" }, { color: "#ffff00", value: "5" }, { color: "#ffff00", value: "5" }, { color: "#ffff00", value: "6" }, { color: "#ffff00", value: "6" }, { color: "#ffff00", value: "7" }, { color: "#ffff00", value: "7" }, { color: "#ffff00", value: "8" }, { color: "#ffff00", value: "8" }, { color: "#ffff00", value: "9" }, { color: "#ffff00", value: "9" }, { color: "#ffff00", value: "+2" }, { color: "#ffff00", value: "+2" }, { color: "#ffff00", value: "aussetzen" }, { color: "#ffff00", value: "aussetzen" },
         { color: "#000000", value: "+4" }, { color: "#000000", value: "+4" }, { color: "#000000", value: "+4" }, { color: "#000000", value: "+4" }, { color: "#000000", value: "farbwechsel" }, { color: "#000000", value: "farbwechsel" }, { color: "#000000", value: "farbwechsel" }, { color: "#000000", value: "farbwechsel" },]
 
-
+  function question() {
+        let numofcards: string= prompt("Wie viele Karten möchtest du?");
+      
+        let node :HTMLElement  = document.getElementById("hand");
+        let innerHTML :string;
+        let numcards = +numofcards
+      }
     function Kartendeckerstellen(_card: Deck[]): void {
 
         for (let i: number = 0; i < _card.length; i++) {
-            let div: HTMLDivElement = document.createElement("div");
-            document.addEventListener('DOMContentLoaded', function() {
+            let deck: HTMLElement = document.getElementById("Ziehstapel")}
 
-                document.body.appendChild(div);
-            }
-
-            )
+    function kartenziehen(numofcards:number): void {
+        for (let x:number=0; x < numofcards; x++) {
+        let random:number= Math.floor(Math.random()*cards.length);
+            let getcard:Deck=cards.splice (random)[1];
+            Handkartendarstellen(getcard);
+             
+    }
+        
         }
+    
+
+    function Handkartendarstellen(_getcard:Deck): void {
+        let hands: HTMLElement = document.getElementById("hand");
+        let span: HTMLSpanElement = document.createElement("span");
+        document.appendChild(span) 
+        
+        
+    
     }
-
-    function Handkartenziehen(min: any = cards[0], max: any = cards[179]): void {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    function placeDiv(x: number = 50, y: number = 0, color: Deck[], value: Deck[], _width: number = 50, _height: number = 50): void {
-        let div: HTMLDivElement = document.createElement("div");
-        document.addEventListener('DOMContentLoaded', function() {
-
-            document.body.appendChild(div);
-
-
-            let s: CSSStyleDeclaration = div.style;
-            s.border = "thin solid black";
-            s.position = "absolute";
-            s.backgroundColor = color;
-            s.width = _width + "px";
-            s.height = _height + "px";
-            s.left = x + "px";
-            s.top = y + "px";)
-
-        let n: number = 0;
-        while (n < 5) {
-            childNodeHtml = "";
-            childNodeHtml += "<div ";
-            childNodeHtml += ">";
-            childNodeHtml += cards[a].value;
-            childNodeHtml += "</div>";
-
-            node.innerHTML += childNodeHtml;
-        }
-    }
-
-    function Ablagestapel(): void {
-        let div: HTMLDivElement = document.createElement("div");
-        document.addEventListener('DOMContentLoaded', function() {
-
-            document.body.appendChild(div);
-
-
-            let s: CSSStyleDeclaration = div.style;
-            s.border = "thin solid black";
-            s.position = "absolute";
-            s.backgroundColor = "black";
-            s.width = "50 px";
-            s.height = " 50 px";
-            s.right = "50 px";
-            s.top = "30 px";
-        });
-    }
-
-
-    function Kartenstapel(): void {
-        let div: HTMLDivElement = document.createElement("div");
-        document.addEventListener('DOMContentLoaded', function() {
-
-            document.body.appendChild(div);
-
-
-            let s: CSSStyleDeclaration = div.style;
-            s.border = "thin solid black";
-            s.position = "absolute";
-            s.backgroundColor = "black";
-            s.width = "50 px";
-            s.height = " 50 px";
-            s.left = "50 px";
-            s.top = "30 px";
-        });
-    }
-
-
 }}
