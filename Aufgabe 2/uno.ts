@@ -16,7 +16,7 @@ namespace UNO {
 
  
         
-  function question() {
+  function main():void {
         let numofcards: string= prompt("Wie viele Karten möchtest du?");
       
         let node :HTMLElement  = document.getElementById("hand");
@@ -48,5 +48,5 @@ namespace UNO {
         
     
     }
-    
+   document.addEventListener('DOMContentLoaded', main); 
 }
