@@ -14,7 +14,7 @@ namespace UNO {
         { color: "#ffff00", value: "0" }, { color: "#ffff00", value: "1" }, { color: "#ffff00", value: "1" }, { color: "#ffff00", value: "2" }, { color: "#ffff00", value: "2" }, { color: "#ffff00", value: "3" }, { color: "#ffff00", value: "3" }, { color: "#ffff00", value: "4" }, { color: "#ffff00", value: "4" }, { color: "#ffff00", value: "5" }, { color: "#ffff00", value: "5" }, { color: "#ffff00", value: "6" }, { color: "#ffff00", value: "6" }, { color: "#ffff00", value: "7" }, { color: "#ffff00", value: "7" }, { color: "#ffff00", value: "8" }, { color: "#ffff00", value: "8" }, { color: "#ffff00", value: "9" }, { color: "#ffff00", value: "9" }, { color: "#ffff00", value: "+2" }, { color: "#ffff00", value: "+2" }, { color: "#ffff00", value: "aussetzen" }, { color: "#ffff00", value: "aussetzen" },
         { color: "#000000", value: "+4" }, { color: "#000000", value: "+4" }, { color: "#000000", value: "+4" }, { color: "#000000", value: "+4" }, { color: "#000000", value: "farbwechsel" }, { color: "#000000", value: "farbwechsel" }, { color: "#000000", value: "farbwechsel" }, { color: "#000000", value: "farbwechsel" },]
 
-    document.addEventListener('DOMContentLoaded',function(){
+    
   function question() {
         let numofcards: string= prompt("Wie viele Karten möchtest du?");
       
@@ -22,12 +22,12 @@ namespace UNO {
         let innerHTML :string;
         let numcards = +numofcards
       } 
-        });
+        
     function Kartendeckerstellen(_card: Deck[]): void {
 
         for (let i: number = 0; i < _card.length; i++) {
             let deck: HTMLElement = document.getElementById("Ziehstapel")}}
-
+document.addEventListener('DOMContentLoaded',function(){
     function kartenziehen(numofcards:number): void {
         for (let x:number=0; x < numofcards; x++) {
         let random:number= Math.floor(Math.random()*cards.length);
@@ -47,5 +47,5 @@ namespace UNO {
         
     
     }
-    
+    });
 }
