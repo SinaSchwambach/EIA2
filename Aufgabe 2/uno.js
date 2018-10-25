@@ -12,23 +12,23 @@ var UNO;
             let innerHTML;
             let numcards = +numofcards;
         }
-        function Kartendeckerstellen(_card) {
-            for (let i = 0; i < _card.length; i++) {
-                let deck = document.getElementById("Ziehstapel");
-            }
-        }
-        function kartenziehen(numofcards) {
-            for (let x = 0; x < numofcards; x++) {
-                let random = Math.floor(Math.random() * cards.length);
-                let getcard = cards.splice(random)[1];
-                Handkartendarstellen(getcard);
-            }
-        }
-        function Handkartendarstellen(_getcard) {
-            let hands = document.getElementById("hand");
-            let span = document.createElement("span");
-            document.appendChild(span);
-        }
     });
+    function Kartendeckerstellen(_card) {
+        for (let i = 0; i < _card.length; i++) {
+            let deck = document.getElementById("Ziehstapel");
+        }
+    }
+    function kartenziehen(numofcards) {
+        for (let x = 0; x < numofcards; x++) {
+            let random = Math.floor(Math.random() * cards.length);
+            let getcard = cards.splice(random)[1];
+            Handkartendarstellen(getcard);
+        }
+    }
+    function Handkartendarstellen(_getcard) {
+        let hands = document.getElementById("hand");
+        let span = document.createElement("span");
+        document.appendChild(span);
+    }
 })(UNO || (UNO = {}));
 //# sourceMappingURL=uno.js.map

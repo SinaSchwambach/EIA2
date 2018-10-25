@@ -21,7 +21,8 @@ namespace UNO {
         let node :HTMLElement  = document.getElementById("hand");
         let innerHTML :string;
         let numcards = +numofcards
-      }
+      } 
+        });
     function Kartendeckerstellen(_card: Deck[]): void {
 
         for (let i: number = 0; i < _card.length; i++) {
@@ -46,5 +47,5 @@ namespace UNO {
         
     
     }
-    });
+    
 }
