@@ -25,7 +25,7 @@ var UNO;
     }
     function Handkartendarstellen(_getcard, _random) {
         let hands = document.getElementById("hand");
-        let span = document.createElement("span");
+        let span = document.createElement("span class:span");
         hands.appendChild(span);
     }
     document.addEventListener('DOMContentLoaded', main);
