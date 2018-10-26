@@ -47,7 +47,7 @@ namespace UNO {
         let hands: HTMLElement = document.getElementById("hand");
         let span: HTMLSpanElement = document.createElement("span");
         hands.appendChild(span);
-        span.style.backgroundColor = cards[_random].color;
+        
         
        
        

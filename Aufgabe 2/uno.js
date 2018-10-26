@@ -27,7 +27,6 @@ var UNO;
         let hands = document.getElementById("hand");
         let span = document.createElement("span");
         hands.appendChild(span);
-        span.style.backgroundColor = cards[_random].color;
     }
     document.addEventListener('DOMContentLoaded', main);
 })(UNO || (UNO = {}));
