@@ -45,7 +45,7 @@ namespace UNO {
 
     function Handkartendarstellen(_getcard: Deck, _random:number): void {
         let hands: HTMLElement = document.getElementById("hand");
-        let span: HTMLSpanElement = document.createElement("span class:span");
+        let span: HTMLSpanElement = document.createElement("span");
         hands.appendChild(span);
         
         
