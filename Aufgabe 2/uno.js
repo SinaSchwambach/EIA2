@@ -10,14 +10,15 @@ var UNO;
         let node = document.getElementById("hand");
         let innerHTML;
         let numcards = +numofcards;
+        kartenziehen(numcards);
     }
     function Kartendeckerstellen(_card) {
         for (let i = 0; i < _card.length; i++) {
             let deck = document.getElementById("Ziehstapel");
         }
     }
-    function kartenziehen(numofcards) {
-        for (let x = 0; x < numofcards; x++) {
+    function kartenziehen(_numcards) {
+        for (let x = 0; x < _numcards; x++) {
             let random = Math.floor(Math.random() * cards.length);
             let getcard = cards.splice(random)[1];
             Handkartendarstellen(getcard);

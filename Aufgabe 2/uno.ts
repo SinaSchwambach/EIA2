@@ -14,39 +14,42 @@ namespace UNO {
         { color: "#ffff00", value: "0" }, { color: "#ffff00", value: "1" }, { color: "#ffff00", value: "1" }, { color: "#ffff00", value: "2" }, { color: "#ffff00", value: "2" }, { color: "#ffff00", value: "3" }, { color: "#ffff00", value: "3" }, { color: "#ffff00", value: "4" }, { color: "#ffff00", value: "4" }, { color: "#ffff00", value: "5" }, { color: "#ffff00", value: "5" }, { color: "#ffff00", value: "6" }, { color: "#ffff00", value: "6" }, { color: "#ffff00", value: "7" }, { color: "#ffff00", value: "7" }, { color: "#ffff00", value: "8" }, { color: "#ffff00", value: "8" }, { color: "#ffff00", value: "9" }, { color: "#ffff00", value: "9" }, { color: "#ffff00", value: "+2" }, { color: "#ffff00", value: "+2" }, { color: "#ffff00", value: "aussetzen" }, { color: "#ffff00", value: "aussetzen" },
         { color: "#000000", value: "+4" }, { color: "#000000", value: "+4" }, { color: "#000000", value: "+4" }, { color: "#000000", value: "+4" }, { color: "#000000", value: "farbwechsel" }, { color: "#000000", value: "farbwechsel" }, { color: "#000000", value: "farbwechsel" }, { color: "#000000", value: "farbwechsel" },]
 
- 
-        
-  function main():void {
-        let numofcards: string= prompt("Wie viele Karten möchtest du?");
-      
-        let node :HTMLElement  = document.getElementById("hand");
-        let innerHTML :string;
+
+
+    function main(): void {
+        let numofcards: string = prompt("Wie viele Karten möchtest du?");
+
+        let node: HTMLElement = document.getElementById("hand");
+        let innerHTML: string;
         let numcards = +numofcards
-      } 
-        
+        kartenziehen(numcards)
+    }
+
     function Kartendeckerstellen(_card: Deck[]): void {
 
         for (let i: number = 0; i < _card.length; i++) {
-            let deck: HTMLElement = document.getElementById("Ziehstapel")}}
-
-    function kartenziehen(numofcards:number): void {
-        for (let x:number=0; x < numofcards; x++) {
-        let random:number= Math.floor(Math.random()*cards.length);
-            let getcard:Deck=cards.splice (random)[1];
-            Handkartendarstellen(getcard);
-             
-    }
-        
+            let deck: HTMLElement = document.getElementById("Ziehstapel")
         }
-    
+    }
 
-    function Handkartendarstellen(_getcard:Deck): void {
+    function kartenziehen(_numcards: number): void {
+        for (let x: number = 0; x < _numcards; x++) {
+            let random: number = Math.floor(Math.random() * cards.length);
+            let getcard: Deck = cards.splice(random)[1];
+            Handkartendarstellen(getcard);
+
+        }
+
+    }
+
+
+    function Handkartendarstellen(_getcard: Deck): void {
         let hands: HTMLElement = document.getElementById("hand");
         let span: HTMLSpanElement = document.createElement("span");
-        document.appendChild(span) 
-        
-        
-    
+        document.appendChild(span)
+
+
+
     }
-   document.addEventListener('DOMContentLoaded', main); 
+    document.addEventListener('DOMContentLoaded', main);
 }
