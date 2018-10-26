@@ -36,17 +36,21 @@ namespace UNO {
         for (let x: number = 0; x < _numcards; x++) {
             let random: number = Math.floor(Math.random() * cards.length);
             let getcard: Deck = cards.splice(random)[1];
-            Handkartendarstellen(getcard);
+            Handkartendarstellen(getcard,random);
 
         }
 
     }
 
 
-    function Handkartendarstellen(_getcard: Deck): void {
+    function Handkartendarstellen(_getcard: Deck, _random:number): void {
         let hands: HTMLElement = document.getElementById("hand");
         let span: HTMLSpanElement = document.createElement("span");
-        hands.appendChild(span)
+        hands.appendChild(span);
+        span.style.backgroundColor = cards[_random].color;
+        
+       
+       
 
 
 
