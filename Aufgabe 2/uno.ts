@@ -19,7 +19,7 @@ namespace UNO {
     function main(): void {
         let numofcards: string = prompt("Wie viele Karten möchtest du?");
 
-        let node: HTMLElement = document.getElementById("hand");
+        
         let innerHTML: string;
         let numcards = +numofcards
         kartenziehen(numcards)
@@ -46,7 +46,7 @@ namespace UNO {
     function Handkartendarstellen(_getcard: Deck): void {
         let hands: HTMLElement = document.getElementById("hand");
         let span: HTMLSpanElement = document.createElement("span");
-        document.appendChild(span)
+        hands.appendChild(span)
 
 
 

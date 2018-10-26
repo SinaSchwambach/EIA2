@@ -7,7 +7,6 @@ var UNO;
         { color: "#000000", value: "+4" }, { color: "#000000", value: "+4" }, { color: "#000000", value: "+4" }, { color: "#000000", value: "+4" }, { color: "#000000", value: "farbwechsel" }, { color: "#000000", value: "farbwechsel" }, { color: "#000000", value: "farbwechsel" }, { color: "#000000", value: "farbwechsel" },];
     function main() {
         let numofcards = prompt("Wie viele Karten m�chtest du?");
-        let node = document.getElementById("hand");
         let innerHTML;
         let numcards = +numofcards;
         kartenziehen(numcards);
@@ -27,7 +26,7 @@ var UNO;
     function Handkartendarstellen(_getcard) {
         let hands = document.getElementById("hand");
         let span = document.createElement("span");
-        document.appendChild(span);
+        hands.appendChild(span);
     }
     document.addEventListener('DOMContentLoaded', main);
 })(UNO || (UNO = {}));
