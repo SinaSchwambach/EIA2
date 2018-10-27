@@ -35,7 +35,7 @@ namespace UNO {
     function kartenziehen(_numcards: number): void {
         for (let x: number = 0; x < _numcards; x++) {
             let random: number = Math.floor(Math.random() * cards.length);
-            let getcard: Deck = cards.splice(random)[0];
+            let getcard: Deck[] = cards.splice(random, 1);
             Handkartendarstellen(getcard);
 
         }
@@ -43,24 +43,31 @@ namespace UNO {
     }
 
 
-    function Handkartendarstellen(_getcard:Deck): void {
+    function Handkartendarstellen(_getcard: Deck[]): void {
         let hands: HTMLElement = document.getElementById("hand");
         let span: HTMLSpanElement = document.createElement("span");
-        span.innerText = _getcard.value;
-        span.style.backgroundColor = _getcard.color;
-         
+        span.className="Karte";
+        span.getElementsByClassName("Karte").
         
+
+
+
+
+        span.innerText =  Deck[_getcard].color
+            span.style.backgroundColor = cards.color;
+
+
         hands.appendChild(span);
-        
-       
-        
-        
-        
-       
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
 
 
 
