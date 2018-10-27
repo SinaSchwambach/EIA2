@@ -27,6 +27,7 @@ var UNO;
         let hands = document.getElementById("hand");
         let span = document.createElement("span");
         hands.appendChild(span);
+        span.innerText = cards[_random].value;
     }
     document.addEventListener('DOMContentLoaded', main);
 })(UNO || (UNO = {}));

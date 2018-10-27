@@ -47,6 +47,9 @@ namespace UNO {
         let hands: HTMLElement = document.getElementById("hand");
         let span: HTMLSpanElement = document.createElement("span");
         hands.appendChild(span);
+        span.innerText = cards[_random].value;
+        
+        
 
 
 
