@@ -35,19 +35,28 @@ namespace UNO {
     function kartenziehen(_numcards: number): void {
         for (let x: number = 0; x < _numcards; x++) {
             let random: number = Math.floor(Math.random() * cards.length);
-            let getcard: Deck = cards.splice(random)[1];
-            Handkartendarstellen(getcard, random);
+            let getcard: Deck = cards.splice(random)[0];
+            Handkartendarstellen(getcard);
 
         }
 
     }
 
 
-    function Handkartendarstellen(_getcard: Deck, _random: number): void {
+    function Handkartendarstellen(_getcard:Deck): void {
         let hands: HTMLElement = document.getElementById("hand");
         let span: HTMLSpanElement = document.createElement("span");
+        span.innerText = _getcard.value;
+         
+        
         hands.appendChild(span);
-        span.innerText = cards[_random].value;
+        
+       
+        
+        
+        
+       
+        
         
         
         

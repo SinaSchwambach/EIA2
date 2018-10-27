@@ -19,15 +19,15 @@ var UNO;
     function kartenziehen(_numcards) {
         for (let x = 0; x < _numcards; x++) {
             let random = Math.floor(Math.random() * cards.length);
-            let getcard = cards.splice(random)[1];
-            Handkartendarstellen(getcard, random);
+            let getcard = cards.splice(random)[0];
+            Handkartendarstellen(getcard);
         }
     }
-    function Handkartendarstellen(_getcard, _random) {
+    function Handkartendarstellen(_getcard) {
         let hands = document.getElementById("hand");
         let span = document.createElement("span");
+        span.innerText = _getcard.value;
         hands.appendChild(span);
-        span.innerText = cards[_random].value;
     }
     document.addEventListener('DOMContentLoaded', main);
 })(UNO || (UNO = {}));
