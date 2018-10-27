@@ -47,6 +47,7 @@ namespace UNO {
         let hands: HTMLElement = document.getElementById("hand");
         let span: HTMLSpanElement = document.createElement("span");
         span.innerText = _getcard.value;
+        span.style.backgroundColor = _getcard.color;
          
         
         hands.appendChild(span);

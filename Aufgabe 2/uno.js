@@ -27,6 +27,7 @@ var UNO;
         let hands = document.getElementById("hand");
         let span = document.createElement("span");
         span.innerText = _getcard.value;
+        span.style.backgroundColor = _getcard.color;
         hands.appendChild(span);
     }
     document.addEventListener('DOMContentLoaded', main);
