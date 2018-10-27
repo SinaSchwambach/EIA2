@@ -50,6 +50,7 @@ namespace UNO {
         span.innerText = cards[_random].value;
         
         
+        
 
 
 
