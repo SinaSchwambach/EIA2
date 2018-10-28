@@ -19,15 +19,23 @@ var UNO;
     function kartenziehen(_numcards) {
         for (let x = 0; x < _numcards; x++) {
             let random = Math.floor(Math.random() * cards.length);
-            let getcard = cards.splice(random)[0];
+            let getcard = cards.splice(random, 1);
             Handkartendarstellen(getcard);
         }
     }
     function Handkartendarstellen(_getcard) {
         let hands = document.getElementById("hand");
         let span = document.createElement("span");
-        span.innerText = _getcard.value;
-        span.style.backgroundColor = _getcard.color;
+        span.innerText = _getcard[0].value;
+        span.style.backgroundColor = _getcard[0].color;
+        if (_getcard[0].color == "#000000") {
+            span.style.color = "white";
+        }
+        ;
+        if (_getcard[0].color == "#0000ff") {
+            span.style.color = "white";
+        }
+        ;
         hands.appendChild(span);
     }
     document.addEventListener('DOMContentLoaded', main);

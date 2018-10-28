@@ -29,6 +29,7 @@ namespace UNO {
 
         for (let i: number = 0; i < _card.length; i++) {
             let deck: HTMLElement = document.getElementById("Ziehstapel")
+
         }
     }
 
@@ -46,15 +47,22 @@ namespace UNO {
     function Handkartendarstellen(_getcard: Deck[]): void {
         let hands: HTMLElement = document.getElementById("hand");
         let span: HTMLSpanElement = document.createElement("span");
-        span.className="Karte";
-        span.getElementsByClassName("Karte").
-        
+        span.innerText = _getcard[0].value;
+        span.style.backgroundColor = _getcard[0].color;
+
+        if (_getcard[0].color == "#000000") {
+            span.style.color = "white"
+        };
+        if (_getcard[0].color == "#0000ff") {
+            span.style.color = "white"
+        };
 
 
 
 
-        span.innerText =  Deck[_getcard].color
-            span.style.backgroundColor = cards.color;
+
+
+
 
 
         hands.appendChild(span);
