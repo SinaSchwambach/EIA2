@@ -20,6 +20,7 @@ var UNO;
         for (let x = 0; x < _numcards; x++) {
             let random = Math.floor(Math.random() * cards.length);
             let getcard = cards.splice(random, 1);
+            console.log(getcard);
             Handkartendarstellen(getcard);
         }
     }

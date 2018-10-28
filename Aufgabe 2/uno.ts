@@ -37,6 +37,8 @@ namespace UNO {
         for (let x: number = 0; x < _numcards; x++) {
             let random: number = Math.floor(Math.random() * cards.length);
             let getcard: Deck[] = cards.splice(random, 1);
+            console.log(getcard);
+           
             Handkartendarstellen(getcard);
 
         }
