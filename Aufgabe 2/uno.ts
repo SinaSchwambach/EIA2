@@ -38,12 +38,11 @@ namespace Uno {
         for (let o: number = 0; o < hand.length; o++) {
             span.innerText = hand[o].value;
             span.style.backgroundColor = hand[o].color;
+            span.style.color ="black";
 
-            if (hand[o].color == "#000000") {
+            if (hand[o].color == "#000000"||hand[o].color == "#0000ff") {
                 span.style.color = "white";
-            } else if (hand[o].color == "#0000ff") {
-                span.style.color = "white";
-            } else { span.style.color = "black"; }
+            }
 
             handdiv.appendChild(span);
         }
