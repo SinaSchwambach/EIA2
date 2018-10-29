@@ -18,21 +18,23 @@ var Uno;
             let getcard = cards.splice(random, 1)[0];
             console.log(getcard);
             hand.push(getcard);
-            displayHand(getcard);
+            displayHand(hand);
         }
     }
-    function displayHand(_getcard) {
+    function displayHand(hand) {
         let handdiv = document.getElementById("hand");
         let span = document.createElement("span");
-        span.innerText = _getcard.value;
-        span.style.backgroundColor = _getcard.color;
-        if (_getcard.color == "#000000") {
-            span.style.color = "white";
+        for (let o = 0; o < hand.length; o++) {
+            span.innerText = hand[o].value;
+            span.style.backgroundColor = hand[o].color;
+            if (hand[o].color == "#000000") {
+                span.style.color = "white";
+            }
+            if (hand[o].color == "#0000ff") {
+                span.style.color = "white";
+            }
+            handdiv.appendChild(span);
         }
-        if (_getcard.color == "#0000ff") {
-            span.style.color = "white";
-        }
-        handdiv.appendChild(span);
     }
 })(Uno || (Uno = {}));
 //# sourceMappingURL=uno.js.map

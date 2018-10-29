@@ -44,7 +44,7 @@ namespace Uno {
     function displayHand(hand: Card[]): void {
         let handdiv: HTMLElement = document.getElementById("hand");
         let span: HTMLSpanElement = document.createElement("span");
-        for (let o: number = 0; o < hand.length; o++); {
+        for (let o: number = 0; o < hand.length; o++) {
         span.innerText = hand[o].value;
         span.style.backgroundColor = hand[o].color;
 
