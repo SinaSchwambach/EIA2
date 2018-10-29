@@ -14,18 +14,12 @@ namespace Uno {
         { color: "#000000", value: "+4" }, { color: "#000000", value: "+4" }, { color: "#000000", value: "+4" }, { color: "#000000", value: "+4" }, { color: "#000000", value: "farbwechsel" }, { color: "#000000", value: "farbwechsel" }, { color: "#000000", value: "farbwechsel" }, { color: "#000000", value: "farbwechsel" }];
 
     let hand: Card[] = [];
-    
+
     function main(): void {
         let numOfCards: string = prompt("Wie viele Karten möchtest du?");
         let numCards: number = +numOfCards;
-        
 
         drawCards(numCards);
-        
- 
-                
-
-
     }
 
     function drawCards(_numCards: number): void {
@@ -35,26 +29,24 @@ namespace Uno {
             console.log(getcard);
             hand.push(getcard);
             displayHand(hand);
-            
         }
     }
-    
-        
 
     function displayHand(hand: Card[]): void {
         let handdiv: HTMLElement = document.getElementById("hand");
         let span: HTMLSpanElement = document.createElement("span");
         for (let o: number = 0; o < hand.length; o++) {
-        span.innerText = hand[o].value;
-        span.style.backgroundColor = hand[o].color;
+            span.innerText = hand[o].value;
+            span.style.backgroundColor = hand[o].color;
 
-        if (hand[o].color == "#000000") {
-            span.style.color = "white";
-        }
-        if (hand[o].color == "#0000ff") {
-            span.style.color = "white";
-        }
+            if (hand[o].color == "#000000") {
+                span.style.color = "white";
+            }
+            if (hand[o].color == "#0000ff") {
+                span.style.color = "white";
+            }
 
-        handdiv.appendChild(span);
-    }}
+            handdiv.appendChild(span);
+        }
+    }
 }
