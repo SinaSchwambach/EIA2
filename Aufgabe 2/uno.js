@@ -30,7 +30,7 @@ var Uno;
             if (hand[o].color == "#000000") {
                 span.style.color = "white";
             }
-            if (hand[o].color == "#0000ff") {
+            else if (hand[o].color == "#0000ff") {
                 span.style.color = "white";
             }
             else {
