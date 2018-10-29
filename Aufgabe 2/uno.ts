@@ -34,26 +34,27 @@ namespace Uno {
             let getcard: Card = cards.splice(random, 1)[0];
             console.log(getcard);
             hand.push(getcard);
-            displayHand(getcard);
+            displayHand(hand);
             
         }
     }
     
         
 
-    function displayHand(_getcard: Card): void {
+    function displayHand(hand: Card[]): void {
         let handdiv: HTMLElement = document.getElementById("hand");
         let span: HTMLSpanElement = document.createElement("span");
-        span.innerText = _getcard.value;
-        span.style.backgroundColor = _getcard.color;
+        for (let o: number = 0; o < hand.length; o++); {
+        span.innerText = hand[o].value;
+        span.style.backgroundColor = hand[o].color;
 
-        if (_getcard.color == "#000000") {
+        if (hand[o].color == "#000000") {
             span.style.color = "white";
         }
-        if (_getcard.color == "#0000ff") {
+        if (hand[o].color == "#0000ff") {
             span.style.color = "white";
         }
 
         handdiv.appendChild(span);
-    }
+    }}
 }
