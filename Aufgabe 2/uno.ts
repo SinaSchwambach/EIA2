@@ -22,8 +22,8 @@ namespace Uno {
 
         drawCards(numCards);
         
- for (let y: number = 0; y < numCards; y++) {
-                hand.push(getcard);}
+ 
+                
 
 
     }
@@ -33,13 +33,13 @@ namespace Uno {
             let random: number = Math.floor(Math.random() * cards.length);
             let getcard: Card = cards.splice(random, 1)[0];
             console.log(getcard);
-            
-               displayHand(getcard);
+            hand.push(getcard);
+            displayHand(getcard);
             
         }
     }
     
-        }
+        
 
     function displayHand(_getcard: Card): void {
         let handdiv: HTMLElement = document.getElementById("hand");

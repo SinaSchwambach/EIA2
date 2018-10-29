@@ -17,6 +17,7 @@ var Uno;
             let random = Math.floor(Math.random() * cards.length);
             let getcard = cards.splice(random, 1)[0];
             console.log(getcard);
+            hand.push(getcard);
             displayHand(getcard);
         }
     }
