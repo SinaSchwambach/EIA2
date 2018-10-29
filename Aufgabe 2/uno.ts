@@ -41,11 +41,9 @@ namespace Uno {
 
             if (hand[o].color == "#000000") {
                 span.style.color = "white";
-            }
-            else if (hand[o].color == "#0000ff") {
+            } else if (hand[o].color == "#0000ff") {
                 span.style.color = "white";
-            }
-            else {span.style.color = "black"; }
+            } else { span.style.color = "black"; }
 
             handdiv.appendChild(span);
         }
