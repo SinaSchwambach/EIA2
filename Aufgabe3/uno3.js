@@ -49,17 +49,19 @@ var Uno3;
         }
     }
     function sortCards(_event) {
-        hand.sort(function (a, b) {
-            let x = a.color.toLowerCase();
-            let y = b.color.toLowerCase();
-            if (x < y) {
-                return -1;
-            }
-            if (x > y) {
-                return 1;
-            }
-            return 0;
-        });
+        hand.sort(compareCards);
     }
+    function compareCards(card1, card2) {
+        let x = card1.color.toLowerCase();
+        let y = card2.color.toLowerCase();
+        if (x < y) {
+            return -1;
+        }
+        if (x > y) {
+            return 1;
+        }
+        return 0;
+    }
+    ;
 })(Uno3 || (Uno3 = {}));
 //# sourceMappingURL=uno3.js.map

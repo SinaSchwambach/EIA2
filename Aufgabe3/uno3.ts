@@ -66,13 +66,15 @@ namespace Uno3 {
     }
 
     function sortCards(_event: Event): void {
-        hand.sort(function(a: Card, b: Card): number {
-            let x: string = a.color.toLowerCase();
-            let y: string = b.color.toLowerCase();
+        hand.sort(compareCards); }
+    
+    function compareCards(card1: Card, card2: Card): number {
+            let x: string = card1.color.toLowerCase();
+            let y: string = card2.color.toLowerCase();
             if (x < y) { return -1; }
             if (x > y) { return 1; }
             return 0;
-        });
-    }
+        };
+    
 
 }
