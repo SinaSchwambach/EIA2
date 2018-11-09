@@ -81,12 +81,13 @@ namespace Uno3 {
     function compareCards(card1: Card, card2: Card): number {
         let x: string = card1.color.toLowerCase();
         let y: string = card2.color.toLowerCase();
-        displayHand(hand);
         if (x < y) { return -1; }
         if (x > y) { return 1; }
         return 0;
-
+    displayHand(hand);
     }
+    
+    
    
 
 
