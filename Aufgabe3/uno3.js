@@ -25,6 +25,25 @@ var Uno3;
             displayHand(hand);
         }
     }
+    function button() {
+        document.getElementById("button").addEventListener("click", sortCards);
+    }
+    function sortCards(_event) {
+        document.getElementById("button").addEventListener("click", sortCards);
+        hand.sort(compareCards);
+    }
+    function compareCards(card1, card2) {
+        let x = card1.color.toLowerCase();
+        let y = card2.color.toLowerCase();
+        displayHand(hand);
+        if (x < y) {
+            return -1;
+        }
+        if (x > y) {
+            return 1;
+        }
+        return 0;
+    }
     function displayHand(hand) {
         let handdiv = document.getElementById("hand");
         let span = document.createElement("span");
@@ -49,24 +68,5 @@ var Uno3;
             displayHand(hand);
         }
     }
-    function button() {
-        document.getElementById("button").addEventListener("click", sortCards);
-    }
-    function sortCards(_event) {
-        document.getElementById("button").addEventListener("click", sortCards);
-        hand.sort(compareCards);
-    }
-    function compareCards(card1, card2) {
-        let x = card1.color.toLowerCase();
-        let y = card2.color.toLowerCase();
-        if (x < y) {
-            return -1;
-        }
-        if (x > y) {
-            return 1;
-        }
-        return 0;
-    }
-    ;
 })(Uno3 || (Uno3 = {}));
 //# sourceMappingURL=uno3.js.map
