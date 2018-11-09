@@ -5,6 +5,7 @@ namespace Uno3 {
         value: string;
     }
     document.addEventListener("DOMContentLoaded", main);
+    document.addEventListener("DOMContentLoaded", sortCards);
 
 
     let cards: Card[] = [{ color: "#ff0000", value: "0" }, { color: "#ff0000", value: "1" }, { color: "#ff0000", value: "1" }, { color: "#ff0000", value: "2" }, { color: "#ff0000", value: "3" }, { color: "#ff0000", value: "3" }, { color: "#ff0000", value: "4" }, { color: "#ff0000", value: "4" }, { color: "#ff0000", value: "5" }, { color: "#ff0000", value: "5" }, { color: "#ff0000", value: "6" }, { color: "#ff0000", value: "6" }, { color: "#ff0000", value: "7" }, { color: "#ff0000", value: "7" }, { color: "#ff0000", value: "8" }, { color: "#ff0000", value: "8" }, { color: "#ff0000", value: "9" }, { color: "#ff0000", value: "9" }, { color: "#ff0000", value: "+2" }, { color: "#ff0000", value: "+2" }, { color: "#ff0000", value: "aussetzen" }, { color: "#ff0000", value: "aussetzen" },
@@ -17,7 +18,7 @@ namespace Uno3 {
 
     document.addEventListener("click", drawNewCard);
     document.addEventListener("space", drawNewCard);
-    document.getElementById("button").addEventListener("click", sortCards);
+  
     /*document.addEventListener("click", playCard);*/
 
     function main(): void {
@@ -26,7 +27,9 @@ namespace Uno3 {
 
         drawCards(numCards);
     }
+    
 
+    
     function drawCards(_numCards: number): void {
         for (let x: number = 0; x < _numCards; x++) {
             let random: number = Math.floor(Math.random() * cards.length);
@@ -45,6 +48,7 @@ namespace Uno3 {
             span.innerText = hand[o].value;
             span.style.backgroundColor = hand[o].color;
             span.style.color = "black";
+            span.setAttribute("id", "o");
 
             if (hand[o].color == "#000000" || hand[o].color == "#0000ff") {
                 span.style.color = "white";
@@ -64,8 +68,10 @@ namespace Uno3 {
             displayHand(hand);
         }
     }
+   
 
     function sortCards(_event: Event): void {
+        document.getElementById("button").addEventListener("click", sortCards);
         hand.sort(compareCards); }
     
     function compareCards(card1: Card, card2: Card): number {
