@@ -29,7 +29,6 @@ var Uno3;
         document.getElementById("button").addEventListener("click", sortCards);
     }
     function sortCards(_event) {
-        document.getElementById("button").addEventListener("click", sortCards);
         hand.sort(compareCards);
     }
     function compareCards(card1, card2) {

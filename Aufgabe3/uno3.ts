@@ -44,7 +44,7 @@ namespace Uno3 {
     }
 
     function sortCards(_event: Event): void {
-        document.getElementById("button").addEventListener("click", sortCards);
+        
         hand.sort(compareCards);
     }
 
