@@ -10,7 +10,7 @@ var Uno3;
     let hand = [];
     document.addEventListener("click", drawNewCard);
     document.addEventListener("space", drawNewCard);
-    /*document.addEventListener("click", playCard);*/
+    /* document.addEventListener("click", handleEventClickOnCard);*/
     function main() {
         let numOfCards = prompt("Wie viele Karten m�chtest du?");
         let numCards = +numOfCards;
@@ -54,11 +54,11 @@ var Uno3;
     }
     function sortCards(_event) {
         hand.sort(compareCards);
+        displayHand(hand);
     }
     function compareCards(card1, card2) {
         let x = card1.color.toLowerCase();
         let y = card2.color.toLowerCase();
-        displayHand(hand);
         if (x < y) {
             return -1;
         }

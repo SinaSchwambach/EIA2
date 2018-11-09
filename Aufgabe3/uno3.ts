@@ -19,7 +19,7 @@ namespace Uno3 {
     document.addEventListener("click", drawNewCard);
     document.addEventListener("space", drawNewCard);
 
-    /*document.addEventListener("click", playCard);*/
+   /* document.addEventListener("click", handleEventClickOnCard);*/
 
     function main(): void {
         let numOfCards: string = prompt("Wie viele Karten möchtest du?");
@@ -76,6 +76,7 @@ namespace Uno3 {
 
     function sortCards(_event: Event): void {
         hand.sort(compareCards);
+        displayHand(hand);
     }
 
     function compareCards(card1: Card, card2: Card): number {
@@ -83,19 +84,23 @@ namespace Uno3 {
         let y: string = card2.color.toLowerCase();
         if (x < y) { return -1; }
         if (x > y) { return 1; }
-        return 0;
-    displayHand(hand);
-    }
+        return 0; }
     
+  /*function handleEventClickOnCard (_event: Event): void {
+      let spanCard: HTMLElement = <HTMLElement>_event.target;
+      let id: number = parseInt (spanCard.getAttribute("id"));
+      let card: Card = hand.splice(id, 1)[0];
+      displayHand(hand);
+      playCard(card); }
     
-   
-
-
-
-
-
-
-        /*function playCard (_event:Event):void {}*/
+    function playCard */
+      
+      
+      
+  
+  
+  
+  
 
 
     }
