@@ -50,7 +50,7 @@ var Uno3;
             let getcard = cards.splice(random, 1)[0];
             console.log(getcard);
             hand.push(getcard);
-            displayHand(hand);
+            displayHand(hand); //�nderung DisplayHand(hand)
         }
     }
     function handleClickOnButton() {
@@ -58,21 +58,7 @@ var Uno3;
     }
     function sortCards(_event) {
         hand.sort(compareCards);
-        displayNewHand(hand);
-    }
-    function displayNewHand(hand) {
-        let handdiv = document.getElementById("hand");
-        for (let o = 0; o < hand.length; o++) {
-            let span = document.createElement("span");
-            span.innerText = hand[o].value;
-            span.style.backgroundColor = hand[o].color;
-            span.setAttribute("id", "hand[o]");
-            span.style.color = "black";
-            if (hand[o].color == "#000000" || hand[o].color == "#0000ff") {
-                span.style.color = "white";
-            }
-            handdiv.appendChild(span);
-        }
+        displayHand(hand); //�nderung DisplayHand(hand)
     }
     function compareCards(card1, card2) {
         let x = card1.color.toLowerCase();
