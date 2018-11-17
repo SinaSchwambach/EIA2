@@ -9,7 +9,7 @@ namespace Uno3 {
     document.addEventListener("DOMContentLoaded", handleClickOnDeck);
     document.addEventListener("DOMContentLoaded", handleEventClickOnCard);
     document.addEventListener("click", handleEventClickOnCard);
-    document.addEventListener("keydown", pressSpace);
+    /* document.addEventListener("keydown", pressSpace);*/
 
     let cards: Card[] = [{ color: "#ff0000", value: "0" }, { color: "#ff0000", value: "1" }, { color: "#ff0000", value: "1" }, { color: "#ff0000", value: "2" }, { color: "#ff0000", value: "3" }, { color: "#ff0000", value: "3" }, { color: "#ff0000", value: "4" }, { color: "#ff0000", value: "4" }, { color: "#ff0000", value: "5" }, { color: "#ff0000", value: "5" }, { color: "#ff0000", value: "6" }, { color: "#ff0000", value: "6" }, { color: "#ff0000", value: "7" }, { color: "#ff0000", value: "7" }, { color: "#ff0000", value: "8" }, { color: "#ff0000", value: "8" }, { color: "#ff0000", value: "9" }, { color: "#ff0000", value: "9" }, { color: "#ff0000", value: "+2" }, { color: "#ff0000", value: "+2" }, { color: "#ff0000", value: "aussetzen" }, { color: "#ff0000", value: "aussetzen" },
         { color: "#00ff00", value: "0" }, { color: "#00ff00", value: "1" }, { color: "#00ff00", value: "1" }, { color: "#00ff00", value: "2" }, { color: "#00ff00", value: "2" }, { color: "#00ff00", value: "3" }, { color: "#00ff00", value: "3" }, { color: "#00ff00", value: "4" }, { color: "#00ff00", value: "4" }, { color: "#00ff00", value: "5" }, { color: "#00ff00", value: "5" }, { color: "#00ff00", value: "6" }, { color: "#00ff00", value: "6" }, { color: "#00ff00", value: "7" }, { color: "#00ff00", value: "7" }, { color: "#00ff00", value: "8" }, { color: "#00ff00", value: "8" }, { color: "#00ff00", value: "9" }, { color: "#00ff00", value: "9" }, { color: "#00ff00", value: "+2" }, { color: "#00ff00", value: "+2" }, { color: "#00ff00", value: "aussetzen" }, { color: "#00ff00", value: "aussetzen" },
@@ -37,13 +37,14 @@ namespace Uno3 {
     }
 
     function displayHand(hand: Card[]): void {
+        let handdiv: HTMLElement = document.getElementById("hand");
+        document.getElementById("hand").innerHTML = "";
+        let span: HTMLSpanElement = document.createElement("span");
         for (let o: number = 0; o < hand.length; o++) {
-            let handdiv: HTMLElement = document.getElementById("hand");
-            let span: HTMLSpanElement = document.createElement("span");
-            let id = o.toString();
+            let id: string = o.toString();
             span.innerText = hand[o].value;
             span.style.backgroundColor = hand[o].color;
-            span.setAttribute("id", "o");
+            span.setAttribute("id", id);
             span.style.color = "black";
 
             if (hand[o].color == "#000000" || hand[o].color == "#0000ff") {
@@ -70,7 +71,7 @@ namespace Uno3 {
             let getcard: Card = cards.splice(random, 1)[0];
             console.log(getcard);
             hand.push(getcard);
-            displayHand(hand); //Änderung DisplayHand(hand)
+            //displayHand(hand); //Änderung DisplayHand(hand)
         }
     }
 
@@ -89,6 +90,7 @@ namespace Uno3 {
         if (x < y) { return -1; }
         if (x > y) { return 1; }
         return 0;
+
     }
 
     function handleEventClickOnCard(_event: Event): void {
@@ -113,8 +115,8 @@ namespace Uno3 {
         }
         pile.appendChild(span);
     }
-    function pressSpace (_event: Event): void {
-        if (_event.keyCode == 32) {
-            drawNewCard(); }
-    }
+    /* function pressSpace (_event: Event): void {
+         if (_event.keyCode == 32) {
+             drawNewCard(); }
+     }*/
 }

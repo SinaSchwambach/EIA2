@@ -5,6 +5,7 @@ var Uno3;
     document.addEventListener("DOMContentLoaded", handleClickOnDeck);
     document.addEventListener("DOMContentLoaded", handleEventClickOnCard);
     document.addEventListener("click", handleEventClickOnCard);
+    /* document.addEventListener("keydown", pressSpace);*/
     let cards = [{ color: "#ff0000", value: "0" }, { color: "#ff0000", value: "1" }, { color: "#ff0000", value: "1" }, { color: "#ff0000", value: "2" }, { color: "#ff0000", value: "3" }, { color: "#ff0000", value: "3" }, { color: "#ff0000", value: "4" }, { color: "#ff0000", value: "4" }, { color: "#ff0000", value: "5" }, { color: "#ff0000", value: "5" }, { color: "#ff0000", value: "6" }, { color: "#ff0000", value: "6" }, { color: "#ff0000", value: "7" }, { color: "#ff0000", value: "7" }, { color: "#ff0000", value: "8" }, { color: "#ff0000", value: "8" }, { color: "#ff0000", value: "9" }, { color: "#ff0000", value: "9" }, { color: "#ff0000", value: "+2" }, { color: "#ff0000", value: "+2" }, { color: "#ff0000", value: "aussetzen" }, { color: "#ff0000", value: "aussetzen" },
         { color: "#00ff00", value: "0" }, { color: "#00ff00", value: "1" }, { color: "#00ff00", value: "1" }, { color: "#00ff00", value: "2" }, { color: "#00ff00", value: "2" }, { color: "#00ff00", value: "3" }, { color: "#00ff00", value: "3" }, { color: "#00ff00", value: "4" }, { color: "#00ff00", value: "4" }, { color: "#00ff00", value: "5" }, { color: "#00ff00", value: "5" }, { color: "#00ff00", value: "6" }, { color: "#00ff00", value: "6" }, { color: "#00ff00", value: "7" }, { color: "#00ff00", value: "7" }, { color: "#00ff00", value: "8" }, { color: "#00ff00", value: "8" }, { color: "#00ff00", value: "9" }, { color: "#00ff00", value: "9" }, { color: "#00ff00", value: "+2" }, { color: "#00ff00", value: "+2" }, { color: "#00ff00", value: "aussetzen" }, { color: "#00ff00", value: "aussetzen" },
         { color: "#0000ff", value: "0" }, { color: "#0000ff", value: "1" }, { color: "#0000ff", value: "1" }, { color: "#0000ff", value: "2" }, { color: "#0000ff", value: "2" }, { color: "#0000ff", value: "3" }, { color: "#0000ff", value: "3" }, { color: "#0000ff", value: "4" }, { color: "#0000ff", value: "4" }, { color: "#0000ff", value: "5" }, { color: "#0000ff", value: "5" }, { color: "#0000ff", value: "6" }, { color: "#0000ff", value: "6" }, { color: "#0000ff", value: "7" }, { color: "#0000ff", value: "7" }, { color: "#0000ff", value: "8" }, { color: "#0000ff", value: "8" }, { color: "#0000ff", value: "9" }, { color: "#0000ff", value: "9" }, { color: "#0000ff", value: "+2" }, { color: "#0000ff", value: "+2" }, { color: "#0000ff", value: "aussetzen" }, { color: "#0000ff", value: "aussetzen" },
@@ -27,16 +28,19 @@ var Uno3;
     }
     function displayHand(hand) {
         let handdiv = document.getElementById("hand");
+        document.getElementById("hand").innerHTML = "";
         let span = document.createElement("span");
         for (let o = 0; o < hand.length; o++) {
+            let id = o.toString();
             span.innerText = hand[o].value;
             span.style.backgroundColor = hand[o].color;
-            span.setAttribute("id", "hand[o]");
+            span.setAttribute("id", id);
             span.style.color = "black";
             if (hand[o].color == "#000000" || hand[o].color == "#0000ff") {
                 span.style.color = "white";
             }
             handdiv.appendChild(span);
+            span.addEventListener("click", handleEventClickOnCard);
         }
     }
     function handleClickOnDeck() {
@@ -50,7 +54,6 @@ var Uno3;
             let getcard = cards.splice(random, 1)[0];
             console.log(getcard);
             hand.push(getcard);
-            displayHand(hand); //�nderung DisplayHand(hand)
         }
     }
     function handleClickOnButton() {
