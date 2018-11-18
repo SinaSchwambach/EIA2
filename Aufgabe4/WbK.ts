@@ -1,14 +1,17 @@
 namespace Weihnachtsbaumkonfigurator {
 
-    document.addEventListener("DOMContentLoaded", init);
-
+     document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", init2);
+    document.addEventListener("DOMContentLoaded", init3);
+    document.addEventListener("DOMContentLoaded", init4);
     function init(): void {
         let fieldsets: NodeListOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
-        for (let i: number = 0; i < fieldsets.length; i++) {
+        for (let i: number = 0; i < 1; i++) {
             let fieldset: HTMLFieldSetElement = fieldsets[i];
             fieldset.addEventListener("change", handleChange);
-            document.getElementById("summary").addEventListener("click", summary);
-
+            //document.getElementById("summary").addEventListener("click", summary);
+        
+            //BAUMART
             let node: HTMLElement = document.getElementById("Baumart");
             let childNodeHtml: string;
             let art: Product[] = tree;
@@ -18,75 +21,166 @@ namespace Weihnachtsbaumkonfigurator {
             childNodeHtml += "<optgroup label=Baumarten></optgroup> ";
             childNodeHtml += "<datalist id=options>";
 
-            for (let i: number = 0; i < art.length; i++) {
-                childNodeHtml += "<option value=option1>art[i].name</option>";
+            for (let i: number = 0; i < tree.length; i++) {
+                childNodeHtml += "<option value=";
+                childNodeHtml += "lam" + i;
+                childNodeHtml += ">";
+                childNodeHtml += tree[i].name;
+                childNodeHtml += "</option>";
             }
-
             childNodeHtml += "</select>";
+         
             childNodeHtml += "</hr>";
 
             node.innerHTML += childNodeHtml;
+    }
+//LAMETTA    
+        let node: HTMLElement = document.getElementById("Lametta");
+        let childNodeHtml: string;
+        let art: Product[] = tinsel;
 
-            let node1: HTMLElement = document.getElementById("Lametta");
-            let childNodeHtml1: string;
-            let art1: Product[] = tinsel;
+        childNodeHtml = "";
+        childNodeHtml += "<select name=Select id=select>";
+        childNodeHtml += "<optgroup label=Lametta></optgroup> ";
+        childNodeHtml += "<datalist id=options>";
 
-            childNodeHtml1 = "";
-
-            for (let i: number = 0; i < art1.length; i++) {
-                childNodeHtml1 += "<input type=checkbox name=art1[i].color value=art1[i].color id=art1[i].color/>";
-                childNodeHtml1 += "<label for=check1>art1[i].color</label>";
-            }
-
-            node1.innerHTML += childNodeHtml1;
-
-            let node2: HTMLElement = document.getElementById("Kugeln");
-            let childNodeHtml2: string;
-            let art2: Product[] = ball;
-
-            childNodeHtml2 = "";
-
-            for (let i: number = 0; i < art2.length; i++) {
-                childNodeHtml2 += "<input type=checkbox name=art2[i].color value=art2[i].color id=art2[i].color/>";
-                childNodeHtml2 += "<label for=check1>art2[i].color art2[i].size</label>";
-            }
-
-            node2.innerHTML += childNodeHtml2;
-
-            let node3: HTMLElement = document.getElementById("Kerzen");
-            let childNodeHtml3: string;
-            let art3: Product[] = candle;
-
-            childNodeHtml3 = "";
-
-            for (let i: number = 0; i < art3.length; i++) {
-                childNodeHtml3 += "<input type=checkbox name=art3[i].color value=art3[i].color id=art3[i].color/>";
-                childNodeHtml3 += "<label for=check1>art3[i].color</label>";
-            }
-
-            node3.innerHTML += childNodeHtml3;
-
-            let node4: HTMLElement = document.getElementById("Versand");
-            let childNodeHtml4: string;
-            let art4: Product[] = tree;
-
-            childNodeHtml4 = "";
-            childNodeHtml4 += "<select name=Select id=select>";
-            childNodeHtml4 += "<optgroup label=Versandoptionen></optgroup> ";
-            childNodeHtml4 += "<datalist id=options>";
-
-            for (let i: number = 0; i < art4.length; i++) {
-                childNodeHtml += "<option value=option1>art4[i].name</option>";
-            }
-
-            childNodeHtml4 += "</select>";
-            childNodeHtml4 += "</hr>";
-
-            node4.innerHTML += childNodeHtml4;
-
-
+        for (let i: number = 0; i < tinsel.length; i++) {
+            childNodeHtml += "<option value=";
+            childNodeHtml += "lam" + i;
+            childNodeHtml += ">";
+            childNodeHtml += tinsel[i].name;
+            childNodeHtml += "</option>";
         }
+        childNodeHtml += "</select>";
+        childNodeHtml += "<select>";
+        childNodeHtml += "<h3>Anzahl:</h3>";
+        childNodeHtml += "<option value=clear selected></option>";
+        for (let i: number = 0; i < 20; i += 5) {
+            childNodeHtml += "<option value=lamettanum";
+            childNodeHtml += i;
+            childNodeHtml += " id=lamettanum";
+            childNodeHtml += i;
+            childNodeHtml += ">";
+            childNodeHtml += i;
+            childNodeHtml += "</option>";
+        }
+        childNodeHtml += "</select>";
+        childNodeHtml += "</hr>";
 
+        node.innerHTML += childNodeHtml;
+    }
+//KERZEN
+    function init2(): void {
+        let fieldsets: NodeListOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
+        for (let i: number = 0; i < 1; i++) {
+            let fieldset: HTMLFieldSetElement = fieldsets[i];
+    
+    let node: HTMLElement = document.getElementById("Kerzen");
+    let childNodeHtml: string;
+    let art: Product[] = candle;
+
+    childNodeHtml = "";
+    childNodeHtml += "<select name=Select id=select>";
+    childNodeHtml += "<optgroup label=Kerzen></optgroup> ";
+    childNodeHtml += "<datalist id=options>";
+
+    for (let i: number = 0; i < candle.length; i++) {
+        childNodeHtml += "<option value=";
+        childNodeHtml += "lam" + i;
+        childNodeHtml += ">";
+        childNodeHtml += candle[i].name;
+        childNodeHtml += "</option>";
+    }
+    childNodeHtml += "</select>";
+    childNodeHtml += "<select>";
+    childNodeHtml += "<h3>Anzahl:</h3>";
+    childNodeHtml += "<option value=clear selected></option>";
+    for (let i: number = 0; i < 20; i += 1) {
+        childNodeHtml += "<option value=candlenum";
+        childNodeHtml += i;
+        childNodeHtml += " id=candlenum";
+        childNodeHtml += i;
+        childNodeHtml += ">";
+        childNodeHtml += i;
+        childNodeHtml += "</option>";
+    }
+    childNodeHtml += "</select>";
+    childNodeHtml += "</hr>";
+
+    node.innerHTML += childNodeHtml;
+        }
+    }
+    
+  //KUGELN
+    function init3(): void {
+        let fieldsets: NodeListOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
+        for (let i: number = 0; i < 1; i++) {
+            let fieldset: HTMLFieldSetElement = fieldsets[i];
+    
+    let node: HTMLElement = document.getElementById("Kugeln");
+    let childNodeHtml: string;
+    let art: Product[] = ball;
+
+    childNodeHtml = "";
+    childNodeHtml += "<select name=Select id=select>";
+    childNodeHtml += "<optgroup label=Kugeln></optgroup> ";
+    childNodeHtml += "<datalist id=options>";
+
+    for (let i: number = 0; i < candle.length; i++) {
+        childNodeHtml += "<option value=";
+        childNodeHtml += "lam" + i;
+        childNodeHtml += ">";
+        childNodeHtml += ball[i].name;
+        childNodeHtml += "</option>";
+    }
+    childNodeHtml += "</select>";
+    childNodeHtml += "<select>";
+    childNodeHtml += "<h3>Anzahl:</h3>";
+    childNodeHtml += "<option value=clear selected></option>";
+    for (let i: number = 0; i < 20; i += 1) {
+        childNodeHtml += "<option value=ballnum";
+        childNodeHtml += i;
+        childNodeHtml += " id=ballnum";
+        childNodeHtml += i;
+        childNodeHtml += ">";
+        childNodeHtml += i;
+        childNodeHtml += "</option>";
+    }
+    childNodeHtml += "</select>";
+    childNodeHtml += "</hr>";
+
+    node.innerHTML += childNodeHtml;
+        }
+    }
+  //Versand
+    function init4(): void {
+        let fieldsets: NodeListOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
+        for (let i: number = 0; i < 1; i++) {
+            let fieldset: HTMLFieldSetElement = fieldsets[i];
+    
+    let node: HTMLElement = document.getElementById("Versand");
+    let childNodeHtml: string;
+    let art: Product[] = shipment;
+
+    childNodeHtml = "";
+    childNodeHtml += "<select name=Select id=select>";
+    childNodeHtml += "<optgroup label=Versand></optgroup> ";
+    childNodeHtml += "<datalist id=options>";
+
+    for (let i: number = 0; i < shipment.length; i++) {
+        childNodeHtml += "<option value=";
+        childNodeHtml += "lam" + i;
+        childNodeHtml += ">";
+        childNodeHtml += shipment[i].name;
+        childNodeHtml += "</option>";
+    }
+    childNodeHtml += "</select>";
+    
+    childNodeHtml += "</hr>";
+
+    node.innerHTML += childNodeHtml;
+        }
+   
 
 
         function handleChange(_event: Event): void {
