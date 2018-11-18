@@ -98,6 +98,10 @@ namespace Weihnachtsbaumkonfigurator {
 
             if (this.id == "Lametta")
                 console.log("Changed " + target.name + " to " + target.checked);
+            
+            let checkbox: HTMLElement= document.getElementById("summary");
+            
+            
 
         }
 
