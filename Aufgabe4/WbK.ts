@@ -20,11 +20,11 @@ namespace Weihnachtsbaumkonfigurator {
             childNodeHtml += "<optgroup label=Baumarten></optgroup> ";
             childNodeHtml += "<datalist id=options>";
 
-            for (let i: number = 0; i < tree.length; i++) {
+            for (let i: number = 0; i < art.length; i++) {
                 childNodeHtml += "<option value=";
                 childNodeHtml += "lam" + i;
                 childNodeHtml += ">";
-                childNodeHtml += tree[i].name;
+                childNodeHtml += art[i].name;
                 childNodeHtml += "</option>";
             }
             childNodeHtml += "</select>";
@@ -43,11 +43,11 @@ namespace Weihnachtsbaumkonfigurator {
         childNodeHtml += "<optgroup label=Lametta></optgroup> ";
         childNodeHtml += "<datalist id=options>";
 
-        for (let i: number = 0; i < tinsel.length; i++) {
+        for (let i: number = 0; i < art.length; i++) {
             childNodeHtml += "<option value=";
             childNodeHtml += "lam" + i;
             childNodeHtml += ">";
-            childNodeHtml += tinsel[i].name;
+            childNodeHtml += art[i].name;
             childNodeHtml += "</option>";
         }
         childNodeHtml += "</select>";
@@ -83,11 +83,11 @@ namespace Weihnachtsbaumkonfigurator {
             childNodeHtml += "<optgroup label=Kerzen></optgroup> ";
             childNodeHtml += "<datalist id=options>";
 
-            for (let i: number = 0; i < candle.length; i++) {
+            for (let i: number = 0; i < art.length; i++) {
                 childNodeHtml += "<option value=";
                 childNodeHtml += "lam" + i;
                 childNodeHtml += ">";
-                childNodeHtml += candle[i].name;
+                childNodeHtml += art[i].name;
                 childNodeHtml += "</option>";
             }
             childNodeHtml += "</select>";
@@ -125,11 +125,11 @@ namespace Weihnachtsbaumkonfigurator {
             childNodeHtml += "<optgroup label=Kugeln></optgroup> ";
             childNodeHtml += "<datalist id=options>";
 
-            for (let i: number = 0; i < candle.length; i++) {
+            for (let i: number = 0; i < art.length; i++) {
                 childNodeHtml += "<option value=";
                 childNodeHtml += "lam" + i;
                 childNodeHtml += ">";
-                childNodeHtml += ball[i].name;
+                childNodeHtml += art[i].name;
                 childNodeHtml += "</option>";
             }
             childNodeHtml += "</select>";
@@ -166,11 +166,11 @@ namespace Weihnachtsbaumkonfigurator {
             childNodeHtml += "<optgroup label=Versand></optgroup> ";
             childNodeHtml += "<datalist id=options>";
 
-            for (let i: number = 0; i < shipment.length; i++) {
+            for (let i: number = 0; i < art.length; i++) {
                 childNodeHtml += "<option value=";
                 childNodeHtml += "lam" + i;
                 childNodeHtml += ">";
-                childNodeHtml += shipment[i].name;
+                childNodeHtml += art[i].name;
                 childNodeHtml += "</option>";
             }
             childNodeHtml += "</select>";

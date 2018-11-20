@@ -18,11 +18,11 @@ var Weihnachtsbaumkonfigurator;
             childNodeHtml += "<select name=Select id=select>";
             childNodeHtml += "<optgroup label=Baumarten></optgroup> ";
             childNodeHtml += "<datalist id=options>";
-            for (let i = 0; i < Weihnachtsbaumkonfigurator.tree.length; i++) {
+            for (let i = 0; i < art.length; i++) {
                 childNodeHtml += "<option value=";
                 childNodeHtml += "lam" + i;
                 childNodeHtml += ">";
-                childNodeHtml += Weihnachtsbaumkonfigurator.tree[i].name;
+                childNodeHtml += art[i].name;
                 childNodeHtml += "</option>";
             }
             childNodeHtml += "</select>";
@@ -37,11 +37,11 @@ var Weihnachtsbaumkonfigurator;
         childNodeHtml += "<select name=Select id=select>";
         childNodeHtml += "<optgroup label=Lametta></optgroup> ";
         childNodeHtml += "<datalist id=options>";
-        for (let i = 0; i < Weihnachtsbaumkonfigurator.tinsel.length; i++) {
+        for (let i = 0; i < art.length; i++) {
             childNodeHtml += "<option value=";
             childNodeHtml += "lam" + i;
             childNodeHtml += ">";
-            childNodeHtml += Weihnachtsbaumkonfigurator.tinsel[i].name;
+            childNodeHtml += art[i].name;
             childNodeHtml += "</option>";
         }
         childNodeHtml += "</select>";
@@ -73,11 +73,11 @@ var Weihnachtsbaumkonfigurator;
             childNodeHtml += "<select name=Select id=select>";
             childNodeHtml += "<optgroup label=Kerzen></optgroup> ";
             childNodeHtml += "<datalist id=options>";
-            for (let i = 0; i < Weihnachtsbaumkonfigurator.candle.length; i++) {
+            for (let i = 0; i < art.length; i++) {
                 childNodeHtml += "<option value=";
                 childNodeHtml += "lam" + i;
                 childNodeHtml += ">";
-                childNodeHtml += Weihnachtsbaumkonfigurator.candle[i].name;
+                childNodeHtml += art[i].name;
                 childNodeHtml += "</option>";
             }
             childNodeHtml += "</select>";
@@ -110,11 +110,11 @@ var Weihnachtsbaumkonfigurator;
             childNodeHtml += "<select name=Select id=select>";
             childNodeHtml += "<optgroup label=Kugeln></optgroup> ";
             childNodeHtml += "<datalist id=options>";
-            for (let i = 0; i < Weihnachtsbaumkonfigurator.candle.length; i++) {
+            for (let i = 0; i < art.length; i++) {
                 childNodeHtml += "<option value=";
                 childNodeHtml += "lam" + i;
                 childNodeHtml += ">";
-                childNodeHtml += Weihnachtsbaumkonfigurator.ball[i].name;
+                childNodeHtml += art[i].name;
                 childNodeHtml += "</option>";
             }
             childNodeHtml += "</select>";
@@ -147,11 +147,11 @@ var Weihnachtsbaumkonfigurator;
             childNodeHtml += "<select name=Select id=select>";
             childNodeHtml += "<optgroup label=Versand></optgroup> ";
             childNodeHtml += "<datalist id=options>";
-            for (let i = 0; i < Weihnachtsbaumkonfigurator.shipment.length; i++) {
+            for (let i = 0; i < art.length; i++) {
                 childNodeHtml += "<option value=";
                 childNodeHtml += "lam" + i;
                 childNodeHtml += ">";
-                childNodeHtml += Weihnachtsbaumkonfigurator.shipment[i].name;
+                childNodeHtml += art[i].name;
                 childNodeHtml += "</option>";
             }
             childNodeHtml += "</select>";
