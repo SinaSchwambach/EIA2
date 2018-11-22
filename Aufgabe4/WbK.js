@@ -41,7 +41,7 @@ var Weihnachtsbaumkonfigurator;
             childNodeHtml += "<option value=";
             childNodeHtml += "lam" + i;
             childNodeHtml += ">";
-            childNodeHtml += art[i].name;
+            childNodeHtml += art[i].color;
             childNodeHtml += "</option>";
         }
         childNodeHtml += "</select>";
@@ -77,7 +77,9 @@ var Weihnachtsbaumkonfigurator;
                 childNodeHtml += "<option value=";
                 childNodeHtml += "lam" + i;
                 childNodeHtml += ">";
-                childNodeHtml += art[i].name;
+                childNodeHtml += art[i].color;
+                childNodeHtml += " ";
+                childNodeHtml += art[i].size;
                 childNodeHtml += "</option>";
             }
             childNodeHtml += "</select>";
@@ -114,7 +116,7 @@ var Weihnachtsbaumkonfigurator;
                 childNodeHtml += "<option value=";
                 childNodeHtml += "lam" + i;
                 childNodeHtml += ">";
-                childNodeHtml += art[i].name;
+                childNodeHtml += art[i].color;
                 childNodeHtml += "</option>";
             }
             childNodeHtml += "</select>";

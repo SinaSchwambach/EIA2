@@ -4,6 +4,7 @@ namespace Weihnachtsbaumkonfigurator {
         price: number;
         color: string;
         size: string;
+        
     }
 
     export let ball: Product[] = [{ name: "Ball", price: 3, color: "red", size: "small" }, { name: "Ball", price: 3, color: "red", size: "big" }, { name: "Ball", price: 3, color: "silver", size: "small" }, { name: "Ball", price: 3, color: "silver", size: "big" }, { name: "Ball", price: 3, color: "gold", size: "small" }, { name: "Ball", price: 3, color: "gold", size: "big" }, { name: "Ball", price: 3, color: "blue", size: "small" }];
