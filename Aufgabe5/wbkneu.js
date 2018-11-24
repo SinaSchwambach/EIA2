@@ -1,43 +1,50 @@
 var Wbk;
 (function (Wbk) {
-    document.addEventListener("DOMConetentLoaded", init);
+    document.addEventListener("DOMContentLoaded", init);
     function init() {
-        let fieldsets = document.getElementsByTagName("fieldset");
-        for (let i = 0; i < 1; i++) {
-            let fieldset = fieldsets[i];
-            createFormat(i);
+        createFormat(Wbk.data);
+    }
+    /* function init(): void {
+         let fieldsets: NodeListOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
+         for (let i: number = 0; i < 1; i++) {
+             let fieldset: HTMLFieldSetElement = fieldsets[i];
+             createFormat(fieldset, data);
+             // fieldset.addEventListener("change", handleChange);
+         }
+     }*/
+    function createFormat(_homoVar) {
+        for (let key in _homoVar) {
+            let value = _homoVar[key];
+            let fieldsets = document.getElementsByTagName("fieldset");
+            for (let i = 0; i < value.length; i++) {
+                let fieldset = fieldsets[i];
+                for (let a = 0; a < value.length; a++) {
+                    let input = document.createElement("input");
+                    fieldset.appendChild(input);
+                    input.type = "checkbox";
+                    input.name = "type";
+                    input.value = value[a].name;
+                    input.id = value[a].name;
+                    let label = document.createElement("label");
+                    fieldset.appendChild(label);
+                    chooseNumber(a, fieldset, value);
+                    label.setAttribute("chosenType", value[a].name);
+                    label.innerHTML = value[a].name + " " + value[a].price + "Euro ";
+                }
+            }
         }
     }
-    function createFormat(_i) {
-        for (let o = 0; o < Wbk.data["b"].length; o++)
-            ;
-        for (let a = 0; a < Wbk.data["tree"].length; a++) {
-            let input = document.createElement("input");
-            document.getElementById("Baumart").appendChild(input);
-            input.type = "radio";
-            input.name = "treetype";
-            input.value = Wbk.data["tree"][a].name;
-            let price = Wbk.data["tree"][a].price.toString();
-            input.setAttribute("price", price);
-            let label = document.createElement("label");
-            document.getElementById("Baumart").appendChild(label);
-            chooseTreeNumber(a);
-            label.setAttribute("chosenTreeType", Wbk.data["tree"][a].name);
-            label.innerHTML = Wbk.data["tree"][a].name + " " + Wbk.data["tree"][a].price + "� ";
-        }
-    }
-    function chooseTreeNumber(_a) {
+    function chooseNumber(_a, _fieldset, _value) {
         let input = document.createElement("input");
-        document.getElementById("Baumart").appendChild(input);
+        _fieldset.appendChild(input);
         input.type = "number";
         input.min = "0";
-        input.max = "5";
+        input.max = "50";
         input.step = "1";
-        input.value = Wbk.data["tree"][_a].name;
-        let price = Wbk.data["tree"][_a].price.toString();
-        input.setAttribute("price", price);
+        input.value = _value[_a].name;
+        input.id = _value[_a].name;
         let label = document.createElement("label");
-        document.getElementById("Baumart").appendChild(label);
+        _fieldset.appendChild(label);
     }
 })(Wbk || (Wbk = {}));
 //# sourceMappingURL=wbkneu.js.map
