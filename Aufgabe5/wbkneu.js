@@ -13,11 +13,11 @@ var Wbk;
          }
      }*/
     function createFormat(_homoVar) {
-        for (let key in _homoVar) {
-            let value = _homoVar[key];
-            let fieldsets = document.getElementsByTagName("fieldset");
-            for (let i = 0; i < value.length; i++) {
-                let fieldset = fieldsets[i];
+        let fieldsets = document.getElementsByTagName("fieldset");
+        for (let i = 0; i < fieldsets.length; i++) {
+            let fieldset = fieldsets[i];
+            for (let key in _homoVar) {
+                let value = _homoVar[key];
                 for (let a = 0; a < value.length; a++) {
                     let input = document.createElement("input");
                     fieldset.appendChild(input);
@@ -29,7 +29,7 @@ var Wbk;
                     fieldset.appendChild(label);
                     chooseNumber(a, fieldset, value);
                     label.setAttribute("chosenType", value[a].name);
-                    label.innerHTML = value[a].name + " " + value[a].price + "Euro ";
+                    label.innerHTML = value[a].name + " " + value[a].price + " Euro " + "<br>";
                 }
             }
         }
@@ -45,6 +45,7 @@ var Wbk;
         input.id = _value[_a].name;
         let label = document.createElement("label");
         _fieldset.appendChild(label);
+        label.innerHTML = "<br>";
     }
 })(Wbk || (Wbk = {}));
 //# sourceMappingURL=wbkneu.js.map

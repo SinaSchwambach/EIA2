@@ -19,11 +19,11 @@ function init(): void {
         }
     }*/
     function createFormat( _homoVar: HomoVar): void {
-        for (let key in _homoVar) {
-            let value: HeteroPredef[] = _homoVar[key];
-            let fieldsets: NodeListOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
-            for (let i: number = 0; i < value.length; i++) {
+     let fieldsets: NodeListOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
+            for (let i: number = 0; i < fieldsets.length; i++) {
                 let fieldset: HTMLFieldSetElement = fieldsets[i];
+               for (let key in _homoVar) {
+                let value: HeteroPredef[] = _homoVar[key];
                 for (let a: number = 0; a < value.length; a++) {
                     let input: HTMLInputElement = document.createElement("input");
                     fieldset.appendChild(input);
@@ -35,7 +35,7 @@ function init(): void {
                     fieldset.appendChild(label);
                     chooseNumber(a, fieldset, value);
                     label.setAttribute("chosenType", value[a].name);
-                    label.innerHTML = value[a].name + " " + value[a].price + "Euro ";
+                    label.innerHTML = value[a].name + " " + value[a].price + " Euro " + "<br>";
                 }
             }
         }
@@ -51,6 +51,7 @@ function init(): void {
             input.id = _value[_a].name;
             let label: HTMLLabelElement = document.createElement("label");
             _fieldset.appendChild(label);
+            label.innerHTML =  "<br>";
         }
 
        /*  function handleChange(_event: Event): void {
