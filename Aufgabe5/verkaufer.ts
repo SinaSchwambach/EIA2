@@ -1,18 +1,18 @@
 namespace Wbk {
    
-    export interface HeteroPredef {
+    export interface Weihnachtsbaumkonfigurator {
         name: string;
         price: number;
         
     }
 
  
-    export interface HomoVar {
-        [key: string]: HeteroPredef[];
+    export interface Item {
+        [key: string]: Weihnachtsbaumkonfigurator[];
     }
 
     
-        export let data: HomoVar = {
+        export let product: Item = {
             "tree": [
                 { name: "fir", price: 15 },
                 { name: "Caucasian fir", price: 17 },

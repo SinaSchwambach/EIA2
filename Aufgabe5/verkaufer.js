@@ -1,6 +1,6 @@
 var Wbk;
 (function (Wbk) {
-    Wbk.data = {
+    Wbk.product = {
         "tree": [
             { name: "fir", price: 15 },
             { name: "Caucasian fir", price: 17 },

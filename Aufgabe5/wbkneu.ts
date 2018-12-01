@@ -3,7 +3,7 @@ namespace Wbk {
 
 
     function init(): void {
-        createFormat(data);
+        createFormat(product);
         
     }
 
@@ -19,34 +19,38 @@ namespace Wbk {
              // fieldset.addEventListener("change", handleChange);
          }
      }*/
-    function createFormat(_homoVar: HomoVar): void {
-        let fieldsets: NodeListOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
+    function createFormat(_item: Item): void {
+      /*  let fieldsets: NodeListOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
         for (let i: number = 0; i < fieldsets.length; i++) {
-            let fieldset: HTMLFieldSetElement = fieldsets[i];
-            fieldset.addEventListener("change", handleChange);
-            for (let key in _homoVar) {
-                let value: HeteroPredef[] = _homoVar[key];
+            let fieldset: HTMLFieldSetElement = fieldsets[i];*/
+          //  fieldset.addEventListener("change", handleChange);
+        
+           for (let key in _item) {
+                let value: Weihnachtsbaumkonfigurator[] = _item[key];
+                
                 for (let a: number = 0; a < value.length; a++) {
+                    
                     let input: HTMLInputElement = document.createElement("input");
-                    fieldset.appendChild(input);
+                    
+                    document.getElementById("Baumtyp").appendChild(input);
                     input.type = "checkbox";
                     input.name = "type";
                     input.value = value[a].name;
                     input.id = value[a].name;
                     let label: HTMLLabelElement = document.createElement("label");
-                    fieldset.appendChild(label);
-                    chooseNumber(a, fieldset, value);
+                    document.getElementById("Baumtyp").appendChild(label);
+                    chooseNumber(a, value);
                     label.setAttribute("chosenType", value[a].name);
-                    let price: string = value[a].price.toString;
+               //     let price: string = value[a].price.toString;
                     label.setAttribute("price", price);
                     label.innerHTML = value[a].name + " " + value[a].price + " Euro " + "<br>";
                 }
             }
         }
     }
-    function chooseNumber(_a: number, _fieldset: HTMLFieldSetElement, _value: HeteroPredef[]): void {
+    function chooseNumber(_a: number, _value: Weihnachtsbaumkonfigurator[]): void {
         let input: HTMLInputElement = document.createElement("input");
-        _fieldset.appendChild(input);
+        document.getElementById("Baumtyp").appendChild(input);
         input.type = "number";
         input.min = "0";
         input.max = "50";
@@ -58,11 +62,11 @@ namespace Wbk {
         label.innerHTML = "<br>";
     }
 
-    function handleChange (_event: Event): void {
+  /*  function handleChange (_event: Event): void {
        /* let target: HTMLInputElement = <HTMLInputElement>_event.target;
         if (this.id == value[a].name)
             console.log("Changed " + target.name + " to " + target.checked);*/
-        var inputs: NodeListOf<Element> = document.getElementsByClassName("articleInput");
+   /*     var inputs: NodeListOf<Element> = document.getElementsByClassName("articleInput");
         var sum: number = 0;
         var orderSummaryList: string[] = [];
         for (var i: number = 0; i < inputs.length; i++) {
@@ -99,7 +103,7 @@ namespace Wbk {
             li.innerText = orderSummaryList[i];
             ul.appendChild(li);
         }
-    }
+    }*/
 }
              
                
