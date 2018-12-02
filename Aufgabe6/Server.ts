@@ -22,7 +22,7 @@ namespace L06_SendData {
         _response.setHeader("Access-Control-Allow-Origin", "*"); //Erlaubt den Zugriff auf Daten von einer anderen Quelle
 
         _response.write(_request.url); //setzt die Änderungen an die ursprüngliche url
-        
-        _response.end();//beendet die Antwort des Servers
+        console.log(_request.url);
+        _response.end(); //beendet die Antwort des Servers
     }
 }
