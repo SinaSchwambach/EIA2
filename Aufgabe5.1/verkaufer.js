@@ -18,8 +18,8 @@ var HolyChristmasTree2;
         ],
         "balls": [
             { name: "rot", price: 1.50 },
-            { name: "gr�n", price: 3.50 },
-            { name: "wei�", price: 5.95 }
+            { name: "gruen", price: 3.50 },
+            { name: "weiss", price: 5.95 }
         ],
         "lametta": [
             { name: "rot", price: 4.99 },
