@@ -1,8 +1,8 @@
 {
 	"name" : "MiniServer",
 	"version" : "1.0.0",
-	"description" : "eia2",
-	"author" : "Sina Schwambach",
+	"description" : "Minimal server just bouncing the URL",
+	"author" : "Jirka",
 	"main" : "Server.js",
 	"scripts" : {
 		"start" : "node Aufgabe 6/Server/Server.js"
