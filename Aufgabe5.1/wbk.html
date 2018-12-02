@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Gestalte deinen Weihnachtsbaum</title>
+
+<script src="wbk.js"></script>
+<script src="verkaufer.js"></script>
+ <link rel="stylesheet" type="text/css" href="Weihnachtsbaum.css">
+
+</head>
+<body>
+
+<h1>Weihnachtsbaum Konfigurator </h1>
+<form action="https://.herokuapp.com/" method="get">
+<fieldset id="trees">
+<legend>Baumart</legend>
+</fieldset>
+
+<fieldset id="treeholder">
+<legend>Halterungen </legend>
+</fieldset>
+
+<fieldset id="lightstring">
+<legend>Lichterketten</legend>
+</fieldset>
+
+<fieldset id="balls">
+<legend>Kugeln</legend>
+</fieldset>
+
+<fieldset id="lametta">
+<legend>Lametta</legend>
+</fieldset>
+
+<fieldset id="top">
+<legend>Spitze</legend>
+</fieldset>
+
+<fieldset id="Lieferoptionen">
+		<legend> Lieferoptionen </legend>
+		<input type="radio" name="Radiogroup" value="radio1" id="radio1" />
+		<label for="radio1">Weihnachtsmann</label>
+		<input type="radio" name="Radiogroup" value="radio2" id="radio2"/>
+		<label for="radio2">Hermes</label>
+		<input type="radio" name="Radiogroup" value="radio3" id="radio3"/>
+		<label for="radio3">DHL</label>
+	</fieldset>
+	
+<fieldset id="text">
+		<legend> Wo soll der Baum hinhgehen? </legend>
+		Vor- und Zuname
+		<input type="text" name="Text" placeholder="Santa Claus" required/>
+		<hr/>
+		Straße und Hausnummer
+		<input type="text" name="Password" placeholder="Rehntierallee 1"/>
+		<hr/>
+		PLZ
+		<input type="text" name="Pattern" pattern="[0-9]{5}" placeholder="187"/>
+		<hr/>
+		Mail
+		<input type="email" name="Mail" placeholder="mrclaus@weihnachtsmann.net"/>
+		<hr/>
+		Stadt
+		<input type="text" name="Url" placeholder="Nordpool"/>
+		<hr/>
+		Telefonummer
+		<input name="text" name="Pattern" pattern="[0-9]{10}" placeholder="1224 2412"></input>
+		
+		
+	</fieldset>
+	<div id= "cart">
+	</div>
+	
+	
+<button id="button">Überprüfung</button>
+
+<button type="submit">Jetzt bestellen</button>
+</form>
