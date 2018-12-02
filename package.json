@@ -1,0 +1,15 @@
+{
+	"name" : "EIA2",
+	"version" : "0.0.0",
+	"description" : "eia2",
+	"author" : "Sina Schwambach",
+	"main" : "Server.js",
+	"scripts" : {
+		"start" : "node Server.js"
+	},
+	"engines" : {
+		"node" : "6.11.1"
+	},
+	"dependencies" : {
+	}
+}

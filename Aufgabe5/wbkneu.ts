@@ -32,7 +32,7 @@ namespace Wbk {
                     
                     let input: HTMLInputElement = document.createElement("input");
                     
-                    document.getElementById("Baumtyp").appendChild(input);
+                   
                     input.type = "checkbox";
                     input.name = "type";
                     input.value = value[a].name;
@@ -46,7 +46,7 @@ namespace Wbk {
                     label.innerHTML = value[a].name + " " + value[a].price + " Euro " + "<br>";
                 }
             }
-        }
+      //  }
     }
     function chooseNumber(_a: number, _value: Weihnachtsbaumkonfigurator[]): void {
         let input: HTMLInputElement = document.createElement("input");
