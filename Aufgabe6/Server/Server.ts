@@ -1,4 +1,5 @@
 import * as Http from "http"; //http Objekt wird erstellt -> interpreter schaut nach jedem möglichen import im http Modul und fügt es dem http Objekt im Code hinzu
+import * as Url from "url";
 
 namespace L06_SendData {
     console.log("Starting server"); //Konsolenausgabe Starting Server
@@ -24,6 +25,16 @@ namespace L06_SendData {
 
         _response.write(_request.url); //setzt die Änderungen an die ursprüngliche url
         console.log(_request.url);
+        
+        let url: string = _request.url;
+        console.log(Url.parse(_request.url, true));
+        _response.write(Url.parse(url, true).toString());
+        
         _response.end(); //beendet die Antwort des Servers
     }
+    
+    
+    
+        
+    
 }
