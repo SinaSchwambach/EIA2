@@ -26,9 +26,16 @@ namespace L06_SendData {
         _response.write(_request.url); //setzt die Änderungen an die ursprüngliche url
         console.log(_request.url);
         
-        let url: string = _request.url;
+     /*   let url: string = _request.url;
         console.log(Url.parse(_request.url, true));
         _response.write(Url.parse(url, true).toString());
+        let querystring: string= _request.url;*/
+        
+        let querystring = require('querystring');
+        querystring.parse(_request.url);
+        
+
+        
         
         _response.end(); //beendet die Antwort des Servers
     }
