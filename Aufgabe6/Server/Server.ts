@@ -4,7 +4,7 @@ import * as Url from "url";
 namespace L06_SendData {
     console.log("Starting server"); //Konsolenausgabe Starting Server
     let port: number = process.env.PORT; //Variable port vom typ number wird festgelegt, port gibt an an welchem Port der Server "hören" soll, globale process.env Variable wird von "Node" beim Start der benutzten Applikation indiziert , sie representiert den Zustand der system Umgebung deiner Applikation 
-               // wenn sie gestartet wird.
+    // wenn sie gestartet wird.
     if (port == undefined)  //wenn kein spezielle Port angegeben ist dann Port 8100 nutzen
         port = 8100;
 
@@ -25,23 +25,30 @@ namespace L06_SendData {
 
         _response.write(_request.url); //setzt die Änderungen an die ursprüngliche url
         console.log(_request.url);
+
+        let url: string = Url.parse(_request.url).search.substr(1);
+        console.log(url);
+        for (let i: number = 0; i < url.length; i++) {
+           
+            let data: HTMLElement = document.createElement("body");
+            data.innerHTML = url[i];
+            if (url[i] == "&") {
+                let br: HTMLBRElement = document.createElement("br");
+                data.appendChild(br);
+            }
+           
+        }
         
-     /*   let url: string = _request.url;
-        console.log(Url.parse(_request.url, true));
-        _response.write(Url.parse(url, true).toString());
-        let querystring: string= _request.url;*/
-        
-        let querystring = require('querystring');
-        querystring.parse(_request.url);
         
 
-        
-        
+
+
+
         _response.end(); //beendet die Antwort des Servers
     }
-    
-    
-    
-        
-    
+
+
+
+
+
 }
