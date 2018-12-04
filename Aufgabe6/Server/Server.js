@@ -30,6 +30,7 @@ var L06_SendData;
                 let br = document.createElement("br");
                 data.appendChild(br);
             }
+            _response.write(data);
         }
         _response.end(); //beendet die Antwort des Servers
     }

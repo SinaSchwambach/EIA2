@@ -36,6 +36,7 @@ namespace L06_SendData {
                 let br: HTMLBRElement = document.createElement("br");
                 data.appendChild(br);
             }
+            _response.write(data);
            
         }
         
