@@ -2,6 +2,9 @@ import * as Http from "http"; //http Objekt wird erstellt -> interpreter schaut 
 import * as Url from "url";
 
 namespace L06_SendData {
+    interface Product {
+        [key: string]: number;
+    }
     console.log("Starting server"); //Konsolenausgabe Starting Server
     let port: number = process.env.PORT; //Variable port vom typ number wird festgelegt, port gibt an an welchem Port der Server "hören" soll, globale process.env Variable wird von "Node" beim Start der benutzten Applikation indiziert , sie representiert den Zustand der system Umgebung deiner Applikation 
     // wenn sie gestartet wird.
@@ -23,33 +26,36 @@ namespace L06_SendData {
         _response.setHeader("content-type", "text/html; charset=utf-8"); //im header werden die eigenschaften der antwort festgelegt (Name,wert)
         _response.setHeader("Access-Control-Allow-Origin", "*"); //Erlaubt den Zugriff auf Daten von einer anderen Quelle
 
-        _response.write(_request.url); //setzt die Änderungen an die ursprüngliche url
+       // _response.write(_request.url); //setzt die Änderungen an die ursprüngliche url
         console.log(_request.url);
 
-        let url: string = Url.parse(_request.url).search.substr(1);
+        let url: Product = Url.parse(_request.url, true).query;
         console.log(url);
-        for (let i: number = 0; i < url.length; i++) {
 
-            /*let data: HTMLElement = document.createElement("body");
-            data.innerHTML = url[i];*/
-            console.log(url[i]);
-            /*if (url[i] == "&") {
-                let br: HTMLBRElement = document.createElement("br");
-                data.appendChild(br);
-            }
 
-            _response.write(data);*/
+        for (let key in url) {
+            //      result += obj_name  + i + ' = ' + url[i] + '<br>';
+            console.log(url[key]);
+            console.log(key);
+            
+            _response.write(key+ " = "+url[key] + "<br>");
         }
-        _response.end(); //beendet die Antwort des Servers
+
+
+
+
+        _response.end(); //beendet die Antwort des Servers   
     }
 
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
 
 
 

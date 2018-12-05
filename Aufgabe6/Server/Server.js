@@ -19,16 +19,17 @@ var L06_SendData;
         console.log("I hear voices!"); //auf Konsole wird "I hear voices!" ausgegeben
         _response.setHeader("content-type", "text/html; charset=utf-8"); //im header werden die eigenschaften der antwort festgelegt (Name,wert)
         _response.setHeader("Access-Control-Allow-Origin", "*"); //Erlaubt den Zugriff auf Daten von einer anderen Quelle
-        _response.write(_request.url); //setzt die �nderungen an die urspr�ngliche url
+        // _response.write(_request.url); //setzt die �nderungen an die urspr�ngliche url
         console.log(_request.url);
-        let url = Url.parse(_request.url).search.substr(1);
+        let url = Url.parse(_request.url, true).query;
         console.log(url);
-        for (let i = 0; i < url.length; i++) {
-            /*let data: HTMLElement = document.createElement("body");
-            data.innerHTML = url[i];*/
-            console.log(url[i]);
+        for (let key in url) {
+            //      result += obj_name  + i + ' = ' + url[i] + '<br>';
+            console.log(url[key]);
+            console.log(key);
+            _response.write(key + " = " + url[key] + "<br>");
         }
-        _response.end(); //beendet die Antwort des Servers
+        _response.end(); //beendet die Antwort des Servers   
     }
 })(L06_SendData || (L06_SendData = {}));
 //# sourceMappingURL=Server.js.map
