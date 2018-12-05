@@ -1,6 +1,5 @@
 "use strict";
 const Http = require("http"); //http Objekt wird erstellt -> interpreter schaut nach jedem m�glichen import im http Modul und f�gt es dem http Objekt im Code hinzu
-const Url = require("url");
 var L06_SendData;
 (function (L06_SendData) {
     console.log("Starting server"); //Konsolenausgabe Starting Server
@@ -21,17 +20,19 @@ var L06_SendData;
         _response.setHeader("Access-Control-Allow-Origin", "*"); //Erlaubt den Zugriff auf Daten von einer anderen Quelle
         _response.write(_request.url); //setzt die �nderungen an die urspr�ngliche url
         console.log(_request.url);
-        let url = Url.parse(_request.url).search.substr(1);
-        console.log(url);
-        for (let i = 0; i < url.length; i++) {
-            let data = document.createElement("body");
-            data.innerHTML = url[i];
-            if (url[i] == "&") {
-                let br = document.createElement("br");
-                data.appendChild(br);
-            }
-            _response.write(data);
-        }
+        /* let url: string = Url.parse(_request.url).search.substr(1);
+         console.log(url);
+         for (let i: number = 0; i < url.length; i++) {
+ 
+             let data: HTMLElement = document.createElement("body");
+             data.innerHTML = url[i];
+             if (url[i] == "&") {
+                 let br: HTMLBRElement = document.createElement("br");
+                 data.appendChild(br);
+             }
+ 
+             _response.write(data);
+         }*/
         _response.end(); //beendet die Antwort des Servers
     }
 })(L06_SendData || (L06_SendData = {}));
