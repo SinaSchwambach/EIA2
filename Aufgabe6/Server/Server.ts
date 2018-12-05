@@ -29,22 +29,16 @@ namespace L06_SendData {
         let url: string = Url.parse(_request.url).search.substr(1);
         console.log(url);
         for (let i: number = 0; i < url.length; i++) {
-           
+
             let data: HTMLElement = document.createElement("body");
             data.innerHTML = url[i];
             if (url[i] == "&") {
                 let br: HTMLBRElement = document.createElement("br");
                 data.appendChild(br);
             }
+
             _response.write(data);
-           
         }
-        
-        
-
-
-
-
         _response.end(); //beendet die Antwort des Servers
     }
 
@@ -52,4 +46,11 @@ namespace L06_SendData {
 
 
 
+
+
 }
+
+
+
+
+
