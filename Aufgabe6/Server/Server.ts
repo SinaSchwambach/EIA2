@@ -38,7 +38,7 @@ namespace L06_SendData {
             console.log(url[key]);
             console.log(key);
             
-            _response.write(key+ " = "+ url[key] + "<br>");
+            _response.write(key + " = " + url[key] + "<br>");
         }
 
 
