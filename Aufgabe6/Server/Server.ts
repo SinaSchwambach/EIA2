@@ -34,11 +34,11 @@ namespace L06_SendData {
 
 
         for (let key in url) {
-            //      result += obj_name  + i + ' = ' + url[i] + '<br>';
+          
             console.log(url[key]);
             console.log(key);
             
-            _response.write(key+ " = "+url[key] + "<br>");
+            _response.write(key+ " = "+ url[key] + "<br>");
         }
 
 

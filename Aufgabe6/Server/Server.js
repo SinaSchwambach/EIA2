@@ -24,7 +24,6 @@ var L06_SendData;
         let url = Url.parse(_request.url, true).query;
         console.log(url);
         for (let key in url) {
-            //      result += obj_name  + i + ' = ' + url[i] + '<br>';
             console.log(url[key]);
             console.log(key);
             _response.write(key + " = " + url[key] + "<br>");
