@@ -26,19 +26,20 @@ namespace L06_SendData {
         _response.write(_request.url); //setzt die Änderungen an die ursprüngliche url
         console.log(_request.url);
 
-       /* let url: string = Url.parse(_request.url).search.substr(1);
+        let url: string = Url.parse(_request.url).search.substr(1);
         console.log(url);
         for (let i: number = 0; i < url.length; i++) {
 
-            let data: HTMLElement = document.createElement("body");
-            data.innerHTML = url[i];
-            if (url[i] == "&") {
+            /*let data: HTMLElement = document.createElement("body");
+            data.innerHTML = url[i];*/
+            console.log(url[i]);
+            /*if (url[i] == "&") {
                 let br: HTMLBRElement = document.createElement("br");
                 data.appendChild(br);
             }
 
-            _response.write(data);
-        }*/
+            _response.write(data);*/
+        }
         _response.end(); //beendet die Antwort des Servers
     }
 
