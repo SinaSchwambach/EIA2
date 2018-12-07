@@ -1,9 +1,10 @@
 var HolyChristmasTree2;
 (function (HolyChristmasTree2) {
     window.addEventListener("DOMContentLoaded", init);
+    let address = "http://localhost:8100";
     function init() {
         createInput();
-        //  document.getElementById("button").addEventListener("click", checkOrder);
+        setupAsyncForm();
     }
     function createInput() {
         for (let key in HolyChristmasTree2.offers) {
@@ -63,6 +64,28 @@ var HolyChristmasTree2;
             }
         }
         p.innerHTML += "Geamtpreis " + total.toFixed(2) + "Euro";
+    }
+    function setupAsyncForm() {
+        let button = document.querySelector("[type=button]");
+        button.addEventListener("click", handleClickOnAsync);
+    }
+    function handleClickOnAsync(_event) {
+        let name = document.querySelector("#cart").innerText;
+        sendRequestWithCustomData(name);
+        alert(name);
+    }
+    function sendRequestWithCustomData(_name) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", address + "?name=" + _name, true);
+        xhr.addEventListener("readystatechange", handleStateChange);
+        xhr.send();
+    }
+    function handleStateChange(_event) {
+        var xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
+            console.log("response: " + xhr.response);
+        }
     }
 })(HolyChristmasTree2 || (HolyChristmasTree2 = {}));
 //# sourceMappingURL=wbk.js.map
