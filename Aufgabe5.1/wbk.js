@@ -70,6 +70,7 @@ var HolyChristmasTree2;
         button.addEventListener("click", handleClickOnAsync);
     }
     function handleClickOnAsync(_event) {
+        let cartos = document.getElementById("cart");
         let name = document.querySelector("#cart").innerText;
         sendRequestWithCustomData(name);
         alert(name);

@@ -87,33 +87,31 @@ namespace HolyChristmasTree2 {
 
 
 
-    function setupAsyncForm(): void {
+     function setupAsyncForm(): void {
         let button: Element = document.querySelector("[type=button]");
         button.addEventListener("click", handleClickOnAsync);
     }
 
     function handleClickOnAsync(_event: Event): void {
+        let cartos: HTMLElement = document.getElementById("cart");
+        let name: string = (<HTMLInputElement>document.querySelector("#cart")).innerText;
+        sendRequestWithCustomData(name);
         
-            let name: string = (<HTMLInputElement>document.querySelector("#cart")).innerText;
-            
-            sendRequestWithCustomData(name);
-            
-            alert(name);
-        }
-
-        function sendRequestWithCustomData(_name: string): void {
-
-            let xhr: XMLHttpRequest = new XMLHttpRequest();
-            xhr.open("GET", address + "?name=" + _name, true);
-            xhr.addEventListener("readystatechange", handleStateChange);
-            xhr.send();
-        }
-
-        function handleStateChange(_event: ProgressEvent): void {
-            var xhr: XMLHttpRequest = <XMLHttpRequest>_event.target;
-            if (xhr.readyState == XMLHttpRequest.DONE) {
-                console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
-                console.log("response: " + xhr.response);
-            }
-        }
+        alert(name);
     }
+
+    function sendRequestWithCustomData(_name: string): void {
+        let xhr: XMLHttpRequest = new XMLHttpRequest();
+        xhr.open("GET", address + "?name=" + _name, true);
+        xhr.addEventListener("readystatechange", handleStateChange);
+        xhr.send();
+    }
+
+    function handleStateChange(_event: ProgressEvent): void {
+        var xhr: XMLHttpRequest = <XMLHttpRequest>_event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
+            console.log("response: " + xhr.response);
+        }
+}
+}
