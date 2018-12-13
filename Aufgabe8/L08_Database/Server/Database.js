@@ -37,7 +37,7 @@ function handleInsert(_e) {
     console.log("Database insertion returned -> " + _e);
 }
 function find(_matrikel, _callback) {
-    var cursor = students.find(_matrikel);
+    var cursor = students.find("{'matrikel': " + _matrikel + "}");
     // try to convert to array, then activate callback "prepareAnswer"
     cursor.toArray(prepareAnswer);
     // toArray-handler receives two standard parameters, an error object and the array
