@@ -1,7 +1,8 @@
 namespace DatabaseClient {
     window.addEventListener("load", init);
-    let serverAddress: string = "http://localhost:8100";
-    //let serverAddress: string = "https://<your>.herokuapp.com/";    
+   // let serverAddress: string = "http://localhost:8100";
+    let serverAddress: string = " https://eia2ws18.herokuapp.com/"; 
+    
 
     function init(_event: Event): void {
         console.log("Init");
