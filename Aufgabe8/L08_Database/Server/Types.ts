@@ -7,6 +7,6 @@ interface StudentData {
     firstname: string;
     matrikel: number;
 }
- interface Matrikel{
+ interface MatrikelObject{
      matrikel:number;
      }
