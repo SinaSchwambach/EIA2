@@ -26,7 +26,7 @@ var DatabaseClient;
         sendRequest(query, handleFindResponse);
     }
     function find(_event) {
-        let search = document.getElementById("find");
+        let search = document.getElementById("Suche");
         let query = "command=find";
         query += "&matrikel=" + search.value;
         console.log(query);

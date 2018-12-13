@@ -41,8 +41,8 @@ function handleInsert(_e: Mongo.MongoError): void {
     console.log("Database insertion returned -> " + _e);
 }
 
-export function find (_matrikel: number, _callback: Function): void{
-    var cursor: Mongo.Cursor = students.find("{'matrikel': " + _matrikel +"}");
+export function find (_matrikel: Matrikel, _callback: Function): void{
+    var cursor: Mongo.Cursor = students.find(_matrikel);
     // try to convert to array, then activate callback "prepareAnswer"
     cursor.toArray(prepareAnswer);
 
