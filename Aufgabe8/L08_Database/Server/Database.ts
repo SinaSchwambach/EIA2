@@ -42,6 +42,7 @@ function handleInsert(_e: Mongo.MongoError): void {
 }
 
 export function find (_matrikel: Matrikel, _callback: Function): void{
+    console.log("Matrikel: " + _matrikel);
     var cursor: Mongo.Cursor = students.find(_matrikel);
     // try to convert to array, then activate callback "prepareAnswer"
     cursor.toArray(prepareAnswer);
