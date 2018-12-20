@@ -7,7 +7,7 @@ namespace L09_Canvas {
 
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
-
+        
         console.log(crc2);
         drawSky();
         drawHill();
