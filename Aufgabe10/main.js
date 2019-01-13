@@ -7,25 +7,25 @@ var Animation;
     let sleighOne = [];
     let childTwo = [];
     let sleighTwo = [];
-    let background;
+    let imgData;
     function init(_event) {
         console.log("Canvas started");
         let canvas = document.getElementsByTagName("canvas")[0];
         Animation.crc2 = canvas.getContext("2d");
         console.log(Animation.crc2);
-        for (let i = 0; i < 20; i++) {
+        Animation.drawBackground();
+        imgData = Animation.crc2.getImageData(0, 0, 270, 410);
+        for (let i = 0; i < 100; i++) {
             let snowflake = new Animation.Snowflake();
-            snowflake.x = 0;
             snowflake.y = Math.random() * Animation.crc2.canvas.height;
-            snowflake.dx = Math.random() * 4 - 2;
-            snowflake.dy = Math.random() * 4 - 2;
+            snowflake.dy = Math.random() * 2 + 4;
             snowflake.color = "#000000";
             snowflakes.push(snowflake);
         }
         for (let a = 0; a < 5; a++) {
             let child1 = new Animation.Child1();
-            child1.x = -Animation.crc2.canvas.width;
-            child1.y = -Animation.crc2.canvas.height;
+            child1.x = Animation.crc2.canvas.width;
+            child1.y = Animation.crc2.canvas.height;
             child1.dx = Math.random() * 4 - 2;
             child1.dy = Math.random() * 4 - 2;
             childOne.push(child1);
@@ -53,7 +53,8 @@ var Animation;
     function update() {
         window.setTimeout(update, 1000 / fps);
         Animation.crc2.clearRect(0, 0, Animation.crc2.canvas.width, Animation.crc2.canvas.height);
-        for (let i = 0; i < 20; i++) {
+        Animation.crc2.putImageData(imgData, 0, 0);
+        for (let i = 0; i < 100; i++) {
             let snowflake = snowflakes[i];
             snowflake.move();
             snowflake.draw(); // keine Parameter erforderlich, denn der Stern weiß über sich Bescheid

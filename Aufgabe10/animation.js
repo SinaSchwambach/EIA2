@@ -1,79 +1,81 @@
 var Animation;
 (function (Animation) {
-    class Background {
-        draw() {
-            //Sky
-            Animation.crc2.fillStyle = "#00bfff";
-            Animation.crc2.fillRect(0, 0, Animation.crc2.canvas.width, 110);
-            Animation.crc2.beginPath();
-            Animation.crc2.moveTo(0, 110);
-            Animation.crc2.lineTo(0, 260);
-            Animation.crc2.lineTo(270, 110);
-            Animation.crc2.lineTo(0, 110);
-            Animation.crc2.closePath();
-            Animation.crc2.fill();
-            //Cloud1    
-            Animation.crc2.beginPath();
-            Animation.crc2.moveTo(100, 100);
-            Animation.crc2.arc(95, 100, 12, 0, 2 * Math.PI);
-            Animation.crc2.arc(110, 100, 12, 0, 2 * Math.PI);
-            Animation.crc2.arc(87, 100, 12, 0, 2 * Math.PI);
-            Animation.crc2.arc(100, 95, 12, 0, 2 * Math.PI);
-            Animation.crc2.fillStyle = "#ffffff";
-            Animation.crc2.fill();
-            //Cloud2
-            Animation.crc2.beginPath();
-            Animation.crc2.moveTo(235, 55);
-            Animation.crc2.arc(235, 55, 10, 0, 2 * Math.PI);
-            Animation.crc2.arc(228, 48, 10, 0, 2 * Math.PI);
-            Animation.crc2.arc(242, 50, 10, 0, 2 * Math.PI);
-            Animation.crc2.arc(230, 59, 8, 0, 2 * Math.PI);
-            Animation.crc2.arc(220, 57, 10, 0, 2 * Math.PI);
-            Animation.crc2.fillStyle = "#ffffff";
-            Animation.crc2.fill();
-            //Cloud 3
-            Animation.crc2.beginPath();
-            Animation.crc2.moveTo(10, 170);
-            Animation.crc2.arc(10, 170, 10, 0, 2 * Math.PI);
-            Animation.crc2.arc(17, 163, 10, 0, 2 * Math.PI);
-            Animation.crc2.arc(17, 177, 10, 0, 2 * Math.PI);
-            Animation.crc2.arc(27, 163, 10, 0, 2 * Math.PI);
-            Animation.crc2.arc(27, 177, 10, 0, 2 * Math.PI);
-            Animation.crc2.moveTo(34, 170);
-            Animation.crc2.arc(34, 170, 10, 0, 2 * Math.PI);
-            Animation.crc2.fillStyle = "#ffffff";
-            Animation.crc2.fill();
-            //Cloud4
-            Animation.crc2.beginPath();
-            Animation.crc2.moveTo(170, 15);
-            Animation.crc2.arc(170, 15, 10, 0, 2 * Math.PI);
-            Animation.crc2.arc(165, 20, 10, 0, 2 * Math.PI);
-            Animation.crc2.arc(175, 18, 10, 0, 2 * Math.PI);
-            Animation.crc2.arc(178, 17, 10, 0, 2 * Math.PI);
-            Animation.crc2.arc(180, 22, 10, 0, 2 * Math.PI);
-            Animation.crc2.moveTo(180, 22);
-            Animation.crc2.arc(185, 18, 8, 0, 2 * Math.PI);
-            Animation.crc2.fillStyle = "#ffffff";
-            Animation.crc2.fill();
-            //Hill
-            Animation.crc2.lineWidth = 1;
-            Animation.crc2.beginPath();
-            Animation.crc2.moveTo(270, 110);
-            Animation.crc2.lineTo(0, 260);
-            Animation.crc2.closePath();
-            Animation.crc2.stroke();
-            //Sun
-            let x = 40;
-            let y = 40;
-            let radius = 20;
-            let startAngle = 0;
-            let endAngle = 2 * Math.PI;
-            Animation.crc2.moveTo(40, 40);
-            Animation.crc2.beginPath();
-            Animation.crc2.arc(x, y, radius, startAngle, endAngle, true);
-            Animation.crc2.fillStyle = "#ffd700";
-            Animation.crc2.fill();
-            //Tree
+    function drawBackground() {
+        //Sky
+        Animation.crc2.fillStyle = "#00bfff";
+        Animation.crc2.fillRect(0, 0, Animation.crc2.canvas.width, 110);
+        Animation.crc2.beginPath();
+        Animation.crc2.moveTo(0, 110);
+        Animation.crc2.lineTo(0, 260);
+        Animation.crc2.lineTo(270, 110);
+        Animation.crc2.lineTo(0, 110);
+        Animation.crc2.closePath();
+        Animation.crc2.fill();
+        //Cloud1    
+        Animation.crc2.beginPath();
+        Animation.crc2.moveTo(100, 100);
+        Animation.crc2.arc(95, 100, 12, 0, 2 * Math.PI);
+        Animation.crc2.arc(110, 100, 12, 0, 2 * Math.PI);
+        Animation.crc2.arc(87, 100, 12, 0, 2 * Math.PI);
+        Animation.crc2.arc(100, 95, 12, 0, 2 * Math.PI);
+        Animation.crc2.fillStyle = "#ffffff";
+        Animation.crc2.fill();
+        //Cloud2
+        Animation.crc2.beginPath();
+        Animation.crc2.moveTo(235, 55);
+        Animation.crc2.arc(235, 55, 10, 0, 2 * Math.PI);
+        Animation.crc2.arc(228, 48, 10, 0, 2 * Math.PI);
+        Animation.crc2.arc(242, 50, 10, 0, 2 * Math.PI);
+        Animation.crc2.arc(230, 59, 8, 0, 2 * Math.PI);
+        Animation.crc2.arc(220, 57, 10, 0, 2 * Math.PI);
+        Animation.crc2.fillStyle = "#ffffff";
+        Animation.crc2.fill();
+        //Cloud 3
+        Animation.crc2.beginPath();
+        Animation.crc2.moveTo(10, 170);
+        Animation.crc2.arc(10, 170, 10, 0, 2 * Math.PI);
+        Animation.crc2.arc(17, 163, 10, 0, 2 * Math.PI);
+        Animation.crc2.arc(17, 177, 10, 0, 2 * Math.PI);
+        Animation.crc2.arc(27, 163, 10, 0, 2 * Math.PI);
+        Animation.crc2.arc(27, 177, 10, 0, 2 * Math.PI);
+        Animation.crc2.moveTo(34, 170);
+        Animation.crc2.arc(34, 170, 10, 0, 2 * Math.PI);
+        Animation.crc2.fillStyle = "#ffffff";
+        Animation.crc2.fill();
+        //Cloud4
+        Animation.crc2.beginPath();
+        Animation.crc2.moveTo(170, 15);
+        Animation.crc2.arc(170, 15, 10, 0, 2 * Math.PI);
+        Animation.crc2.arc(165, 20, 10, 0, 2 * Math.PI);
+        Animation.crc2.arc(175, 18, 10, 0, 2 * Math.PI);
+        Animation.crc2.arc(178, 17, 10, 0, 2 * Math.PI);
+        Animation.crc2.arc(180, 22, 10, 0, 2 * Math.PI);
+        Animation.crc2.moveTo(180, 22);
+        Animation.crc2.arc(185, 18, 8, 0, 2 * Math.PI);
+        Animation.crc2.fillStyle = "#ffffff";
+        Animation.crc2.fill();
+        //Hill
+        Animation.crc2.lineWidth = 1;
+        Animation.crc2.beginPath();
+        Animation.crc2.moveTo(270, 110);
+        Animation.crc2.lineTo(0, 260);
+        Animation.crc2.closePath();
+        Animation.crc2.stroke();
+        //Sun
+        let x = 40;
+        let y = 40;
+        let radius = 20;
+        let startAngle = 0;
+        let endAngle = 2 * Math.PI;
+        Animation.crc2.moveTo(40, 40);
+        Animation.crc2.beginPath();
+        Animation.crc2.arc(x, y, radius, startAngle, endAngle, true);
+        Animation.crc2.fillStyle = "#ffd700";
+        Animation.crc2.fill();
+        //Tree
+        for (let i = 0; i < 15; i++) {
+            let x = Math.floor(Math.random() * Animation.crc2.canvas.width);
+            let y = Math.floor(Math.random() * (310 - 410) + Animation.crc2.canvas.height);
             Animation.crc2.beginPath();
             Animation.crc2.moveTo(x, y - 40);
             Animation.crc2.lineTo(x - 10, y);
@@ -85,18 +87,20 @@ var Animation;
             Animation.crc2.stroke();
         }
     }
-    Animation.Background = Background;
+    Animation.drawBackground = drawBackground;
     class Snowflake {
         move() {
-            this.x += this.dx;
             this.y += this.dy;
+            if (this.y > Animation.crc2.canvas.height + 2) {
+                this.y = -2;
+            }
         }
         draw() {
             for (let i = 0; i < 100; i++) {
-                let a = Math.floor(Math.random() * Animation.crc2.canvas.width);
-                let b = Math.floor(Math.random() * Animation.crc2.canvas.height);
+                let x = Math.floor(Math.random() * Animation.crc2.canvas.width);
+                let y = Math.floor(Math.random() * Animation.crc2.canvas.height);
                 Animation.crc2.beginPath();
-                Animation.crc2.arc(a, b, 2, 0, 2 * Math.PI);
+                Animation.crc2.arc(x, y, 2, 0, 2 * Math.PI);
                 Animation.crc2.fillStyle = "#ffffff";
                 Animation.crc2.fill();
             }

@@ -1,91 +1,94 @@
 namespace Animation {
-    export class Background {
-        draw(): void {
-            //Sky
-            crc2.fillStyle = "#00bfff";
-            crc2.fillRect(0, 0, crc2.canvas.width, 110);
+    export function drawBackground(): void {
 
-            crc2.beginPath();
-            crc2.moveTo(0, 110);
-            crc2.lineTo(0, 260);
-            crc2.lineTo(270, 110);
-            crc2.lineTo(0, 110);
-            crc2.closePath();
+        //Sky
+        crc2.fillStyle = "#00bfff";
+        crc2.fillRect(0, 0, crc2.canvas.width, 110);
 
-            crc2.fill();
+        crc2.beginPath();
+        crc2.moveTo(0, 110);
+        crc2.lineTo(0, 260);
+        crc2.lineTo(270, 110);
+        crc2.lineTo(0, 110);
+        crc2.closePath();
 
-            //Cloud1    
-            crc2.beginPath();
-            crc2.moveTo(100, 100);
-            crc2.arc(95, 100, 12, 0, 2 * Math.PI);
-            crc2.arc(110, 100, 12, 0, 2 * Math.PI);
-            crc2.arc(87, 100, 12, 0, 2 * Math.PI);
-            crc2.arc(100, 95, 12, 0, 2 * Math.PI);
-            crc2.fillStyle = "#ffffff";
-            crc2.fill();
+        crc2.fill();
 
-            //Cloud2
-            crc2.beginPath();
-            crc2.moveTo(235, 55);
-            crc2.arc(235, 55, 10, 0, 2 * Math.PI);
-            crc2.arc(228, 48, 10, 0, 2 * Math.PI);
-            crc2.arc(242, 50, 10, 0, 2 * Math.PI);
-            crc2.arc(230, 59, 8, 0, 2 * Math.PI);
-            crc2.arc(220, 57, 10, 0, 2 * Math.PI);
-            crc2.fillStyle = "#ffffff";
-            crc2.fill();
+        //Cloud1    
+        crc2.beginPath();
+        crc2.moveTo(100, 100);
+        crc2.arc(95, 100, 12, 0, 2 * Math.PI);
+        crc2.arc(110, 100, 12, 0, 2 * Math.PI);
+        crc2.arc(87, 100, 12, 0, 2 * Math.PI);
+        crc2.arc(100, 95, 12, 0, 2 * Math.PI);
+        crc2.fillStyle = "#ffffff";
+        crc2.fill();
 
-            //Cloud 3
-            crc2.beginPath();
-            crc2.moveTo(10, 170);
-            crc2.arc(10, 170, 10, 0, 2 * Math.PI);
-            crc2.arc(17, 163, 10, 0, 2 * Math.PI);
-            crc2.arc(17, 177, 10, 0, 2 * Math.PI);
-            crc2.arc(27, 163, 10, 0, 2 * Math.PI);
-            crc2.arc(27, 177, 10, 0, 2 * Math.PI);
-            crc2.moveTo(34, 170);
-            crc2.arc(34, 170, 10, 0, 2 * Math.PI);
-            crc2.fillStyle = "#ffffff";
-            crc2.fill();
+        //Cloud2
+        crc2.beginPath();
+        crc2.moveTo(235, 55);
+        crc2.arc(235, 55, 10, 0, 2 * Math.PI);
+        crc2.arc(228, 48, 10, 0, 2 * Math.PI);
+        crc2.arc(242, 50, 10, 0, 2 * Math.PI);
+        crc2.arc(230, 59, 8, 0, 2 * Math.PI);
+        crc2.arc(220, 57, 10, 0, 2 * Math.PI);
+        crc2.fillStyle = "#ffffff";
+        crc2.fill();
 
-            //Cloud4
-            crc2.beginPath();
-            crc2.moveTo(170, 15);
-            crc2.arc(170, 15, 10, 0, 2 * Math.PI);
-            crc2.arc(165, 20, 10, 0, 2 * Math.PI);
-            crc2.arc(175, 18, 10, 0, 2 * Math.PI);
-            crc2.arc(178, 17, 10, 0, 2 * Math.PI);
-            crc2.arc(180, 22, 10, 0, 2 * Math.PI);
-            crc2.moveTo(180, 22);
-            crc2.arc(185, 18, 8, 0, 2 * Math.PI);
-            crc2.fillStyle = "#ffffff";
-            crc2.fill();
+        //Cloud 3
+        crc2.beginPath();
+        crc2.moveTo(10, 170);
+        crc2.arc(10, 170, 10, 0, 2 * Math.PI);
+        crc2.arc(17, 163, 10, 0, 2 * Math.PI);
+        crc2.arc(17, 177, 10, 0, 2 * Math.PI);
+        crc2.arc(27, 163, 10, 0, 2 * Math.PI);
+        crc2.arc(27, 177, 10, 0, 2 * Math.PI);
+        crc2.moveTo(34, 170);
+        crc2.arc(34, 170, 10, 0, 2 * Math.PI);
+        crc2.fillStyle = "#ffffff";
+        crc2.fill();
 
-            //Hill
-            crc2.lineWidth = 1;
+        //Cloud4
+        crc2.beginPath();
+        crc2.moveTo(170, 15);
+        crc2.arc(170, 15, 10, 0, 2 * Math.PI);
+        crc2.arc(165, 20, 10, 0, 2 * Math.PI);
+        crc2.arc(175, 18, 10, 0, 2 * Math.PI);
+        crc2.arc(178, 17, 10, 0, 2 * Math.PI);
+        crc2.arc(180, 22, 10, 0, 2 * Math.PI);
+        crc2.moveTo(180, 22);
+        crc2.arc(185, 18, 8, 0, 2 * Math.PI);
+        crc2.fillStyle = "#ffffff";
+        crc2.fill();
 
-            crc2.beginPath();
-            crc2.moveTo(270, 110);
-            crc2.lineTo(0, 260);
-            crc2.closePath();
+        //Hill
+        crc2.lineWidth = 1;
 
-            crc2.stroke();
+        crc2.beginPath();
+        crc2.moveTo(270, 110);
+        crc2.lineTo(0, 260);
+        crc2.closePath();
 
-            //Sun
-            let x: number = 40;
-            let y: number = 40;
-            let radius: number = 20;
-            let startAngle: number = 0;
-            let endAngle: number = 2 * Math.PI;
+        crc2.stroke();
 
-            crc2.moveTo(40, 40);
-            crc2.beginPath();
-            crc2.arc(x, y, radius, startAngle, endAngle, true);
+        //Sun
+        let x: number = 40;
+        let y: number = 40;
+        let radius: number = 20;
+        let startAngle: number = 0;
+        let endAngle: number = 2 * Math.PI;
 
-            crc2.fillStyle = "#ffd700";
-            crc2.fill();
+        crc2.moveTo(40, 40);
+        crc2.beginPath();
+        crc2.arc(x, y, radius, startAngle, endAngle, true);
 
-            //Tree
+        crc2.fillStyle = "#ffd700";
+        crc2.fill();
+
+        //Tree
+        for (let i: number = 0; i < 15; i++) {
+            let x: number = Math.floor(Math.random() * crc2.canvas.width);
+            let y: number = Math.floor(Math.random() * (310 - 410) + crc2.canvas.height);
             crc2.beginPath();
             crc2.moveTo(x, y - 40);
             crc2.lineTo(x - 10, y);
@@ -98,6 +101,7 @@ namespace Animation {
             crc2.stroke();
         }
     }
+
     export class Snowflake {
         x: number;
         y: number;
@@ -106,16 +110,18 @@ namespace Animation {
         color: string;
 
         move(): void {
-            this.x += this.dx;
             this.y += this.dy;
+            if (this.y > crc2.canvas.height + 2) {
+                this.y = -2;
+            }
         }
         draw(): void {
             for (let i: number = 0; i < 100; i++) {
-                let a: number = Math.floor(Math.random() * crc2.canvas.width);
-                let b: number = Math.floor(Math.random() * crc2.canvas.height);
+                let x: number = Math.floor(Math.random() * crc2.canvas.width);
+                let y: number = Math.floor(Math.random() * crc2.canvas.height);
 
                 crc2.beginPath();
-                crc2.arc(a, b, 2, 0, 2 * Math.PI);
+                crc2.arc(x, y, 2, 0, 2 * Math.PI);
                 crc2.fillStyle = "#ffffff";
                 crc2.fill();
             }

@@ -8,7 +8,7 @@ namespace Animation {
     let sleighOne: Sleigh1[] = [];
     let childTwo: Child2[] = [];
     let sleighTwo: Sleigh2[] = [];
-    let background: Background;
+    let imgData: ImageData;
 
     function init(_event: Event): void {
         console.log("Canvas started");
@@ -17,16 +17,18 @@ namespace Animation {
         crc2 = canvas.getContext("2d");
 
         console.log(crc2);
-        
-        
-        
 
-        for (let i: number = 0; i < 20; i++) {
+        drawBackground();
+
+        imgData = crc2.getImageData(0, 0, 270, 410);
+
+
+        for (let i: number = 0; i < 100; i++) {
             let snowflake: Snowflake = new Snowflake();
-            snowflake.x = 0;
+            
             snowflake.y = Math.random() * crc2.canvas.height;
-            snowflake.dx = Math.random() * 4 - 2;
-            snowflake.dy = Math.random() * 4 - 2;
+            
+            snowflake.dy = Math.random() * 2 + 4;
             snowflake.color = "#000000";
 
             snowflakes.push(snowflake);
@@ -34,8 +36,8 @@ namespace Animation {
 
         for (let a: number = 0; a < 5; a++) {
             let child1: Child1 = new Child1();
-            child1.x = -crc2.canvas.width;
-            child1.y = -crc2.canvas.height;
+            child1.x = crc2.canvas.width;
+            child1.y = crc2.canvas.height;
             child1.dx = Math.random() * 4 - 2;
             child1.dy = Math.random() * 4 - 2;
 
@@ -72,8 +74,9 @@ namespace Animation {
     function update(): void {
         window.setTimeout(update, 1000 / fps);
         crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-
-        for (let i: number = 0; i < 20; i++) {
+        crc2.putImageData(imgData, 0, 0);
+        
+        for (let i: number = 0; i < 100; i++) {
             let snowflake: Snowflake = snowflakes[i];
             snowflake.move();
             snowflake.draw(); // keine Parameter erforderlich, denn der Stern weiß über sich Bescheid
