@@ -110,16 +110,15 @@ namespace Animation {
             this.y += this.dy;
         }
         draw(): void {
-            crc2.beginPath();
-            crc2.moveTo(this.x, this.y - 40);
-            crc2.lineTo(this.x - 10, this.y);
-            crc2.lineTo(this.x + 10, this.y);
-            crc2.closePath();
+            for (let i: number = 0; i < 100; i++) {
+                let a: number = Math.floor(Math.random() * crc2.canvas.width);
+                let b: number = Math.floor(Math.random() * crc2.canvas.height);
 
-            crc2.fillStyle = "#008000";
-            crc2.strokeStyle = "#008000";
-            crc2.fill();
-            crc2.stroke();
+                crc2.beginPath();
+                crc2.arc(a, b, 2, 0, 2 * Math.PI);
+                crc2.fillStyle = "#ffffff";
+                crc2.fill();
+            }
         }
     }
 

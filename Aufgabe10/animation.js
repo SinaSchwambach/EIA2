@@ -92,15 +92,14 @@ var Animation;
             this.y += this.dy;
         }
         draw() {
-            Animation.crc2.beginPath();
-            Animation.crc2.moveTo(this.x, this.y - 40);
-            Animation.crc2.lineTo(this.x - 10, this.y);
-            Animation.crc2.lineTo(this.x + 10, this.y);
-            Animation.crc2.closePath();
-            Animation.crc2.fillStyle = "#008000";
-            Animation.crc2.strokeStyle = "#008000";
-            Animation.crc2.fill();
-            Animation.crc2.stroke();
+            for (let i = 0; i < 100; i++) {
+                let a = Math.floor(Math.random() * Animation.crc2.canvas.width);
+                let b = Math.floor(Math.random() * Animation.crc2.canvas.height);
+                Animation.crc2.beginPath();
+                Animation.crc2.arc(a, b, 2, 0, 2 * Math.PI);
+                Animation.crc2.fillStyle = "#ffffff";
+                Animation.crc2.fill();
+            }
         }
     }
     Animation.Snowflake = Snowflake;

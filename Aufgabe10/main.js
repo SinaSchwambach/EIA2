@@ -24,8 +24,8 @@ var Animation;
         }
         for (let a = 0; a < 5; a++) {
             let child1 = new Animation.Child1();
-            child1.x = 20;
-            child1.y = 30;
+            child1.x = -Animation.crc2.canvas.width;
+            child1.y = -Animation.crc2.canvas.height;
             child1.dx = Math.random() * 4 - 2;
             child1.dy = Math.random() * 4 - 2;
             childOne.push(child1);
