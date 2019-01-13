@@ -8,6 +8,7 @@ namespace Animation {
     let sleighOne: Sleigh1[] = [];
     let childTwo: Child2[] = [];
     let sleighTwo: Sleigh2[] = [];
+    let background: Background;
 
     function init(_event: Event): void {
         console.log("Canvas started");
@@ -16,10 +17,13 @@ namespace Animation {
         crc2 = canvas.getContext("2d");
 
         console.log(crc2);
+        
+        
+        
 
         for (let i: number = 0; i < 20; i++) {
             let snowflake: Snowflake = new Snowflake();
-            snowflake.x = Math.random() * crc2.canvas.width;
+            snowflake.x = 0;
             snowflake.y = Math.random() * crc2.canvas.height;
             snowflake.dx = Math.random() * 4 - 2;
             snowflake.dy = Math.random() * 4 - 2;
@@ -30,32 +34,32 @@ namespace Animation {
 
         for (let a: number = 0; a < 5; a++) {
             let child1: Child1 = new Child1();
-            child1.x = 140;
-            child1.y = 255;
+            child1.x = 20;
+            child1.y = 30;
             child1.dx = Math.random() * 4 - 2;
             child1.dy = Math.random() * 4 - 2;
 
             childOne.push(child1);
 
             let sleigh1: Sleigh1 = new Sleigh1();
-            sleigh1.x = 135;
-            sleigh1.y = 263;
+            sleigh1.x = 20;
+            sleigh1.y = 30;
             sleigh1.dx = child1.dx;
             sleigh1.dy = child1.dy;
 
             sleighOne.push(sleigh1);
 
             let child2: Child2 = new Child2();
-            child2.x = 215;
-            child2.y = 185;
+            child2.x = 40;
+            child2.y = 50;
             child2.dx = Math.random() * 4 - 2;
             child2.dy = Math.random() * 4 - 2;
 
             childTwo.push(child2);
 
             let sleigh2: Sleigh2 = new Sleigh2();
-            sleigh2.x = 205;
-            sleigh2.y = 205;
+            sleigh2.x = 40;
+            sleigh2.y = 50;
             sleigh2.dx = child2.dx;
             sleigh2.dy = child2.dy;
 
@@ -90,7 +94,6 @@ namespace Animation {
             sleigh2.move();
             sleigh2.draw();
         }
-
           console.log("Update");
     }
 
