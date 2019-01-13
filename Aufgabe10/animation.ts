@@ -84,6 +84,18 @@ namespace Animation {
 
             crc2.fillStyle = "#ffd700";
             crc2.fill();
+
+            //Tree
+            crc2.beginPath();
+            crc2.moveTo(x, y - 40);
+            crc2.lineTo(x - 10, y);
+            crc2.lineTo(x + 10, y);
+            crc2.closePath();
+
+            crc2.fillStyle = "#008000";
+            crc2.strokeStyle = "#008000";
+            crc2.fill();
+            crc2.stroke();
         }
     }
     export class Snowflake {

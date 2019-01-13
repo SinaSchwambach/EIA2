@@ -73,6 +73,16 @@ var Animation;
             Animation.crc2.arc(x, y, radius, startAngle, endAngle, true);
             Animation.crc2.fillStyle = "#ffd700";
             Animation.crc2.fill();
+            //Tree
+            Animation.crc2.beginPath();
+            Animation.crc2.moveTo(x, y - 40);
+            Animation.crc2.lineTo(x - 10, y);
+            Animation.crc2.lineTo(x + 10, y);
+            Animation.crc2.closePath();
+            Animation.crc2.fillStyle = "#008000";
+            Animation.crc2.strokeStyle = "#008000";
+            Animation.crc2.fill();
+            Animation.crc2.stroke();
         }
     }
     Animation.Background = Background;
