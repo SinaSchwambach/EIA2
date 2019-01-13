@@ -22,32 +22,32 @@ var Animation;
             snowflake.color = "#000000";
             snowflakes.push(snowflake);
         }
-        for (let a = 0; a < 5; a++) {
-            let child1 = new Animation.Child1();
-            child1.x = Animation.crc2.canvas.width;
-            child1.y = Animation.crc2.canvas.height;
-            child1.dx = Math.random() * 4 - 2;
-            child1.dy = Math.random() * 4 - 2;
-            childOne.push(child1);
-            let sleigh1 = new Animation.Sleigh1();
-            sleigh1.x = 20;
-            sleigh1.y = 30;
-            sleigh1.dx = child1.dx;
-            sleigh1.dy = child1.dy;
-            sleighOne.push(sleigh1);
-            let child2 = new Animation.Child2();
-            child2.x = 40;
-            child2.y = 50;
-            child2.dx = Math.random() * 4 - 2;
-            child2.dy = Math.random() * 4 - 2;
-            childTwo.push(child2);
-            let sleigh2 = new Animation.Sleigh2();
-            sleigh2.x = 40;
-            sleigh2.y = 50;
-            sleigh2.dx = child2.dx;
-            sleigh2.dy = child2.dy;
-            sleighTwo.push(sleigh2);
-        }
+        //  for (let a: number = 0; a < 5; a++) {
+        let child1 = new Animation.Child1();
+        child1.x = 140;
+        child1.y = 255;
+        child1.dx = Math.random() * 4 - 2;
+        child1.dy = Math.random() * 4 - 2;
+        childOne.push(child1);
+        let sleigh1 = new Animation.Sleigh1();
+        sleigh1.x = 20;
+        sleigh1.y = 30;
+        sleigh1.dx = child1.dx;
+        sleigh1.dy = child1.dy;
+        sleighOne.push(sleigh1);
+        let child2 = new Animation.Child2();
+        child2.x = 40;
+        child2.y = 50;
+        child2.dx = Math.random() * 4 - 2;
+        child2.dy = Math.random() * 4 - 2;
+        childTwo.push(child2);
+        let sleigh2 = new Animation.Sleigh2();
+        sleigh2.x = 40;
+        sleigh2.y = 50;
+        sleigh2.dx = child2.dx;
+        sleigh2.dy = child2.dy;
+        sleighTwo.push(sleigh2);
+        //}
         update();
     }
     function update() {
