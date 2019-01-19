@@ -112,19 +112,19 @@ namespace Animation {
         move(): void {
             this.y += this.dy;
             if (this.y > crc2.canvas.height + 2) {
-                this.y = -2;
+                this.y = -1;
             }
         }
         draw(): void {
-            for (let i: number = 0; i < 100; i++) {
-                let x: number = Math.floor(Math.random() * crc2.canvas.width);
-                let y: number = Math.floor(Math.random() * crc2.canvas.height);
+//            for (let i: number = 0; i < 100; i++) {
+//                let x: number = Math.floor(Math.random() * crc2.canvas.width);
+//                let y: number = Math.floor(Math.random() * crc2.canvas.height);
 
                 crc2.beginPath();
-                crc2.arc(x, y, 2, 0, 2 * Math.PI);
+                crc2.arc(this.x, this.y, 2, 0, 2 * Math.PI);
                 crc2.fillStyle = "#ffffff";
                 crc2.fill();
-            }
+//            }
         }
     }
 

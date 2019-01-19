@@ -27,6 +27,7 @@ namespace Animation {
             let snowflake: Snowflake = new Snowflake();
 
             snowflake.y = Math.random() * crc2.canvas.height;
+            snowflake.x = Math.random() * crc2.canvas.width;
 
             snowflake.dy = Math.random() * 2 + 4;
             snowflake.color = "#000000";
@@ -82,7 +83,7 @@ namespace Animation {
             snowflake.draw(); // keine Parameter erforderlich, denn der Stern weiß über sich Bescheid
         }
 
-        for (let a: number = 0; a < 5; a++) {
+        for (let a: number = 0; a < 1; a++) {
 
             let child1: Child1 = childOne[a];
             let child2: Child2 = childTwo[a];

@@ -92,18 +92,18 @@ var Animation;
         move() {
             this.y += this.dy;
             if (this.y > Animation.crc2.canvas.height + 2) {
-                this.y = -2;
+                this.y = -1;
             }
         }
         draw() {
-            for (let i = 0; i < 100; i++) {
-                let x = Math.floor(Math.random() * Animation.crc2.canvas.width);
-                let y = Math.floor(Math.random() * Animation.crc2.canvas.height);
-                Animation.crc2.beginPath();
-                Animation.crc2.arc(x, y, 2, 0, 2 * Math.PI);
-                Animation.crc2.fillStyle = "#ffffff";
-                Animation.crc2.fill();
-            }
+            //            for (let i: number = 0; i < 100; i++) {
+            //                let x: number = Math.floor(Math.random() * crc2.canvas.width);
+            //                let y: number = Math.floor(Math.random() * crc2.canvas.height);
+            Animation.crc2.beginPath();
+            Animation.crc2.arc(this.x, this.y, 2, 0, 2 * Math.PI);
+            Animation.crc2.fillStyle = "#ffffff";
+            Animation.crc2.fill();
+            //            }
         }
     }
     Animation.Snowflake = Snowflake;

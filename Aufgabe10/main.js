@@ -18,6 +18,7 @@ var Animation;
         for (let i = 0; i < 100; i++) {
             let snowflake = new Animation.Snowflake();
             snowflake.y = Math.random() * Animation.crc2.canvas.height;
+            snowflake.x = Math.random() * Animation.crc2.canvas.width;
             snowflake.dy = Math.random() * 2 + 4;
             snowflake.color = "#000000";
             snowflakes.push(snowflake);
@@ -59,7 +60,7 @@ var Animation;
             snowflake.move();
             snowflake.draw(); // keine Parameter erforderlich, denn der Stern weiß über sich Bescheid
         }
-        for (let a = 0; a < 5; a++) {
+        for (let a = 0; a < 1; a++) {
             let child1 = childOne[a];
             let child2 = childTwo[a];
             let sleigh1 = sleighOne[a];
