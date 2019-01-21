@@ -1,1 +1,0 @@
-//# sourceMappingURL=inheritance.js.map
