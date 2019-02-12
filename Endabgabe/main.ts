@@ -71,9 +71,9 @@ namespace Endabgabe {
 
             let x: number = _event.clientX;
             let y: number = _event.clientY;
-            
+
             let ball: Snowball = new Snowball();
-       
+
             ball.setTargetX = x;
             ball.setTargetY = y;
             //           ball.timer = 25;

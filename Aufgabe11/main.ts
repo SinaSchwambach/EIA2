@@ -25,7 +25,6 @@ namespace Inheritance {
 
         update();
 
-
         function update(): void {
             crc2.putImageData(imgData, 0, 0);
             window.setTimeout(update, 1000 / fps);

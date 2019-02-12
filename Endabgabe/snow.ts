@@ -9,7 +9,7 @@ namespace Endabgabe {
             this.xP = Math.random() * 1000;
             this.yP = Math.random() * 550;
         }
-        
+
         move(): void {
             this.yD = 5;
             this.xD = Math.random() * 0;

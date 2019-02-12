@@ -17,7 +17,7 @@ namespace Endabgabe {
         }//constructor
 
         move(): void {
-          
+
 
             this.xP += this.xD;
             this.yP += this.yD;

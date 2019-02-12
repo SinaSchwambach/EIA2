@@ -12,7 +12,7 @@ namespace Endabgabe {
         draw(): void {
 
         }
-        
+
         move(): void {
 
         }

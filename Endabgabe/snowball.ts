@@ -20,7 +20,6 @@ namespace Endabgabe {
 
 
 
-
         move(): void {
             this.xP += this.setTargetX ;
             this.yP += this.setTargetY ;
