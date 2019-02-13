@@ -13,34 +13,43 @@ var Endabgabe;
         move() {
             this.xP += this.xD;
             this.yP += this.yD;
-            if (this.yP > 550) {
-                this.next == true;
-            } //if
-            this.draw();
         } //move
         getSpeed() {
             return Math.floor(this.xD * this.yD * 10);
         }
         draw() {
-            Endabgabe.crc.beginPath();
-            Endabgabe.crc.fillStyle = "#000000";
-            Endabgabe.crc.arc(this.xP - 20, this.yP - 5, 6, 0, 2 * Math.PI);
-            Endabgabe.crc.fill();
-            Endabgabe.crc.beginPath();
-            Endabgabe.crc.fillStyle = this.colorBody;
-            Endabgabe.crc.fillRect(this.xP - 25, this.yP + 2, 10, 20);
-            Endabgabe.crc.stroke();
-            Endabgabe.crc.fill();
-            //Schlitten
-            Endabgabe.crc.beginPath();
-            Endabgabe.crc.moveTo(this.xP - 37, this.yP + 25);
-            Endabgabe.crc.lineTo(this.xP - 10, this.yP + 42);
-            Endabgabe.crc.lineTo(this.xP - 6, this.yP + 43);
-            Endabgabe.crc.lineWidth = 1;
-            Endabgabe.crc.lineCap = "round";
-            Endabgabe.crc.strokeStyle = "#000000";
-            Endabgabe.crc.stroke();
-            Endabgabe.crc.fill();
+            if (this.state == "hit") {
+                Endabgabe.crc.beginPath();
+                Endabgabe.crc.moveTo(this.xP - 37, this.yP + 25);
+                Endabgabe.crc.lineTo(this.xP - 10, this.yP + 42);
+                Endabgabe.crc.lineTo(this.xP - 6, this.yP + 43);
+                Endabgabe.crc.lineWidth = 1;
+                Endabgabe.crc.lineCap = "round";
+                Endabgabe.crc.strokeStyle = "#000000";
+                Endabgabe.crc.stroke();
+                Endabgabe.crc.fill();
+            }
+            if (this.state == "ride") {
+                Endabgabe.crc.beginPath();
+                Endabgabe.crc.fillStyle = "#000000";
+                Endabgabe.crc.arc(this.xP - 20, this.yP - 5, 6, 0, 2 * Math.PI);
+                Endabgabe.crc.fill();
+                Endabgabe.crc.beginPath();
+                Endabgabe.crc.fillStyle = this.colorBody;
+                Endabgabe.crc.fillRect(this.xP - 25, this.yP + 2, 10, 20);
+                Endabgabe.crc.stroke();
+                Endabgabe.crc.fill();
+                //Schlitten
+                Endabgabe.crc.beginPath();
+                Endabgabe.crc.moveTo(this.xP - 37, this.yP + 25);
+                Endabgabe.crc.lineTo(this.xP - 10, this.yP + 42);
+                Endabgabe.crc.lineTo(this.xP - 6, this.yP + 43);
+                Endabgabe.crc.lineWidth = 1;
+                Endabgabe.crc.lineCap = "round";
+                Endabgabe.crc.strokeStyle = "#000000";
+                Endabgabe.crc.stroke();
+                Endabgabe.crc.fill();
+            }
         }
     }
     Endabgabe.Child = Child;

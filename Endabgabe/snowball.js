@@ -1,25 +1,60 @@
 var Endabgabe;
 (function (Endabgabe) {
     class Snowball extends Endabgabe.DrawObject {
-        constructor() {
-            super();
-            this.xP = 500;
-            this.yP = 500;
-            //        this.move();
-            this.draw();
+        draw() {
+            if (this.state == "throw") {
+                this.throwSnowball();
+            }
         }
         move() {
-            this.xP += this.setTargetX;
-            this.yP += this.setTargetY;
+            if (this.radius > 14) {
+                this.radius -= 1;
+            }
+            else {
+                this.radius = 0;
+            }
         }
-        draw() {
+        throwSnowball() {
+            Endabgabe.crc.fillStyle = "#ffffff";
+            Endabgabe.crc.strokeStyle = "#000000";
             Endabgabe.crc.beginPath();
-            Endabgabe.crc.arc(this.xP, this.yP, 7, 0, 2 * Math.PI);
-            Endabgabe.crc.fillStyle = "#FFFFFF";
+            Endabgabe.crc.arc(this.xP, this.yP, this.radius, 0, 2 * Math.PI);
             Endabgabe.crc.fill();
-            Endabgabe.crc.lineWidth = .3;
-            Endabgabe.crc.strokeStyle = "black";
             Endabgabe.crc.stroke();
+        }
+        hit(_xP, _yP) {
+            Endabgabe.crc.lineWidth = 50;
+            Endabgabe.crc.beginPath();
+            Endabgabe.crc.moveTo(_xP, _yP);
+            Endabgabe.crc.lineTo(_xP - 7, _yP + 2);
+            Endabgabe.crc.moveTo(_xP, _yP);
+            Endabgabe.crc.lineTo(_xP - 6, _yP + 4);
+            Endabgabe.crc.moveTo(_xP, _yP);
+            Endabgabe.crc.lineTo(_xP, _yP - 15);
+            Endabgabe.crc.arc(_xP, _yP - 15, 15, 0, 2 * Math.PI);
+            Endabgabe.crc.moveTo(_xP, _yP - 10);
+            Endabgabe.crc.lineTo(_xP - 6, _yP + 2);
+            Endabgabe.crc.moveTo(_xP, _yP - 12);
+            Endabgabe.crc.lineTo(_xP - 7, _yP - 2);
+            Endabgabe.crc.moveTo(_xP + 8, _yP + 5);
+            Endabgabe.crc.lineTo(_xP - 10, _yP + 7);
+            Endabgabe.crc.moveTo(_xP + 4, _yP + 6);
+            Endabgabe.crc.lineTo(_xP + 3, _yP + 12);
+            Endabgabe.crc.moveTo(_xP - 6, _yP + 7);
+            Endabgabe.crc.lineTo(_xP - 8, _yP + 14);
+            Endabgabe.crc.moveTo(_xP + 8, _yP + 12);
+            Endabgabe.crc.lineTo(_xP - 10, _yP + 15);
+            console.log("got you");
+            if (Endabgabe.crc.isPointInPath(this.xP, this.yP)) {
+                console.log("win!");
+                Endabgabe.crc.closePath();
+                return true;
+            }
+            else {
+                console.log("fail");
+                Endabgabe.crc.closePath();
+                return false;
+            }
         }
     }
     Endabgabe.Snowball = Snowball;
