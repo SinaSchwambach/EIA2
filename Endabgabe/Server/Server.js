@@ -23,23 +23,22 @@ function handleRequest(_request, _response) {
     var command = query["command"];
     switch (command) {
         case "insert":
-            let student = {
+            let ranking = {
                 name: query["name"],
-                firstname: query["firstname"],
-                matrikel: parseInt(query["matrikel"])
+                highscore: parseInt(query["highscore"])
             };
-            Database.insert(student);
+            Database.insert(ranking);
             respond(_response, "storing data");
             break;
         case "refresh":
             Database.findAll(findCallback);
             break;
-        case "find":
-            let matrikel = {
-                matrikel: parseInt(query["matrikel"])
-            };
-            Database.find(matrikel, findCallback);
-            break;
+        /*   case "find":
+               let matrikel: MatrikelObject = {
+                   matrikel: parseInt(query["matrikel"])
+               };
+               Database.find(matrikel, findCallback);
+               break;*/
         default:
             respond(_response, "unknown command: " + command);
             break;

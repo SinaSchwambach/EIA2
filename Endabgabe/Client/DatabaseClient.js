@@ -1,5 +1,5 @@
-var DatabaseClient;
-(function (DatabaseClient) {
+var Endabgabe;
+(function (Endabgabe) {
     window.addEventListener("load", init);
     // let serverAddress: string = "http://localhost:8100";
     let serverAddress = " https://eia2ws18.herokuapp.com/";
@@ -7,17 +7,17 @@ var DatabaseClient;
         console.log("Init");
         let insertButton = document.getElementById("insert");
         let refreshButton = document.getElementById("refresh");
-        let findButton = document.getElementById("find");
+        //   let findButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("find");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
-        findButton.addEventListener("click", find);
+        //   findButton.addEventListener("click", find);
     }
     function insert(_event) {
         let inputs = document.getElementsByTagName("input");
         let query = "command=insert";
         query += "&name=" + inputs[0].value;
-        query += "&firstname=" + inputs[1].value;
-        query += "&matrikel=" + inputs[2].value;
+        query += "&highscore=" + Endabgabe.highscore;
+        //   query += "&matrikel=" + inputs[2].value;
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
@@ -25,13 +25,13 @@ var DatabaseClient;
         let query = "command=refresh";
         sendRequest(query, handleFindResponse);
     }
-    function find(_event) {
-        let search = document.getElementById("Suche");
-        let query = "command=find";
-        query += "&matrikel=" + search.value;
-        console.log(query);
-        sendRequest(query, handleFindResponse);
-    }
+    /*  function find(_event: Event): void {
+          let search: HTMLInputElement = <HTMLInputElement>document.getElementById("Suche");
+          let query: string = "command=find";
+          query += "&matrikel=" + search.value;
+          console.log(query);
+          sendRequest(query, handleFindResponse);
+          }*/
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", serverAddress + "?" + _query, true);
@@ -53,5 +53,5 @@ var DatabaseClient;
             console.log(responseAsJson);
         }
     }
-})(DatabaseClient || (DatabaseClient = {}));
+})(Endabgabe || (Endabgabe = {}));
 //# sourceMappingURL=DatabaseClient.js.map

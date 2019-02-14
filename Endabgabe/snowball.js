@@ -8,7 +8,7 @@ var Endabgabe;
         }
         move() {
             if (this.radius > 14) {
-                this.radius -= 1;
+                this.radius -= 2;
             }
             else {
                 this.radius = 0;
@@ -23,7 +23,6 @@ var Endabgabe;
             Endabgabe.crc.stroke();
         }
         hit(_xP, _yP) {
-            Endabgabe.crc.lineWidth = 50;
             Endabgabe.crc.beginPath();
             Endabgabe.crc.moveTo(_xP, _yP);
             Endabgabe.crc.lineTo(_xP - 7, _yP + 2);
@@ -44,15 +43,14 @@ var Endabgabe;
             Endabgabe.crc.lineTo(_xP - 8, _yP + 14);
             Endabgabe.crc.moveTo(_xP + 8, _yP + 12);
             Endabgabe.crc.lineTo(_xP - 10, _yP + 15);
-            console.log("got you");
+            Endabgabe.crc.closePath();
+            console.log("hi");
             if (Endabgabe.crc.isPointInPath(this.xP, this.yP)) {
                 console.log("win!");
-                Endabgabe.crc.closePath();
                 return true;
             }
             else {
                 console.log("fail");
-                Endabgabe.crc.closePath();
                 return false;
             }
         }

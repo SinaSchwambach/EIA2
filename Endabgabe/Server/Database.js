@@ -8,7 +8,7 @@ console.log("Database starting");
 let databaseURL = "mongodb://localhost:8100";
 let databaseName = "Test";
 let db;
-let students;
+let ranking;
 // running on heroku?
 if (process.env.NODE_ENV == "production") {
     //    databaseURL = "mongodb://username:password@hostname:port/database";
@@ -24,48 +24,48 @@ function handleConnect(_e, _db) {
     else {
         console.log("Connected to database!");
         db = _db.db(databaseName);
-        students = db.collection("students");
+        ranking = db.collection("ranking");
     }
 }
 function insert(_doc) {
     // try insertion then activate callback "handleInsert"
-    students.insertOne(_doc, handleInsert);
+    ranking.insertOne(_doc, handleInsert);
 }
 exports.insert = insert;
 // insertion-handler receives an error object as standard parameter
 function handleInsert(_e) {
     console.log("Database insertion returned -> " + _e);
 }
-function find(_matrikel, _callback) {
+/*export function find (_matrikel: MatrikelObject, _callback: Function): void {
     console.log(_matrikel);
-    var cursor = students.find(_matrikel);
+    var cursor: Mongo.Cursor = students.find(_matrikel);
     // try to convert to array, then activate callback "prepareAnswer"
     cursor.toArray(prepareAnswer);
+
     // toArray-handler receives two standard parameters, an error object and the array
     // implemented as inner function, so _callback is in scope
-    function prepareAnswer(_e, studentArray) {
+    function prepareAnswer(_e: Mongo.MongoError, rankingArray: HighscoreData[]): void {
         if (_e)
             _callback("Error" + _e);
         else
             // stringify creates a json-string, passed it back to _callback
-            _callback(JSON.stringify(studentArray));
+            _callback(JSON.stringify(rankingArray));
     }
-}
-exports.find = find;
+    }*/
 // try to fetch all documents from database, then activate callback
 function findAll(_callback) {
     // cursor points to the retreived set of documents in memory
-    var cursor = students.find();
+    var cursor = ranking.find();
     // try to convert to array, then activate callback "prepareAnswer"
     cursor.toArray(prepareAnswer);
     // toArray-handler receives two standard parameters, an error object and the array
     // implemented as inner function, so _callback is in scope
-    function prepareAnswer(_e, studentArray) {
+    function prepareAnswer(_e, rankingArray) {
         if (_e)
             _callback("Error" + _e);
         else
             // stringify creates a json-string, passed it back to _callback
-            _callback(JSON.stringify(studentArray));
+            _callback(JSON.stringify(rankingArray));
     }
 }
 exports.findAll = findAll;

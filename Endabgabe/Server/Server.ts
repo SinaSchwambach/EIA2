@@ -32,23 +32,22 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
 
     switch (command) {
         case "insert":
-            let student: StudentData = {
+            let ranking: HighscoreData = {
                 name: query["name"],
-                firstname: query["firstname"],
-                matrikel: parseInt(query["matrikel"])
+                highscore: parseInt(query["highscore"])
             };
-            Database.insert(student);
+            Database.insert(ranking);
             respond(_response, "storing data");
             break;
-        case "refresh":
+       case "refresh":
             Database.findAll(findCallback);
             break;
-        case "find": 
+     /*   case "find": 
             let matrikel: MatrikelObject = {
                 matrikel: parseInt(query["matrikel"])
             };
             Database.find(matrikel, findCallback);
-            break;
+            break;*/
         default:
             respond(_response, "unknown command: " + command);
             break;

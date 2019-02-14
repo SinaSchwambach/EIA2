@@ -14,7 +14,7 @@ namespace Endabgabe {
 
         move(): void {
             if (this.radius > 14) {
-                this.radius -= 1;
+                this.radius -= 2;
             } else { this.radius = 0; }
         }
 
@@ -30,7 +30,6 @@ namespace Endabgabe {
 
         hit(_xP: number, _yP: number): boolean {
 
-            crc.lineWidth = 50;
             crc.beginPath();
             crc.moveTo(_xP, _yP);
             crc.lineTo(_xP - 7, _yP + 2);
@@ -51,18 +50,20 @@ namespace Endabgabe {
             crc.lineTo(_xP - 8, _yP + 14);
             crc.moveTo(_xP + 8, _yP + 12);
             crc.lineTo(_xP - 10, _yP + 15);
+            crc.closePath();
 
-            console.log("got you");
+            console.log("hi");
+
             if (crc.isPointInPath(this.xP, this.yP)) {
                 console.log("win!");
-                crc.closePath();
+
                 return true;
             }
             else {
                 console.log("fail");
-                crc.closePath();
+
                 return false;
-            } 
+            }
 
         }
     }

@@ -3,6 +3,8 @@ var Endabgabe;
     window.addEventListener("load", startGame);
     function startGame() {
         document.getElementById("start").style.display = "initial";
+        document.getElementsByTagName("canvas")[0].style.display = "none";
+        document.getElementById("endScreen").style.display = "initial";
         let button = document.getElementsByTagName("Button")[0];
         button.addEventListener("click", init);
     }
@@ -13,8 +15,11 @@ var Endabgabe;
     let cloudOne;
     let cloudTwo;
     let fps = 25;
-    let highscore = 0;
+    Endabgabe.highscore = 0;
     function init() {
+        window.setTimeout(endGame, 60000);
+        document.getElementById("endScreen").style.display = "none";
+        document.getElementsByTagName("canvas")[0].style.display = "initial";
         document.getElementById("highscore").style.display = "initial";
         let canvas = document.getElementsByTagName("canvas")[0];
         canvas.addEventListener("click", shoot);
@@ -96,9 +101,9 @@ var Endabgabe;
                             if (snowballs[i].hit(children[a].xP, children[a].yP) == true && children[a].state == "ride") {
                                 children[a].state = "hit";
                                 console.log("hi");
-                                highscore += Math.floor(children[a].yD * children[a].xD);
-                                console.log(highscore);
-                                document.getElementById("highscore").innerHTML = "Curent Score: " + highscore.toString();
+                                Endabgabe.highscore += Math.floor(children[a].yD * children[a].xD);
+                                console.log(Endabgabe.highscore);
+                                document.getElementById("highscore").innerHTML = " Your Score: " + Endabgabe.highscore.toString();
                             }
                         }
                     }
@@ -110,6 +115,64 @@ var Endabgabe;
                       console.log("Snowballarraylenght:" + snowballs.length);
                   }*/
         } //update
+        function endGame() {
+            document.getElementsByTagName("canvas")[0].style.display = "none";
+            document.getElementById("endScreen").style.display = "initial";
+            startDatabase();
+            let serverAddress = " https://eia2ws18.herokuapp.com/";
+            function startDatabase() {
+                console.log("Init");
+                let insertButton = document.getElementById("insert");
+                let refreshButton = document.getElementById("refresh");
+                let showScore = document.getElementById("showHighscore");
+                showScore.innerHTML = Endabgabe.highscore.toString();
+                //   let findButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("find");
+                insertButton.addEventListener("click", insert);
+                refreshButton.addEventListener("click", refresh);
+                //   findButton.addEventListener("click", find);
+            }
+            function insert(_event) {
+                let inputs = document.getElementsByTagName("input");
+                let query = "command=insert";
+                query += "&name=" + inputs[0].value;
+                query += "&highscore=" + Endabgabe.highscore;
+                //   query += "&matrikel=" + inputs[2].value;
+                console.log(query);
+                sendRequest(query, handleInsertResponse);
+            }
+            function refresh(_event) {
+                let query = "command=refresh";
+                sendRequest(query, handleFindResponse);
+            }
+            /*  function find(_event: Event): void {
+                  let search: HTMLInputElement = <HTMLInputElement>document.getElementById("Suche");
+                  let query: string = "command=find";
+                  query += "&matrikel=" + search.value;
+                  console.log(query);
+                  sendRequest(query, handleFindResponse);
+                  }*/
+            function sendRequest(_query, _callback) {
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET", serverAddress + "?" + _query, true);
+                xhr.addEventListener("readystatechange", _callback);
+                xhr.send();
+            }
+            function handleInsertResponse(_event) {
+                let xhr = _event.target;
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    alert(xhr.response);
+                }
+            }
+            function handleFindResponse(_event) {
+                let xhr = _event.target;
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    let output = document.getElementsByTagName("textarea")[0];
+                    output.value = xhr.response;
+                    let responseAsJson = JSON.parse(xhr.response);
+                    console.log(responseAsJson);
+                }
+            }
+        }
     } //init
 })(Endabgabe || (Endabgabe = {})); //namespace
 //# sourceMappingURL=main.js.map

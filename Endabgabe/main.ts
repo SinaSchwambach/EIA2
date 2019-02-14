@@ -4,12 +4,15 @@ namespace Endabgabe {
 
     function startGame(): void {
         document.getElementById("start").style.display = "initial";
+        document.getElementsByTagName("canvas")[0].style.display = "none";
+        document.getElementById("endScreen").style.display = "initial";
         let button: HTMLButtonElement = <HTMLButtonElement>document.getElementsByTagName("Button")[0];
         button.addEventListener("click", init);
 
     }
 
     export let crc: CanvasRenderingContext2D;
+
 
     let objects: DrawObject[] = [];
     let snowballs: Snowball[] = [];
@@ -20,12 +23,14 @@ namespace Endabgabe {
     let cloudTwo: CloudTwo;
 
     let fps: number = 25;
-    let highscore: number = 0;
+    export let highscore: number = 0;
 
 
     function init(): void {
 
-
+        window.setTimeout(endGame, 60000);
+        document.getElementById("endScreen").style.display = "none";
+        document.getElementsByTagName("canvas")[0].style.display = "initial";
         document.getElementById("highscore").style.display = "initial";
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         canvas.addEventListener("click", shoot);
@@ -133,16 +138,15 @@ namespace Endabgabe {
                                 console.log("hi");
                                 highscore += Math.floor(children[a].yD * children[a].xD);
                                 console.log(highscore);
-                                document.getElementById("highscore").innerHTML = "Curent Score: " + highscore.toString();
-                                //   document.getElementById("throw").innerHTML = "SnowBalls you have throwen: " + snowballs.length.toString();
+                                document.getElementById("highscore").innerHTML = " Your Score: " + highscore.toString();
+
                             }
-                            /*else {
-                                document.getElementById("throw").innerHTML = "SnowBalls you have throwen: " + snowballs.length.toString();
-                            }*/
+
                         }
                     }
                 }
             }
+
 
             /*     for (let i: number = 0; i < snowballs.length; i++) {
                       snowballs[i].draw();
@@ -150,5 +154,71 @@ namespace Endabgabe {
                       console.log("Snowballarraylenght:" + snowballs.length);
                   }*/
         }//update
+        function endGame(): void {
+            document.getElementsByTagName("canvas")[0].style.display = "none";
+            document.getElementById("endScreen").style.display = "initial";
+            startDatabase();
+            let serverAddress: string = " https://eia2ws18.herokuapp.com/";
+
+
+            function startDatabase(): void {
+                console.log("Init");
+                let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
+                let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
+                let showScore: HTMLElement = document.getElementById("showHighscore");
+                showScore.innerHTML = highscore.toString();
+                //   let findButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("find");
+                insertButton.addEventListener("click", insert);
+                refreshButton.addEventListener("click", refresh);
+                //   findButton.addEventListener("click", find);
+            }
+
+            function insert(_event: Event): void {
+                let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
+                let query: string = "command=insert";
+                query += "&name=" + inputs[0].value;
+                query += "&highscore=" + highscore;
+                //   query += "&matrikel=" + inputs[2].value;
+                console.log(query);
+                sendRequest(query, handleInsertResponse);
+            }
+
+            function refresh(_event: Event): void {
+                let query: string = "command=refresh";
+                sendRequest(query, handleFindResponse);
+            }
+
+            /*  function find(_event: Event): void {
+                  let search: HTMLInputElement = <HTMLInputElement>document.getElementById("Suche");
+                  let query: string = "command=find";
+                  query += "&matrikel=" + search.value;
+                  console.log(query);
+                  sendRequest(query, handleFindResponse);
+                  }*/
+
+            function sendRequest(_query: string, _callback: EventListener): void {
+                let xhr: XMLHttpRequest = new XMLHttpRequest();
+                xhr.open("GET", serverAddress + "?" + _query, true);
+                xhr.addEventListener("readystatechange", _callback);
+                xhr.send();
+            }
+
+            function handleInsertResponse(_event: ProgressEvent): void {
+                let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    alert(xhr.response);
+                }
+            }
+
+            function handleFindResponse(_event: ProgressEvent): void {
+                let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
+                    output.value = xhr.response;
+                    let responseAsJson: JSON = JSON.parse(xhr.response);
+                    console.log(responseAsJson);
+                }
+            }
+        }
     }//init
 }//namespace
