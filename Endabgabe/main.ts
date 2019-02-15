@@ -29,7 +29,7 @@ namespace Endabgabe {
 
 
     function init(): void {
-
+        window.clearTimeout(60000);
         window.setTimeout(endGame, 60000);
         //    document.getElementById("startGame").style.display = "none";
         document.getElementById("endScreen").style.display = "none";
@@ -49,9 +49,6 @@ namespace Endabgabe {
 
         update();
 
-
-
-
         function shoot(_event: MouseEvent): void {
             let ball: Snowball = new Snowball();
 
@@ -66,8 +63,6 @@ namespace Endabgabe {
             console.log(ball.xP, ball.yP);
             console.log("snowballs:" + snowballs.length);
         }
-
-
 
         function generateSnow(): void {
             for (let i: number = 0; i < 150; i++) {
@@ -84,6 +79,7 @@ namespace Endabgabe {
 
 
         function generateChild(): void {
+            window.clearTimeout(60000);
             window.setTimeout(generateChild, 3000);
 
             let child: Child = new Child();
@@ -99,7 +95,7 @@ namespace Endabgabe {
       
               }//generateSnowball*/
         function update(): void {
-
+            window.clearTimeout(60000);
             //     document.getElementById("startGame").style.display = "none";
             crc.putImageData(imagedata, 0, 0);
             window.setTimeout(update, 1000 / fps);
@@ -115,7 +111,6 @@ namespace Endabgabe {
                 object.draw();
                 object.move();
             }
-
 
             for (let i: number = 0; i < snowballs.length; i++) {
                 console.log("test");
@@ -145,7 +140,7 @@ namespace Endabgabe {
                     }
                 }
             }
-            
+
             for (let i: number = 0; i < children.length; i++) {
                 children[i].move();
                 children[i].draw();
@@ -165,6 +160,7 @@ namespace Endabgabe {
               }*/
         //update
         function endGame(): void {
+
             document.getElementsByTagName("canvas")[0].style.display = "none";
             document.getElementById("endScreen").style.display = "initial";
             startDatabase();

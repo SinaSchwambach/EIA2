@@ -18,6 +18,7 @@ var Endabgabe;
     let fps = 25;
     Endabgabe.highscore = 0;
     function init() {
+        window.clearTimeout(60000);
         window.setTimeout(endGame, 60000);
         //    document.getElementById("startGame").style.display = "none";
         document.getElementById("endScreen").style.display = "none";
@@ -55,6 +56,7 @@ var Endabgabe;
             cloudTwo = new Endabgabe.CloudTwo();
         } //generateClouds
         function generateChild() {
+            window.clearTimeout(60000);
             window.setTimeout(generateChild, 3000);
             let child = new Endabgabe.Child();
             child.state = "ride";
@@ -67,6 +69,7 @@ var Endabgabe;
       
               }//generateSnowball*/
         function update() {
+            window.clearTimeout(60000);
             //     document.getElementById("startGame").style.display = "none";
             Endabgabe.crc.putImageData(imagedata, 0, 0);
             window.setTimeout(update, 1000 / fps);
