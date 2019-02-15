@@ -5,8 +5,10 @@ namespace Endabgabe {
     function startGame(): void {
         document.getElementById("start").style.display = "initial";
         document.getElementsByTagName("canvas")[0].style.display = "none";
+        //   document.getElementsByTagName("fieldset")[0].style.display = "none";
         document.getElementById("endScreen").style.display = "initial";
-        let button: HTMLButtonElement = <HTMLButtonElement>document.getElementsByTagName("Button")[0];
+        let button: HTMLElement = document.getElementById("start");
+
         button.addEventListener("click", init);
 
     }
@@ -29,6 +31,7 @@ namespace Endabgabe {
     function init(): void {
 
         window.setTimeout(endGame, 60000);
+        //    document.getElementById("startGame").style.display = "none";
         document.getElementById("endScreen").style.display = "none";
         document.getElementsByTagName("canvas")[0].style.display = "initial";
         document.getElementById("highscore").style.display = "initial";
@@ -50,20 +53,20 @@ namespace Endabgabe {
 
 
         function shoot(_event: MouseEvent): void {
-            if (snowballs.length < 20) {
-                let ball: Snowball = new Snowball();
+            let ball: Snowball = new Snowball();
 
-                ball.xP = _event.clientX;
-                ball.yP = _event.clientY;
+            ball.xP = _event.clientX;
+            ball.yP = _event.clientY;
 
-                ball.radius = 50;
-                ball.state = "throw";
-                snowballs.push(ball);
+            ball.radius = 50;
+            ball.state = "throw";
+            snowballs.push(ball);
 
-                console.log("throw");
-                console.log(ball.xP, ball.yP);
-            }
+            console.log("snowball state: " + ball.state, "snowball radius " + ball.radius);
+            console.log(ball.xP, ball.yP);
+            console.log("snowballs:" + snowballs.length);
         }
+
 
 
         function generateSnow(): void {
@@ -96,6 +99,8 @@ namespace Endabgabe {
       
               }//generateSnowball*/
         function update(): void {
+
+            //     document.getElementById("startGame").style.display = "none";
             crc.putImageData(imagedata, 0, 0);
             window.setTimeout(update, 1000 / fps);
 
@@ -111,32 +116,26 @@ namespace Endabgabe {
                 object.move();
             }
 
-            for (let i: number = 0; i < children.length; i++) {
-                children[i].move();
-                children[i].draw();
-
-                if (children[i].xP < -10 || children[i].yP > (crc.canvas.height + 10)) {
-                    children.splice(i, 1);
-                    console.log("length:" + children.length);
-                }
-            }
 
             for (let i: number = 0; i < snowballs.length; i++) {
-                if (snowballs[i].radius > 15) {
+                console.log("test");
+                if (snowballs[i].radius > 16) {
                     snowballs[i].move();
                     snowballs[i].draw();
+                    console.log("test2");
                 }
                 else {
-                    if (snowballs[i].radius == 15) {
+                    if (snowballs[i].radius == 16) {
                         console.log("snowball");
                         snowballs[i].move();
                         snowballs[i].draw();
-                        for (let a: number = 0; a < children.length; a++) {
+
+                        for (let i2: number = 0; i2 < children.length; i2++) {
                             console.log("hallo");
-                            if (snowballs[i].hit(children[a].xP, children[a].yP) == true && children[a].state == "ride") {
-                                children[a].state = "hit";
+                            if (snowballs[i].hit(children[i2].xP, children[i2].yP) == true && children[i2].state == "ride") {
+                                children[i2].state = "hit";
                                 console.log("hi");
-                                highscore += Math.floor(children[a].yD * children[a].xD);
+                                highscore += Math.floor(children[i2].yD * children[i2].xD);
                                 console.log(highscore);
                                 document.getElementById("highscore").innerHTML = " Your Score: " + highscore.toString();
 
@@ -146,14 +145,25 @@ namespace Endabgabe {
                     }
                 }
             }
+            
+            for (let i: number = 0; i < children.length; i++) {
+                children[i].move();
+                children[i].draw();
+
+                if (children[i].xP < -10 || children[i].yP > (crc.canvas.height + 10)) {
+                    children.splice(i, 1);
+                    console.log("kids:" + children.length);
+                }
+            }
+        }
 
 
-            /*     for (let i: number = 0; i < snowballs.length; i++) {
-                      snowballs[i].draw();
-                      snowballs[i].move();
-                      console.log("Snowballarraylenght:" + snowballs.length);
-                  }*/
-        }//update
+        /*     for (let i: number = 0; i < snowballs.length; i++) {
+                  snowballs[i].draw();
+                  snowballs[i].move();
+                  console.log("Snowballarraylenght:" + snowballs.length);
+              }*/
+        //update
         function endGame(): void {
             document.getElementsByTagName("canvas")[0].style.display = "none";
             document.getElementById("endScreen").style.display = "initial";

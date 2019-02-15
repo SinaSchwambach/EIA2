@@ -4,8 +4,9 @@ var Endabgabe;
     function startGame() {
         document.getElementById("start").style.display = "initial";
         document.getElementsByTagName("canvas")[0].style.display = "none";
+        //   document.getElementsByTagName("fieldset")[0].style.display = "none";
         document.getElementById("endScreen").style.display = "initial";
-        let button = document.getElementsByTagName("Button")[0];
+        let button = document.getElementById("start");
         button.addEventListener("click", init);
     }
     let objects = [];
@@ -18,6 +19,7 @@ var Endabgabe;
     Endabgabe.highscore = 0;
     function init() {
         window.setTimeout(endGame, 60000);
+        //    document.getElementById("startGame").style.display = "none";
         document.getElementById("endScreen").style.display = "none";
         document.getElementsByTagName("canvas")[0].style.display = "initial";
         document.getElementById("highscore").style.display = "initial";
@@ -32,16 +34,15 @@ var Endabgabe;
         imagedata = Endabgabe.crc.getImageData(0, 0, canvas.width, canvas.height);
         update();
         function shoot(_event) {
-            if (snowballs.length < 20) {
-                let ball = new Endabgabe.Snowball();
-                ball.xP = _event.clientX;
-                ball.yP = _event.clientY;
-                ball.radius = 50;
-                ball.state = "throw";
-                snowballs.push(ball);
-                console.log("throw");
-                console.log(ball.xP, ball.yP);
-            }
+            let ball = new Endabgabe.Snowball();
+            ball.xP = _event.clientX;
+            ball.yP = _event.clientY;
+            ball.radius = 50;
+            ball.state = "throw";
+            snowballs.push(ball);
+            console.log("snowball state: " + ball.state, "snowball radius " + ball.radius);
+            console.log(ball.xP, ball.yP);
+            console.log("snowballs:" + snowballs.length);
         }
         function generateSnow() {
             for (let i = 0; i < 150; i++) {
@@ -66,6 +67,7 @@ var Endabgabe;
       
               }//generateSnowball*/
         function update() {
+            //     document.getElementById("startGame").style.display = "none";
             Endabgabe.crc.putImageData(imagedata, 0, 0);
             window.setTimeout(update, 1000 / fps);
             //Wolken
@@ -78,30 +80,24 @@ var Endabgabe;
                 object.draw();
                 object.move();
             }
-            for (let i = 0; i < children.length; i++) {
-                children[i].move();
-                children[i].draw();
-                if (children[i].xP < -10 || children[i].yP > (Endabgabe.crc.canvas.height + 10)) {
-                    children.splice(i, 1);
-                    console.log("length:" + children.length);
-                }
-            }
             for (let i = 0; i < snowballs.length; i++) {
-                if (snowballs[i].radius > 15) {
+                console.log("test");
+                if (snowballs[i].radius > 16) {
                     snowballs[i].move();
                     snowballs[i].draw();
+                    console.log("test2");
                 }
                 else {
-                    if (snowballs[i].radius == 15) {
+                    if (snowballs[i].radius == 16) {
                         console.log("snowball");
                         snowballs[i].move();
                         snowballs[i].draw();
-                        for (let a = 0; a < children.length; a++) {
+                        for (let i2 = 0; i2 < children.length; i2++) {
                             console.log("hallo");
-                            if (snowballs[i].hit(children[a].xP, children[a].yP) == true && children[a].state == "ride") {
-                                children[a].state = "hit";
+                            if (snowballs[i].hit(children[i2].xP, children[i2].yP) == true && children[i2].state == "ride") {
+                                children[i2].state = "hit";
                                 console.log("hi");
-                                Endabgabe.highscore += Math.floor(children[a].yD * children[a].xD);
+                                Endabgabe.highscore += Math.floor(children[i2].yD * children[i2].xD);
                                 console.log(Endabgabe.highscore);
                                 document.getElementById("highscore").innerHTML = " Your Score: " + Endabgabe.highscore.toString();
                             }
@@ -109,12 +105,21 @@ var Endabgabe;
                     }
                 }
             }
-            /*     for (let i: number = 0; i < snowballs.length; i++) {
-                      snowballs[i].draw();
-                      snowballs[i].move();
-                      console.log("Snowballarraylenght:" + snowballs.length);
-                  }*/
-        } //update
+            for (let i = 0; i < children.length; i++) {
+                children[i].move();
+                children[i].draw();
+                if (children[i].xP < -10 || children[i].yP > (Endabgabe.crc.canvas.height + 10)) {
+                    children.splice(i, 1);
+                    console.log("kids:" + children.length);
+                }
+            }
+        }
+        /*     for (let i: number = 0; i < snowballs.length; i++) {
+                  snowballs[i].draw();
+                  snowballs[i].move();
+                  console.log("Snowballarraylenght:" + snowballs.length);
+              }*/
+        //update
         function endGame() {
             document.getElementsByTagName("canvas")[0].style.display = "none";
             document.getElementById("endScreen").style.display = "initial";

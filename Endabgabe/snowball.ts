@@ -3,6 +3,7 @@ namespace Endabgabe {
     export class Snowball extends DrawObject {
         radius: number;
         state: string;
+        timer: number;
 
 
         draw(): void {
@@ -29,39 +30,35 @@ namespace Endabgabe {
         }
 
         hit(_xP: number, _yP: number): boolean {
-
+            crc.lineWidth = 50;
             crc.beginPath();
-            crc.moveTo(_xP, _yP);
-            crc.lineTo(_xP - 7, _yP + 2);
-            crc.moveTo(_xP, _yP);
-            crc.lineTo(_xP - 6, _yP + 4);
-            crc.moveTo(_xP, _yP);
-            crc.lineTo(_xP, _yP - 15);
-            crc.arc(_xP, _yP - 15, 15, 0, 2 * Math.PI);
-            crc.moveTo(_xP, _yP - 10);
-            crc.lineTo(_xP - 6, _yP + 2);
-            crc.moveTo(_xP, _yP - 12);
-            crc.lineTo(_xP - 7, _yP - 2);
-            crc.moveTo(_xP + 8, _yP + 5);
-            crc.lineTo(_xP - 10, _yP + 7);
-            crc.moveTo(_xP + 4, _yP + 6);
-            crc.lineTo(_xP + 3, _yP + 12);
-            crc.moveTo(_xP - 6, _yP + 7);
-            crc.lineTo(_xP - 8, _yP + 14);
-            crc.moveTo(_xP + 8, _yP + 12);
-            crc.lineTo(_xP - 10, _yP + 15);
-            crc.closePath();
+            //  crc.fillStyle = "#000000";
+            crc.arc(_xP - 20, _yP - 5, 6, 0, 2 * Math.PI);
+            crc.fill();
+            crc.beginPath();
+            // crc.fillStyle = this.colorBody;
+            crc.fillRect(_xP - 25, _yP + 2, 10, 20);
+            crc.stroke();
+            crc.fill();
 
-            console.log("hi");
+            //Schlitten
+            crc.beginPath();
+            crc.moveTo(_xP - 37, _yP + 25);
+            crc.lineTo(_xP - 10, _yP + 42);
+            crc.lineTo(_xP - 6, _yP + 43);
+            crc.lineWidth = 1;
+            crc.lineCap = "round";
+            //crc.strokeStyle = "#000000";
+            crc.stroke();
+            crc.fill();
 
+            console.log(_xP);
             if (crc.isPointInPath(this.xP, this.yP)) {
-                console.log("win!");
-
+                console.log("win");
                 return true;
             }
             else {
                 console.log("fail");
-
                 return false;
             }
 
