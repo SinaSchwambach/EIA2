@@ -64,9 +64,9 @@ var Endabgabe;
                 Endabgabe.crc.fill();
                 //Schlitten
                 Endabgabe.crc.beginPath();
-                Endabgabe.crc.moveTo(this.xP + 37, this.yP - 25);
-                Endabgabe.crc.lineTo(this.xP + 10, this.yP - 42);
-                Endabgabe.crc.lineTo(this.xP + 6, this.yP - 43);
+                Endabgabe.crc.moveTo(this.xP + 6, this.yP + 25);
+                Endabgabe.crc.lineTo(this.xP + 10, this.yP + 42);
+                Endabgabe.crc.lineTo(this.xP + 37, this.yP + 43);
                 Endabgabe.crc.lineWidth = 1;
                 Endabgabe.crc.lineCap = "round";
                 Endabgabe.crc.strokeStyle = "#000000";
