@@ -1,6 +1,7 @@
 namespace Endabgabe {
 
     window.addEventListener("load", startGame);
+    window.addEventListener("load", refresh);
 
     export let crc: CanvasRenderingContext2D;
 
@@ -20,7 +21,7 @@ namespace Endabgabe {
     function startGame(): void {
         document.getElementById("start").style.display = "initial";
         document.getElementsByTagName("canvas")[0].style.display = "none";
-        //   document.getElementsByTagName("fieldset")[0].style.display = "none";
+        document.getElementsByTagName("fieldset")[0].style.display = "none";
         document.getElementById("endScreen").style.display = "initial";
         let button: HTMLElement = document.getElementById("start");
 
@@ -29,7 +30,7 @@ namespace Endabgabe {
 
 
     function init(): void {
-
+        gameState = "running";
         window.clearTimeout(60000);
         window.setTimeout(endGame, 60000);
         //    document.getElementById("startGame").style.display = "none";
@@ -99,8 +100,7 @@ namespace Endabgabe {
               snowballs.push(snowball);
   
           }//generateSnowball*/
-    function update(): void {
-        gameState = "running";
+    function update(): void {      
         //     document.getElementById("startGame").style.display = "none";
         crc.putImageData(imagedata, 0, 0);
 
@@ -180,6 +180,7 @@ namespace Endabgabe {
         children = [];
 
         document.getElementsByTagName("canvas")[0].style.display = "none";
+        document.getElementsByTagName("fieldset")[0].style.display = "initial";
         document.getElementById("endScreen").style.display = "initial";
         startDatabase();
         let serverAddress: string = " https://eia2ws18.herokuapp.com/";
@@ -188,12 +189,13 @@ namespace Endabgabe {
         function startDatabase(): void {
             console.log("Init");
             let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
-            let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
+     //       let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
             let showScore: HTMLElement = document.getElementById("showHighscore");
             showScore.innerHTML = highscore.toString();
             //   let findButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("find");
             insertButton.addEventListener("click", insert);
-            refreshButton.addEventListener("click", refresh);
+         //   refreshButton.addEventListener("click", refresh);
+            
             //   findButton.addEventListener("click", find);
         }
 
@@ -205,6 +207,7 @@ namespace Endabgabe {
             //   query += "&matrikel=" + inputs[2].value;
             console.log(query);
             sendRequest(query, handleInsertResponse);
+            refresh(_event);
         }
 
         function refresh(_event: Event): void {

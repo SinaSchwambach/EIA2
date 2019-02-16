@@ -83,9 +83,9 @@ namespace Endabgabe {
 
                 //Schlitten
                 crc.beginPath();
-                crc.moveTo(this.xP + 6, this.yP + 25);
-                crc.lineTo(this.xP + 10, this.yP + 42);
-                crc.lineTo(this.xP + 37, this.yP + 43);
+                crc.moveTo(this.xP + 10, this.yP + 24);
+                crc.lineTo(this.xP + 6, this.yP + 25);               
+                crc.lineTo(this.xP + 37, this.yP + 42);
                 crc.lineWidth = 1;
                 crc.lineCap = "round";
                 crc.strokeStyle = "#000000";

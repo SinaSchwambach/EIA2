@@ -13,12 +13,13 @@ var Endabgabe;
     function startGame() {
         document.getElementById("start").style.display = "initial";
         document.getElementsByTagName("canvas")[0].style.display = "none";
-        //   document.getElementsByTagName("fieldset")[0].style.display = "none";
+        document.getElementsByTagName("fieldset")[0].style.display = "none";
         document.getElementById("endScreen").style.display = "initial";
         let button = document.getElementById("start");
         button.addEventListener("click", init);
     }
     function init() {
+        gameState = "running";
         window.clearTimeout(60000);
         window.setTimeout(endGame, 60000);
         //    document.getElementById("startGame").style.display = "none";
@@ -74,7 +75,6 @@ var Endabgabe;
   
           }//generateSnowball*/
     function update() {
-        gameState = "running";
         //     document.getElementById("startGame").style.display = "none";
         Endabgabe.crc.putImageData(imagedata, 0, 0);
         if (gameState == "running") {
@@ -139,6 +139,7 @@ var Endabgabe;
         snowballs = [];
         children = [];
         document.getElementsByTagName("canvas")[0].style.display = "none";
+        document.getElementsByTagName("fieldset")[0].style.display = "initial";
         document.getElementById("endScreen").style.display = "initial";
         startDatabase();
         let serverAddress = " https://eia2ws18.herokuapp.com/";

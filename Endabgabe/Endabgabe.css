@@ -1,43 +1,50 @@
 @charset "ISO-8859-1";
 
-body { background-color: #87CEFA;}
+body {
+	background-image: url("schnee.jpg");
+	background-repeat: no-repeat;
+}
+
 button {
-	background-color:black;
+	background-color: black;
 	border-radius: 8px;
 	border: solid white;
 	color: white;
-	text-align:center;
+	text-align: center;
 	padding: 20px;
 	font-size: 20px;
-	
 }
 
 div {
 	
-	
 }
 
-fieldset{
-	background-color:#00BFFF;
-	background-image: url("schnee.jpg");
-    background-repeat: no-repeat;
+fieldset {
+	background-color: #87CEFA;
 	border-radius: 8px;
 	border-color: #00BFFF;
 	border: solid;
 	font-size: 20px;
+	width: 30%;
+	position: relative;
+	left: 35%;
+	text-align: center;
 	
 }
 
+#input {
+	position: relative; 
+	left:35%;
+}
 textarea {
-	background-color:black;
-	color:white;
+	background-color: black;
+	color: white;
 	border-radius: 8px;
 	border-color: #00BFFF;
 	border: solid white;
 	font-size: 13px;
 	position: relative;
 	left: 18%;
-	
 }
 
 input {
@@ -50,5 +57,5 @@ input {
 
 #start {
 	position: relative;
-	left:45%;
+	left: 45%;
 }
