@@ -28,6 +28,7 @@ namespace Endabgabe {
 
 
     function init(): void {
+
         window.clearTimeout(60000);
         window.setTimeout(endGame, 60000);
         //    document.getElementById("startGame").style.display = "none";
@@ -37,6 +38,10 @@ namespace Endabgabe {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         canvas.addEventListener("click", shoot);
         crc = canvas.getContext("2d");
+
+        objects = [];
+        snowballs = [];
+        children = [];
 
         drawBackground();
         generateSnow();

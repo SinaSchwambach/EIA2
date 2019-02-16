@@ -44,13 +44,31 @@ var Endabgabe;
             alert(xhr.response);
         }
     }
+    function sortHighscore(_a, _b) {
+        let returnNumber;
+        if (_a.highscore > _b.highscore) {
+            returnNumber = -1;
+        }
+        else if (_a.highscore < _b.highscore) {
+            returnNumber = 1;
+        }
+        else {
+            returnNumber = 0;
+        }
+        return returnNumber;
+    }
     function handleFindResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            let output = document.getElementsByTagName("textarea")[0];
-            output.value = xhr.response;
-            let responseAsJson = JSON.parse(xhr.response);
-            console.log(responseAsJson);
+            let output = document.getElementById("score");
+            let data = JSON.parse(xhr.response);
+            data.sort(sortHighscore);
+            let emptyString;
+            for (let i; i < 10; i++) {
+                let place = 1 + i;
+                emptyString += place + ". " + data[i].name + "     " + data[i].highscore + "<br>";
+            }
+            output.innerHTML = emptyString;
         }
     }
 })(Endabgabe || (Endabgabe = {}));

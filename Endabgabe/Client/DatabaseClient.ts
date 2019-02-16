@@ -1,17 +1,17 @@
 namespace Endabgabe {
     window.addEventListener("load", init);
-   // let serverAddress: string = "http://localhost:8100";
-    let serverAddress: string = " https://eia2ws18.herokuapp.com/"; 
-    
+    // let serverAddress: string = "http://localhost:8100";
+    let serverAddress: string = " https://eia2ws18.herokuapp.com/";
+
 
     function init(_event: Event): void {
         console.log("Init");
         let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
         let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
-     //   let findButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("find");
+        //   let findButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("find");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
-     //   findButton.addEventListener("click", find);
+        //   findButton.addEventListener("click", find);
     }
 
     function insert(_event: Event): void {
@@ -19,7 +19,7 @@ namespace Endabgabe {
         let query: string = "command=insert";
         query += "&name=" + inputs[0].value;
         query += "&highscore=" + highscore;
-     //   query += "&matrikel=" + inputs[2].value;
+        //   query += "&matrikel=" + inputs[2].value;
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
@@ -28,14 +28,14 @@ namespace Endabgabe {
         let query: string = "command=refresh";
         sendRequest(query, handleFindResponse);
     }
-    
-  /*  function find(_event: Event): void {
-        let search: HTMLInputElement = <HTMLInputElement>document.getElementById("Suche");
-        let query: string = "command=find";
-        query += "&matrikel=" + search.value;
-        console.log(query);
-        sendRequest(query, handleFindResponse);
-        }*/
+
+    /*  function find(_event: Event): void {
+          let search: HTMLInputElement = <HTMLInputElement>document.getElementById("Suche");
+          let query: string = "command=find";
+          query += "&matrikel=" + search.value;
+          console.log(query);
+          sendRequest(query, handleFindResponse);
+          }*/
 
     function sendRequest(_query: string, _callback: EventListener): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
@@ -51,13 +51,34 @@ namespace Endabgabe {
         }
     }
 
-   function handleFindResponse(_event: ProgressEvent): void {
+    function sortHighscore(_a: HighscoreData, _b: HighscoreData): number {
+        let returnNumber: number;
+        if (_a.highscore > _b.highscore) {
+            returnNumber = -1;
+        }
+        else if (_a.highscore < _b.highscore) {
+            returnNumber = 1;
+        }
+        else {
+            returnNumber = 0;
+        }
+        return returnNumber;
+
+    }
+
+
+    function handleFindResponse(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
-            output.value = xhr.response;
-            let responseAsJson: JSON = JSON.parse(xhr.response);
-            console.log(responseAsJson);
+            let output: HTMLElement = document.getElementById("score");
+            let data: HighscoreData[] = JSON.parse(xhr.response);
+            data.sort(sortHighscore);
+            let emptyString: string;
+            for (let i: number; i < 10; i++) {
+                let place: number = 1 + i;
+                emptyString += place + ". " + data[i].name + "     " + data[i].highscore + "<br>";
+            }
+            output.innerHTML = emptyString;
         }
     }
 }
