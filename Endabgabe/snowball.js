@@ -43,7 +43,12 @@ var Endabgabe;
             //crc.strokeStyle = "#000000";
             Endabgabe.crc.stroke();
             Endabgabe.crc.fill();
+            Endabgabe.crc.closePath();
             console.log(_xP);
+            Endabgabe.crc.beginPath();
+            Endabgabe.crc.moveTo(_xP, _yP);
+            Endabgabe.crc.arc(_xP, _yP, 50, 0, 2 * Math.PI);
+            Endabgabe.crc.closePath();
             if (Endabgabe.crc.isPointInPath(this.xP, this.yP)) {
                 console.log("win");
                 return true;

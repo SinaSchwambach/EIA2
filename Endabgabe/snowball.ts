@@ -51,8 +51,14 @@ namespace Endabgabe {
             //crc.strokeStyle = "#000000";
             crc.stroke();
             crc.fill();
+            crc.closePath();
 
             console.log(_xP);
+            crc.beginPath();
+            crc.moveTo(_xP, _yP);
+            crc.arc(_xP, _yP, 50, 0, 2 * Math.PI);
+            crc.closePath();
+
             if (crc.isPointInPath(this.xP, this.yP)) {
                 console.log("win");
                 return true;

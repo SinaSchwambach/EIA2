@@ -1,12 +1,15 @@
 @charset "ISO-8859-1";
 
+body { background-color: #87CEFA;}
 button {
-	background-color:#FFD700;
+	background-color:black;
 	border-radius: 8px;
 	border: solid white;
+	color: white;
 	text-align:center;
 	padding: 20px;
 	font-size: 20px;
+	
 }
 
 div {
@@ -16,6 +19,8 @@ div {
 
 fieldset{
 	background-color:#00BFFF;
+	background-image: url("schnee.jpg");
+    background-repeat: no-repeat;
 	border-radius: 8px;
 	border-color: #00BFFF;
 	border: solid;
@@ -24,12 +29,26 @@ fieldset{
 }
 
 textarea {
-	background-color:#87CEFA;
+	background-color:black;
+	color:white;
 	border-radius: 8px;
 	border-color: #00BFFF;
 	border: solid white;
 	font-size: 13px;
+	position: relative;
+	left: 18%;
 	
 }
 
-#startGame {}
+input {
+	border-radius: 8px;
+	padding: 10px;
+	color: white;
+	background-color: black;
+	font-size: 13px;
+}
+
+#start {
+	position: relative;
+	left:45%;
+}

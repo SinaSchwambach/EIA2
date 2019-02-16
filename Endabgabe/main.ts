@@ -10,7 +10,6 @@ namespace Endabgabe {
         let button: HTMLElement = document.getElementById("start");
 
         button.addEventListener("click", init);
-
     }
 
     export let crc: CanvasRenderingContext2D;
@@ -106,12 +105,23 @@ namespace Endabgabe {
             cloudTwo.move();
             cloudTwo.draw();
 
+            for (let i: number = 0; i < children.length; i++) {
+                children[i].move();
+                children[i].draw();
+
+                if (children[i].state == "hit" && children[i].xP < -10 || children[i].yP > (crc.canvas.height + 10)) {
+                    children.splice(i, 1);
+                    console.log("kids: " + children.length);
+                }
+            }
+
             for (let i: number = 0; i < objects.length; i++) {
                 let object: DrawObject = objects[i];
                 object.draw();
                 object.move();
             }
 
+            //      for (let timer: number = 60000; timer > 0; timer--) {
             for (let i: number = 0; i < snowballs.length; i++) {
                 console.log("test");
                 if (snowballs[i].radius > 16) {
@@ -125,12 +135,12 @@ namespace Endabgabe {
                         snowballs[i].move();
                         snowballs[i].draw();
 
-                        for (let i2: number = 0; i2 < children.length; i2++) {
+                        for (let a: number = 0; a < children.length; a++) {
                             console.log("hallo");
-                            if (snowballs[i].hit(children[i2].xP, children[i2].yP) == true && children[i2].state == "ride") {
-                                children[i2].state = "hit";
+                            if (snowballs[i].hit(children[a].xP, children[a].yP) == true && children[a].state == "ride") {
+                                children[a].state = "hit";
                                 console.log("hi");
-                                highscore += Math.floor(children[i2].yD * children[i2].xD);
+                                highscore += Math.floor(children[a].yD * children[a].xD);
                                 console.log(highscore);
                                 document.getElementById("highscore").innerHTML = " Your Score: " + highscore.toString();
 
@@ -140,16 +150,8 @@ namespace Endabgabe {
                     }
                 }
             }
+            //   }
 
-            for (let i: number = 0; i < children.length; i++) {
-                children[i].move();
-                children[i].draw();
-
-                if (children[i].xP < -10 || children[i].yP > (crc.canvas.height + 10)) {
-                    children.splice(i, 1);
-                    console.log("kids:" + children.length);
-                }
-            }
         }
 
 
@@ -160,6 +162,10 @@ namespace Endabgabe {
               }*/
         //update
         function endGame(): void {
+
+            objects = [];
+            snowballs = [];
+            children = [];
 
             document.getElementsByTagName("canvas")[0].style.display = "none";
             document.getElementById("endScreen").style.display = "initial";

@@ -78,11 +78,20 @@ var Endabgabe;
             cloudOne.draw();
             cloudTwo.move();
             cloudTwo.draw();
+            for (let i = 0; i < children.length; i++) {
+                children[i].move();
+                children[i].draw();
+                if (children[i].state == "hit" && children[i].xP < -10 || children[i].yP > (Endabgabe.crc.canvas.height + 10)) {
+                    children.splice(i, 1);
+                    console.log("kids: " + children.length);
+                }
+            }
             for (let i = 0; i < objects.length; i++) {
                 let object = objects[i];
                 object.draw();
                 object.move();
             }
+            //      for (let timer: number = 60000; timer > 0; timer--) {
             for (let i = 0; i < snowballs.length; i++) {
                 console.log("test");
                 if (snowballs[i].radius > 16) {
@@ -95,12 +104,12 @@ var Endabgabe;
                         console.log("snowball");
                         snowballs[i].move();
                         snowballs[i].draw();
-                        for (let i2 = 0; i2 < children.length; i2++) {
+                        for (let a = 0; a < children.length; a++) {
                             console.log("hallo");
-                            if (snowballs[i].hit(children[i2].xP, children[i2].yP) == true && children[i2].state == "ride") {
-                                children[i2].state = "hit";
+                            if (snowballs[i].hit(children[a].xP, children[a].yP) == true && children[a].state == "ride") {
+                                children[a].state = "hit";
                                 console.log("hi");
-                                Endabgabe.highscore += Math.floor(children[i2].yD * children[i2].xD);
+                                Endabgabe.highscore += Math.floor(children[a].yD * children[a].xD);
                                 console.log(Endabgabe.highscore);
                                 document.getElementById("highscore").innerHTML = " Your Score: " + Endabgabe.highscore.toString();
                             }
@@ -108,14 +117,7 @@ var Endabgabe;
                     }
                 }
             }
-            for (let i = 0; i < children.length; i++) {
-                children[i].move();
-                children[i].draw();
-                if (children[i].xP < -10 || children[i].yP > (Endabgabe.crc.canvas.height + 10)) {
-                    children.splice(i, 1);
-                    console.log("kids:" + children.length);
-                }
-            }
+            //   }
         }
         /*     for (let i: number = 0; i < snowballs.length; i++) {
                   snowballs[i].draw();
@@ -124,6 +126,9 @@ var Endabgabe;
               }*/
         //update
         function endGame() {
+            objects = [];
+            snowballs = [];
+            children = [];
             document.getElementsByTagName("canvas")[0].style.display = "none";
             document.getElementById("endScreen").style.display = "initial";
             startDatabase();
