@@ -1,6 +1,8 @@
 var Endabgabe;
 (function (Endabgabe) {
     window.addEventListener("load", startGame);
+    window.addEventListener("load", refresh);
+    let serverAddress = " https://eia2ws18.herokuapp.com/";
     let objects = [];
     let snowballs = [];
     let children = [];
@@ -17,6 +19,66 @@ var Endabgabe;
         document.getElementById("endScreen").style.display = "initial";
         let button = document.getElementById("start");
         button.addEventListener("click", init);
+        startDatabase();
+    }
+    function startDatabase() {
+        console.log("Init");
+        let insertButton = document.getElementById("insert");
+        let showScore = document.getElementById("showHighscore");
+        showScore.innerHTML = Endabgabe.highscore.toString();
+        insertButton.addEventListener("click", insert);
+    }
+    function insert(_event) {
+        let inputs = document.getElementsByTagName("input");
+        let query = "command=insert";
+        query += "&name=" + inputs[0].value;
+        query += "&highscore=" + Endabgabe.highscore;
+        console.log(query);
+        sendRequest(query, handleInsertResponse);
+        refresh(_event);
+    }
+    function refresh(_event) {
+        let query = "command=refresh";
+        sendRequest(query, handleFindResponse);
+    }
+    function sendRequest(_query, _callback) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", serverAddress + "?" + _query, true);
+        xhr.addEventListener("readystatechange", _callback);
+        xhr.send();
+    }
+    function handleInsertResponse(_event) {
+        let xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            alert(xhr.response);
+        }
+    }
+    function sortHighscore(_a, _b) {
+        let returnNumber;
+        if (_a.highscore > _b.highscore) {
+            returnNumber = -1;
+        }
+        else if (_a.highscore < _b.highscore) {
+            returnNumber = 1;
+        }
+        else {
+            returnNumber = 0;
+        }
+        return returnNumber;
+    }
+    function handleFindResponse(_event) {
+        let xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            let output = document.getElementById("score");
+            let data = JSON.parse(xhr.response);
+            data.sort(sortHighscore);
+            let emptyString = "";
+            for (let i; i < 10; i++) {
+                let place = 1 + i;
+                emptyString += place + ". " + data[i].name + "     " + data[i].highscore + "<br>";
+            }
+            output.innerHTML = emptyString;
+        }
     }
     function init() {
         gameState = "running";
@@ -141,78 +203,8 @@ var Endabgabe;
         document.getElementsByTagName("canvas")[0].style.display = "none";
         document.getElementsByTagName("fieldset")[0].style.display = "initial";
         document.getElementById("endScreen").style.display = "initial";
+        // document.getElementById("showHighscore").setAttribute("value",highscore.toString());
         startDatabase();
-        let serverAddress = " https://eia2ws18.herokuapp.com/";
-        function startDatabase() {
-            console.log("Init");
-            let insertButton = document.getElementById("insert");
-            let refreshButton = document.getElementById("refresh");
-            let showScore = document.getElementById("showHighscore");
-            showScore.innerHTML = Endabgabe.highscore.toString();
-            //   let findButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("find");
-            insertButton.addEventListener("click", insert);
-            refreshButton.addEventListener("click", refresh);
-            //   findButton.addEventListener("click", find);
-        }
-        function insert(_event) {
-            let inputs = document.getElementsByTagName("input");
-            let query = "command=insert";
-            query += "&name=" + inputs[0].value;
-            query += "&highscore=" + Endabgabe.highscore;
-            //   query += "&matrikel=" + inputs[2].value;
-            console.log(query);
-            sendRequest(query, handleInsertResponse);
-        }
-        function refresh(_event) {
-            let query = "command=refresh";
-            sendRequest(query, handleFindResponse);
-        }
-        /*  function find(_event: Event): void {
-              let search: HTMLInputElement = <HTMLInputElement>document.getElementById("Suche");
-              let query: string = "command=find";
-              query += "&matrikel=" + search.value;
-              console.log(query);
-              sendRequest(query, handleFindResponse);
-              }*/
-        function sendRequest(_query, _callback) {
-            let xhr = new XMLHttpRequest();
-            xhr.open("GET", serverAddress + "?" + _query, true);
-            xhr.addEventListener("readystatechange", _callback);
-            xhr.send();
-        }
-        function handleInsertResponse(_event) {
-            let xhr = _event.target;
-            if (xhr.readyState == XMLHttpRequest.DONE) {
-                alert(xhr.response);
-            }
-        }
-        function sortHighscore(_a, _b) {
-            let returnNumber;
-            if (_a.highscore > _b.highscore) {
-                returnNumber = -1;
-            }
-            else if (_a.highscore < _b.highscore) {
-                returnNumber = 1;
-            }
-            else {
-                returnNumber = 0;
-            }
-            return returnNumber;
-        }
-        function handleFindResponse(_event) {
-            let xhr = _event.target;
-            if (xhr.readyState == XMLHttpRequest.DONE) {
-                let output = document.getElementById("score");
-                let data = JSON.parse(xhr.response);
-                data.sort(sortHighscore);
-                let emptyString;
-                for (let i; i < 10; i++) {
-                    let place = 1 + i;
-                    emptyString += place + ". " + data[i].name + "     " + data[i].highscore + "<br>";
-                }
-                output.innerHTML = emptyString;
-            }
-        }
     }
 })(Endabgabe || (Endabgabe = {})); //namespace
 //# sourceMappingURL=main.js.map
