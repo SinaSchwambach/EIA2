@@ -53,28 +53,28 @@ var Endabgabe;
             alert(xhr.response);
         }
     }
-    function sortHighscore(_a, _b) {
-        if (_a.highscore < _b.highscore) {
-            return -1;
-        }
-        if (_a.highscore > _b.highscore) {
-            return 1;
-        }
-        return 0;
-    }
     function handleFindResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            for (let i; i < 10; i++) {
-                let data = JSON.parse(xhr.response);
-                data.sort(sortHighscore);
-                let output = document.getElementById("score");
-                document.getElementById("score").innerHTML = "";
-                let emptyString = "";
-                let ranking = 1 + i;
-                emptyString += ranking + ".    " + data[i].name + "   " + data[i].highscore + "<br>";
-                //         let sorted: HighscoreData[] = JSON.parse(xhr.response);
-                output.innerHTML = emptyString;
+            let data = JSON.parse(xhr.response);
+            function sortHighscore(_a, _b) {
+                if (_a.highscore < _b.highscore) {
+                    return 1;
+                }
+                if (_a.highscore > _b.highscore) {
+                    return -1;
+                }
+                return 0;
+            }
+            data.sort(sortHighscore);
+            console.log("data");
+            let scores = document.getElementById("score");
+            document.getElementById("score").innerHTML = "";
+            for (let i = 0; i < 10; i++) {
+                let div = document.createElement("div");
+                scores.appendChild(div);
+                div.innerHTML = data[i].name + ": ";
+                div.innerHTML += data[i].highscore;
             }
         }
     }
@@ -129,10 +129,10 @@ var Endabgabe;
         children.push(child);
     } //generateChild
     /*      function generateSnowball(): void {
-  
+     
               let snowball: Snowball = new Snowball();
               snowballs.push(snowball);
-  
+     
           }//generateSnowball*/
     function update() {
         //     document.getElementById("startGame").style.display = "none";
