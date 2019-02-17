@@ -86,7 +86,7 @@ namespace Endabgabe {
             for (let i: number = 0; i < 10; i++) {
                 let div: HTMLDivElement = document.createElement("div");
                 scores.appendChild(div);
-                div.innerHTML = data[i].name + ": ";
+                div.innerHTML = data[i].name + " :   ";
                 div.innerHTML += data[i].highscore;
             }
         }

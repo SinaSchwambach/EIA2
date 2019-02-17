@@ -29,7 +29,7 @@ var Endabgabe;
         //Tree
         for (let i = 0; i < 15; i++) {
             let x = Math.floor(Math.random() * Endabgabe.crc.canvas.width);
-            let y = Math.floor(Math.random() * (0 - 300) + Endabgabe.crc.canvas.height);
+            let y = Math.floor(Math.random() * (200 - 450) + Endabgabe.crc.canvas.height);
             Endabgabe.crc.beginPath();
             Endabgabe.crc.moveTo(x, y - 40);
             Endabgabe.crc.lineTo(x - 10, y);

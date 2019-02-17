@@ -73,7 +73,7 @@ var Endabgabe;
             for (let i = 0; i < 10; i++) {
                 let div = document.createElement("div");
                 scores.appendChild(div);
-                div.innerHTML = data[i].name + ": ";
+                div.innerHTML = data[i].name + " :   ";
                 div.innerHTML += data[i].highscore;
             }
         }

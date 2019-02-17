@@ -16,8 +16,8 @@ var Endabgabe;
                 }
             }
             if (this.state == "pullUp") {
-                this.xP -= this.xD;
-                this.yP -= this.yD;
+                this.xP -= this.xD / 2;
+                this.yP -= this.yD / 2;
             }
             if (this.state == "pullUp" && this.xP < 0) {
                 this.state = "ride";

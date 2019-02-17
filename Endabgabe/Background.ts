@@ -37,7 +37,7 @@ namespace Endabgabe {
         for (let i: number = 0; i < 15; i++) {
        
             let x: number = Math.floor(Math.random() * crc.canvas.width);
-            let y: number = Math.floor(Math.random() * (0 - 300) + crc.canvas.height);
+            let y: number = Math.floor(Math.random() * (200 - 450) + crc.canvas.height);
             crc.beginPath();
             crc.moveTo(x, y - 40);
             crc.lineTo(x - 10, y);
