@@ -32,11 +32,9 @@ namespace Endabgabe {
         hit(_xP: number, _yP: number): boolean {
             crc.lineWidth = 50;
             crc.beginPath();
-            //  crc.fillStyle = "#000000";
             crc.arc(_xP - 20, _yP - 5, 6, 0, 2 * Math.PI);
             crc.fill();
             crc.beginPath();
-            // crc.fillStyle = this.colorBody;
             crc.fillRect(_xP - 25, _yP + 2, 10, 20);
             crc.stroke();
             crc.fill();
@@ -48,7 +46,6 @@ namespace Endabgabe {
             crc.lineTo(_xP - 6, _yP + 43);
             crc.lineWidth = 1;
             crc.lineCap = "round";
-            //crc.strokeStyle = "#000000";
             crc.stroke();
             crc.fill();
             crc.closePath();

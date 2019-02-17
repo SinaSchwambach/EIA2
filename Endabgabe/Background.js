@@ -8,7 +8,7 @@ var Endabgabe;
         //Hill
         Endabgabe.crc.beginPath();
         Endabgabe.crc.moveTo(0, 0);
-        Endabgabe.crc.lineTo(1000, 400);
+        Endabgabe.crc.lineTo(1000, 300);
         Endabgabe.crc.lineTo(1000, 800);
         Endabgabe.crc.lineTo(0, 900);
         Endabgabe.crc.lineTo(0, 900);
@@ -29,7 +29,7 @@ var Endabgabe;
         //Tree
         for (let i = 0; i < 15; i++) {
             let x = Math.floor(Math.random() * Endabgabe.crc.canvas.width);
-            let y = Math.floor(Math.random() * (290 - 410) + Endabgabe.crc.canvas.height);
+            let y = Math.floor(Math.random() * (0 - 300) + Endabgabe.crc.canvas.height);
             Endabgabe.crc.beginPath();
             Endabgabe.crc.moveTo(x, y - 40);
             Endabgabe.crc.lineTo(x - 10, y);

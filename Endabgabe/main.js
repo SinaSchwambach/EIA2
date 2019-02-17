@@ -10,13 +10,13 @@ var Endabgabe;
     let cloudOne;
     let cloudTwo;
     let fps = 25;
-    Endabgabe.highscore = 0;
     let gameState;
     function startGame() {
         document.getElementById("start").style.display = "initial";
         document.getElementsByTagName("canvas")[0].style.display = "none";
         document.getElementsByTagName("fieldset")[0].style.display = "none";
         document.getElementById("endScreen").style.display = "initial";
+        document.getElementById("highscore").style.display = "none";
         let button = document.getElementById("start");
         button.addEventListener("click", init);
         startDatabase();
@@ -79,19 +79,20 @@ var Endabgabe;
         }
     }
     function init() {
-        gameState = "running";
-        window.clearTimeout(60000);
-        window.setTimeout(endGame, 60000);
-        //    document.getElementById("startGame").style.display = "none";
-        document.getElementById("endScreen").style.display = "none";
-        document.getElementsByTagName("canvas")[0].style.display = "initial";
-        document.getElementById("highscore").style.display = "initial";
-        let canvas = document.getElementsByTagName("canvas")[0];
-        canvas.addEventListener("click", shoot);
-        Endabgabe.crc = canvas.getContext("2d");
         objects = [];
         snowballs = [];
         children = [];
+        Endabgabe.highscore = 0;
+        gameState = "running";
+        window.clearTimeout(60000);
+        window.setTimeout(endGame, 60000);
+        document.getElementById("endScreen").style.display = "none";
+        document.getElementsByTagName("canvas")[0].style.display = "initial";
+        document.getElementById("highscore").style.display = "initial";
+        document.getElementById("highscore").innerHTML = "";
+        let canvas = document.getElementsByTagName("canvas")[0];
+        canvas.addEventListener("click", shoot);
+        Endabgabe.crc = canvas.getContext("2d");
         Endabgabe.drawBackground();
         generateSnow();
         generateClouds();
@@ -128,20 +129,11 @@ var Endabgabe;
         child.state = "ride";
         children.push(child);
     } //generateChild
-    /*      function generateSnowball(): void {
-     
-              let snowball: Snowball = new Snowball();
-              snowballs.push(snowball);
-     
-          }//generateSnowball*/
     function update() {
-        //     document.getElementById("startGame").style.display = "none";
         Endabgabe.crc.putImageData(imagedata, 0, 0);
         if (gameState == "running") {
             window.setTimeout(update, 1000 / fps);
         }
-        //   window.clearTimeout(60000);
-        //Wolken
         cloudOne.move();
         cloudOne.draw();
         cloudTwo.move();
@@ -159,7 +151,6 @@ var Endabgabe;
             object.draw();
             object.move();
         }
-        //      for (let timer: number = 60000; timer > 0; timer--) {
         for (let i = 0; i < snowballs.length; i++) {
             console.log("test");
             if (snowballs[i].radius > 16) {
@@ -181,18 +172,18 @@ var Endabgabe;
                             console.log(Endabgabe.highscore);
                             document.getElementById("highscore").innerHTML = " Your Score: " + Endabgabe.highscore.toString();
                         }
+                        else if (snowballs[i].hit(children[a].xP, children[a].yP) == true && children[a].state == "pullUp") {
+                            children[a].state = "hit";
+                            console.log("hi");
+                            Endabgabe.highscore += Math.floor(children[a].yD * children[a].xD);
+                            console.log(Endabgabe.highscore);
+                            document.getElementById("highscore").innerHTML = " Your Score: " + Endabgabe.highscore.toString();
+                        }
                     }
                 }
             }
         }
-        //   }
     }
-    /*     for (let i: number = 0; i < snowballs.length; i++) {
-              snowballs[i].draw();
-              snowballs[i].move();
-              console.log("Snowballarraylenght:" + snowballs.length);
-          }*/
-    //update
     function endGame() {
         gameState = "end";
         objects = [];
@@ -201,7 +192,7 @@ var Endabgabe;
         document.getElementsByTagName("canvas")[0].style.display = "none";
         document.getElementsByTagName("fieldset")[0].style.display = "initial";
         document.getElementById("endScreen").style.display = "initial";
-        // document.getElementById("showHighscore").setAttribute("value",highscore.toString());
+        document.getElementById("highscore").style.display = "none";
         startDatabase();
     }
 })(Endabgabe || (Endabgabe = {})); //namespace

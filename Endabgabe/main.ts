@@ -16,7 +16,7 @@ namespace Endabgabe {
     let cloudTwo: CloudTwo;
 
     let fps: number = 25;
-    export let highscore: number = 0;
+    export let highscore: number;
     let gameState: string;
 
     function startGame(): void {
@@ -24,6 +24,7 @@ namespace Endabgabe {
         document.getElementsByTagName("canvas")[0].style.display = "none";
         document.getElementsByTagName("fieldset")[0].style.display = "none";
         document.getElementById("endScreen").style.display = "initial";
+        document.getElementById("highscore").style.display = "none";
         let button: HTMLElement = document.getElementById("start");
         button.addEventListener("click", init);
         startDatabase();
@@ -81,7 +82,7 @@ namespace Endabgabe {
 
             let scores: HTMLElement = document.getElementById("score");
             document.getElementById("score").innerHTML = "";
-            
+
             for (let i: number = 0; i < 10; i++) {
                 let div: HTMLDivElement = document.createElement("div");
                 scores.appendChild(div);
@@ -93,20 +94,21 @@ namespace Endabgabe {
 
 
     function init(): void {
-        gameState = "running";
-        window.clearTimeout(60000);
-        window.setTimeout(endGame, 60000);
-        //    document.getElementById("startGame").style.display = "none";
-        document.getElementById("endScreen").style.display = "none";
-        document.getElementsByTagName("canvas")[0].style.display = "initial";
-        document.getElementById("highscore").style.display = "initial";
-        let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
-        canvas.addEventListener("click", shoot);
-        crc = canvas.getContext("2d");
-
         objects = [];
         snowballs = [];
         children = [];
+        highscore = 0;
+
+        gameState = "running";
+        window.clearTimeout(60000);
+        window.setTimeout(endGame, 60000);
+        document.getElementById("endScreen").style.display = "none";
+        document.getElementsByTagName("canvas")[0].style.display = "initial";
+        document.getElementById("highscore").style.display = "initial";
+        document.getElementById("highscore").innerHTML = "";
+        let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
+        canvas.addEventListener("click", shoot);
+        crc = canvas.getContext("2d");
 
         drawBackground();
         generateSnow();
@@ -157,22 +159,14 @@ namespace Endabgabe {
 
     } //generateChild
 
-    /*      function generateSnowball(): void {
-     
-              let snowball: Snowball = new Snowball();
-              snowballs.push(snowball);
-     
-          }//generateSnowball*/
+
     function update(): void {
-        //     document.getElementById("startGame").style.display = "none";
         crc.putImageData(imagedata, 0, 0);
 
         if (gameState == "running") {
             window.setTimeout(update, 1000 / fps);
         }
-        //   window.clearTimeout(60000);
 
-        //Wolken
         cloudOne.move();
         cloudOne.draw();
         cloudTwo.move();
@@ -194,7 +188,6 @@ namespace Endabgabe {
             object.move();
         }
 
-        //      for (let timer: number = 60000; timer > 0; timer--) {
         for (let i: number = 0; i < snowballs.length; i++) {
             console.log("test");
             if (snowballs[i].radius > 16) {
@@ -219,21 +212,19 @@ namespace Endabgabe {
 
                         }
 
+                        else if (snowballs[i].hit(children[a].xP, children[a].yP) == true && children[a].state == "pullUp") {
+                            children[a].state = "hit";
+                            console.log("hi");
+                            highscore += Math.floor(children[a].yD * children[a].xD);
+                            console.log(highscore);
+                            document.getElementById("highscore").innerHTML = " Your Score: " + highscore.toString();
+                        }
                     }
                 }
             }
         }
-        //   }
-
     }
 
-
-    /*     for (let i: number = 0; i < snowballs.length; i++) {
-              snowballs[i].draw();
-              snowballs[i].move();
-              console.log("Snowballarraylenght:" + snowballs.length);
-          }*/
-    //update
     function endGame(): void {
 
         gameState = "end";
@@ -242,12 +233,12 @@ namespace Endabgabe {
         snowballs = [];
         children = [];
 
+
         document.getElementsByTagName("canvas")[0].style.display = "none";
         document.getElementsByTagName("fieldset")[0].style.display = "initial";
         document.getElementById("endScreen").style.display = "initial";
-        // document.getElementById("showHighscore").setAttribute("value",highscore.toString());
+        document.getElementById("highscore").style.display = "none";
         startDatabase();
-
     }
     //init
 }//namespace
