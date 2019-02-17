@@ -54,30 +54,28 @@ var Endabgabe;
         }
     }
     function sortHighscore(_a, _b) {
-        let returnNumber;
+        if (_a.highscore < _b.highscore) {
+            return -1;
+        }
         if (_a.highscore > _b.highscore) {
-            returnNumber = -1;
+            return 1;
         }
-        else if (_a.highscore < _b.highscore) {
-            returnNumber = 1;
-        }
-        else {
-            returnNumber = 0;
-        }
-        return returnNumber;
+        return 0;
     }
     function handleFindResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            let output = document.getElementById("score");
-            let data = JSON.parse(xhr.response);
-            data.sort(sortHighscore);
-            let emptyString = "";
             for (let i; i < 10; i++) {
-                let place = 1 + i;
-                emptyString += place + ". " + data[i].name + "     " + data[i].highscore + "<br>";
+                let data = JSON.parse(xhr.response);
+                data.sort(sortHighscore);
+                let output = document.getElementById("score");
+                document.getElementById("score").innerHTML = "";
+                let emptyString = "";
+                let ranking = 1 + i;
+                emptyString += ranking + ".    " + data[i].name + "   " + data[i].highscore + "<br>";
+                //         let sorted: HighscoreData[] = JSON.parse(xhr.response);
+                output.innerHTML = emptyString;
             }
-            output.innerHTML = emptyString;
         }
     }
     function init() {
