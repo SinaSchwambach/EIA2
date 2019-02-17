@@ -3,12 +3,15 @@ namespace Endabgabe {
     export class Snowball extends DrawObject {
         radius: number;
         state: string;
-        timer: number;
-
 
         draw(): void {
             if (this.state == "throw") {
-                this.throwSnowball();
+                crc.fillStyle = "#ffffff";
+                crc.strokeStyle = "#000000";
+                crc.beginPath();
+                crc.arc(this.xP, this.yP, this.radius, 0, 2 * Math.PI);
+                crc.fill();
+                crc.stroke();
             }
 
         }
@@ -17,16 +20,6 @@ namespace Endabgabe {
             if (this.radius > 14) {
                 this.radius -= 2;
             } else { this.radius = 0; }
-        }
-
-        throwSnowball(): void {
-            crc.fillStyle = "#ffffff";
-            crc.strokeStyle = "#000000";
-            crc.beginPath();
-            crc.arc(this.xP, this.yP, this.radius, 0, 2 * Math.PI);
-            crc.fill();
-            crc.stroke();
-
         }
 
         hit(_xP: number, _yP: number): boolean {
@@ -53,7 +46,7 @@ namespace Endabgabe {
             console.log(_xP);
             crc.beginPath();
             crc.moveTo(_xP, _yP);
-            crc.arc(_xP, _yP, 50, 0, 2 * Math.PI);
+            crc.arc(_xP, _yP, 35, 0, 2 * Math.PI);
             crc.closePath();
 
             if (crc.isPointInPath(this.xP, this.yP)) {

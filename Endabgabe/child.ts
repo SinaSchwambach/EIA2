@@ -5,7 +5,6 @@ namespace Endabgabe {
         yD: number;
         colorBody: string;
         state: string;
-        moved: boolean;
 
         constructor() {
             super();

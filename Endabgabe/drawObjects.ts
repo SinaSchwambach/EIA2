@@ -7,7 +7,6 @@ namespace Endabgabe {
         yD: number;
         colorBody: string;
         color: string;
-        md: boolean;
 
         draw(): void {
 
@@ -17,12 +16,5 @@ namespace Endabgabe {
 
         }
 
-        moveDown(): void {
-
-        }
-
-        moveUp(): void {
-
-        }
     }
 }

@@ -21,6 +21,7 @@ namespace Endabgabe {
 
     function startGame(): void {
         document.getElementById("start").style.display = "initial";
+        document.getElementById("beschreibung").style.display = "initial";
         document.getElementsByTagName("canvas")[0].style.display = "none";
         document.getElementsByTagName("fieldset")[0].style.display = "none";
         document.getElementById("endScreen").style.display = "initial";
@@ -102,6 +103,7 @@ namespace Endabgabe {
         gameState = "running";
         window.clearTimeout(60000);
         window.setTimeout(endGame, 60000);
+        document.getElementById("beschreibung").style.display = "none";
         document.getElementById("endScreen").style.display = "none";
         document.getElementsByTagName("canvas")[0].style.display = "initial";
         document.getElementById("highscore").style.display = "initial";
@@ -114,12 +116,12 @@ namespace Endabgabe {
         generateSnow();
         generateClouds();
         generateChild();
-        //       generateSnowball();
 
         imagedata = crc.getImageData(0, 0, canvas.width, canvas.height);
 
         update();
     }
+    
     function shoot(_event: MouseEvent): void {
         let ball: Snowball = new Snowball();
 
@@ -233,12 +235,12 @@ namespace Endabgabe {
         snowballs = [];
         children = [];
 
-
+        document.getElementById("beschreibung").style.display = "none";
         document.getElementsByTagName("canvas")[0].style.display = "none";
         document.getElementsByTagName("fieldset")[0].style.display = "initial";
         document.getElementById("endScreen").style.display = "initial";
         document.getElementById("highscore").style.display = "none";
         startDatabase();
     }
-    //init
+ 
 }//namespace

@@ -5,10 +5,6 @@ var Endabgabe;
         }
         move() {
         }
-        moveDown() {
-        }
-        moveUp() {
-        }
     }
     Endabgabe.DrawObject = DrawObject;
 })(Endabgabe || (Endabgabe = {}));

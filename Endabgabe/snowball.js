@@ -3,7 +3,12 @@ var Endabgabe;
     class Snowball extends Endabgabe.DrawObject {
         draw() {
             if (this.state == "throw") {
-                this.throwSnowball();
+                Endabgabe.crc.fillStyle = "#ffffff";
+                Endabgabe.crc.strokeStyle = "#000000";
+                Endabgabe.crc.beginPath();
+                Endabgabe.crc.arc(this.xP, this.yP, this.radius, 0, 2 * Math.PI);
+                Endabgabe.crc.fill();
+                Endabgabe.crc.stroke();
             }
         }
         move() {
@@ -13,14 +18,6 @@ var Endabgabe;
             else {
                 this.radius = 0;
             }
-        }
-        throwSnowball() {
-            Endabgabe.crc.fillStyle = "#ffffff";
-            Endabgabe.crc.strokeStyle = "#000000";
-            Endabgabe.crc.beginPath();
-            Endabgabe.crc.arc(this.xP, this.yP, this.radius, 0, 2 * Math.PI);
-            Endabgabe.crc.fill();
-            Endabgabe.crc.stroke();
         }
         hit(_xP, _yP) {
             Endabgabe.crc.lineWidth = 50;
@@ -44,7 +41,7 @@ var Endabgabe;
             console.log(_xP);
             Endabgabe.crc.beginPath();
             Endabgabe.crc.moveTo(_xP, _yP);
-            Endabgabe.crc.arc(_xP, _yP, 50, 0, 2 * Math.PI);
+            Endabgabe.crc.arc(_xP, _yP, 35, 0, 2 * Math.PI);
             Endabgabe.crc.closePath();
             if (Endabgabe.crc.isPointInPath(this.xP, this.yP)) {
                 console.log("win");
